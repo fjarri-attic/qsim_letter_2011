@@ -4,4 +4,6 @@ qsimNotes.bib
 *.log
 *.synctex.gz
 *.tmproj
+*.bbl
+*.blg
 
