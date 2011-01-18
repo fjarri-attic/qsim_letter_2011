@@ -126,7 +126,10 @@ $[\widehat{\Psi}_{i}(\mathbf{x}),\widehat{\Psi}_{j}^{\dagger}(\mathbf{x}')]=
 The resulting physics of a dilute, low-temperature Bose gas
 is well-described in the S-wave scattering limit by an effective Hamiltonian
 with contact interactions and external potentials:
-
+	\remark{Is $\nabla \widehat{\Psi}_{i}^{\dagger} \cdot \nabla \widehat{\Psi}_{i}$
+	equivalent to $\widehat{\Psi}_{i}^{\dagger} \nabla^2 \widehat{\Psi}_{i}$?}
+	\remark{We can use the single integral sign and set of curly braces for all terms.}
+	\remark{Do we need to explain how we performed the transition to local interaction?}
 \begin{eqnarray}
 	\widehat{H}/\hbar & = & \int d^{D}{\mathbf{x}} \left\{
 		\frac{\hbar}{2m}{\nabla} \widehat{\Psi}_{i}^{\dagger} \cdot {\nabla} \widehat{\Psi}_{i} +
@@ -152,6 +155,9 @@ $g_{ij}$ is related to the S-wave scattering length in three dimensions by:
 Here we implicitly assume a momentum cutoff $k_{c}=2\pi/\Delta z$,
 where $\Delta z$ is a lattice cell-size which must be greater than the scattering length,
 otherwise the couplings must be renormalized~\cite{Sinatra2002}.
+	\remark{We made the transition to a discrete grid a bit too fast.}
+	\remark{Moreover, cutoff mentioned here should not be confused with momentum cutoff
+	introduced to avoid UV divergence --- they can be different.}
 The linear coupling term is given by:
 \begin{equation}
 	\omega_{ij}(t,{\mathbf{x}}) = \left[
@@ -167,6 +173,7 @@ The truncated Wigner-Moyal quantum phase-space theory is well-suited
 to these types of calculation of many-body dynamics.
 The method employs a probabilistic (random) sampling of phase-space trajectories
 to treat quantum fluctuations.
+	\remark{We should mention that Wigner function is not exactly a probability distribution.}
 This means that there are no complexity problems due to exponential growth
 of the numbers of quantum states.
 Furthermore, it is straightforward to treat a spatially inhomogeneous,
@@ -178,14 +185,18 @@ This approach does require an approximation of truncating third-order derivative
 in an otherwise exact functional Fokker-Planck equation.
 This approximation is valid at large atom number~\cite{Sinatra2002,Norrie2006},
 where it has been checked in one-dimensional cases.
+	\remark{Not exactly "large atom number", but "number of atoms $\gg$ number of modes."}
+	\remark{It was checked in three-dimensional cases too, by Norrie.}
 We note that in free-space calculations in three dimensions,
 the ultra-violet (UV) divergence in free-space mode density at large momentum cutoff
 makes the truncated Wigner method unreliable,
 unless a momentum truncation is used so that each computed cell has atom number greater than unity.
+	\remark{I would stick with $N \gg M$ condition.
+	Cells near the borders will have 0 atoms regardless of the cutoff.}
 
 In the relevant limits where the technique is applicable,
 the equations simply reduce to Gross-Pitaevskii equations with Gaussian fluctuations
-of the initial conditions and additional quantum noise terms.
+of the initial conditions and additional quantum noise \remark{or maybe "stochastic?"} terms.
 Damping and losses can be included via an additional Markovian master equation defined so that,
 \begin{equation}
 \bm{
