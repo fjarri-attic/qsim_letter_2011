@@ -37,7 +37,8 @@ for raw_entry in raw_entries:
 
 	# remove unwanted fields
 	for field in ('file', 'keywords', 'mendeley-tags'):
-		entry_fields.pop(field)
+		if field in entry_fields:
+			del entry_fields[field]
 
 	entries.append((entry_type, entry_key, entry_fields))
 
