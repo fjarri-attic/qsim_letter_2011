@@ -36,7 +36,7 @@ for raw_entry in raw_entries:
 		entry_fields[mo.group(1)] = value
 
 	# remove unwanted fields
-	for field in ('file', 'keywords', 'mendeley-tags'):
+	for field in ('file', 'keywords', 'mendeley-tags', 'abstract'):
 		if field in entry_fields:
 			del entry_fields[field]
 
