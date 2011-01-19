@@ -1,7 +1,8 @@
 \documentclass[aps,prl,twocolumn,showpacs,amsmath,amssymb,superscriptaddress]{revtex4-1}
 
 \usepackage{graphicx}
-\usepackage{subfigure}
+\usepackage[justification=centerlast]{caption} % FIXME: 'justified' should be default, but it does not work
+\usepackage{subfig}
 \usepackage{amsbsy}
 \usepackage{amssymb}
 \usepackage{esint}
@@ -367,7 +368,27 @@ As a specific example of the utility of this method,
 we consider recent three-dimensional dipole trap interference experiments,
 involving ground-states of $\textrm{Rb}^{87}$ with quantum numbers $F=1,\, m_{F}=+1$
 and $F=2,\, m_{F}=-1$ respectively.
-(Bogdan - please add the details and graphs!)
+
+\def\imagetop#1{\vtop{\null\hbox{#1}}}
+
+\begin{figure}
+	\begin{tabular}{l l}
+	\imagetop{\hspace*{0.381in}\includegraphics[width=1.95in]{figures/ramsey_sequence.eps}} & \imagetop{(a)} \\
+	\imagetop{\includegraphics{figures/ramsey_visibility.eps}} & \imagetop{(b)} \\
+%	\vskip 0.2cm
+	\imagetop{\hspace*{0.381in}\includegraphics[width=1.95in]{figures/echo_sequence.eps}} & \imagetop{(c)} \\
+	\imagetop{\includegraphics{figures/echo_visibility.eps}} & \imagetop{(d)}
+	\end{tabular}
+
+	\caption{(color online).
+	Schematic of interferometric sequence for Ramsey (a) and Ramsey with symmetric spin-echo (c),
+	(b) and (d) are the corresponding plots of visibility $A$,
+	measured in the phase domain as a function of evolution time T.
+	Experimental data points (filled circles) agree well with simulations
+	when the effects of classical and quantum noise are added (black solid line),
+	to the coupled GPE theory (red dotted line).
+	Blue dashed line represent the effect of only quantum noise.}
+\end{figure}
 
 \bibliography{qsim}
 
