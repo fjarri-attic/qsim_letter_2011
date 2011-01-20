@@ -86,7 +86,7 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[ramsey_visibility_gpe, ramsey_visibility_qn, ramsey_visibility_exp],
 		['r--', 'b-', 'k.'],
-		'figures/ramsey_visibility.eps',
+		'figures_generated/ramsey_visibility.eps',
 		xmin=0, xmax=1.3, ymin=0, ymax=1.05)
 
 	echo_visibility_gpe = json.load(open('data/echo_visibility/echo_visibility_gpe.json'))
@@ -95,7 +95,7 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[echo_visibility_gpe, echo_visibility_qn, echo_visibility_exp],
 		['r--', 'b-', 'k.'],
-		'figures/echo_visibility.eps',
+		'figures_generated/echo_visibility.eps',
 		xmin=0, xmax=1.5, ymin=0, ymax=1.05)
 
 	ramsey_phnoise_qn = json.load(open('data/phase_noise/ramsey_phnoise_qn.json'))
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[ramsey_phnoise_qn, ramsey_phnoise_exp, ramsey_phnoise_total],
 		['b-', 'k.', 'k-'],
-		'figures/ramsey_phnoise.eps',
+		'figures_generated/ramsey_phnoise.eps',
 		xmin=0, xmax=0.85, ymin=0, ymax=0.6)
 
 	echo_phnoise_qn = json.load(open('data/phase_noise/echo_phnoise_qn.json'))
@@ -125,5 +125,5 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[echo_phnoise_qn, echo_phnoise_exp, echo_phnoise_total],
 		['b-', 'k.', 'k-'],
-		'figures/echo_phnoise.eps',
+		'figures_generated/echo_phnoise.eps',
 		xmin=0, xmax=1.65, ymin=0, ymax=0.5)
