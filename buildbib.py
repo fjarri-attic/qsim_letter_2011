@@ -40,6 +40,15 @@ for raw_entry in raw_entries:
 		if field in entry_fields:
 			del entry_fields[field]
 
+	# fix Arxiv references
+	if 'arxivId' in entry_fields:
+		aid = entry_fields['arxivId']
+		del entry_fields['arxivId']
+
+		entry_fields['archivePrefix'] = 'arXiv'
+		entry_fields['eprint'] = aid[:4] + aid[5:]
+		entry_fields['SLACcitation'] = "%%CITATION=" + aid[:4] + aid[5:] + ";%%"
+
 	entries.append((entry_type, entry_key, entry_fields))
 
 # write bib file
