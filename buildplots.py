@@ -4,6 +4,9 @@ import math
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from scipy.interpolate import interp1d
+import copy
+
 
 def updateParams():
 	fig_width_pt = 0.7 * 246.0
@@ -26,7 +29,17 @@ def updateParams():
 	}
 	matplotlib.rcParams.update(params)
 
-def plotXYGraph(datasets, linetypes, name):
+def combineNoises(data1, xarray, yarray):
+	data2_interp = interp1d(numpy.array(xarray), numpy.array(yarray),
+		kind="cubic", bounds_error=False)
+	data = copy.deepcopy(data1)
+
+	data['yarray'] = numpy.sqrt(numpy.array(data['yarray']) ** 2 +
+		data2_interp(numpy.array(data['xarray'])) ** 2).tolist()
+
+	return data
+
+def plotXYGraph(datasets, linetypes, name, xmin=None, xmax=None, ymin=None, ymax=None):
 
 	fig = plt.figure()
 
@@ -36,10 +49,8 @@ def plotXYGraph(datasets, linetypes, name):
 
 	subplot = fig.add_axes(axes, xlabel=datasets[0]['xname'], ylabel=datasets[0]['yname'])
 
-	subplot.set_xlim(
-		xmin=numpy.array(datasets[0]['xarray']).min(),
-		xmax=numpy.array(datasets[0]['xarray']).max())
-	subplot.set_ylim(ymin=datasets[0]['ymin'], ymax=datasets[0]['ymax'] + 0.05)
+	subplot.set_xlim(xmin=xmin, xmax=xmax)
+	subplot.set_ylim(ymin=ymin, ymax=ymax)
 
 	for dataset, linetype in zip(datasets, linetypes):
 
@@ -75,7 +86,8 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[ramsey_visibility_gpe, ramsey_visibility_qn, ramsey_visibility_exp],
 		['r--', 'b-', 'k.'],
-		'figures/ramsey_visibility.eps')
+		'figures/ramsey_visibility.eps',
+		xmin=0, xmax=1.3, ymin=0, ymax=1.05)
 
 	echo_visibility_gpe = json.load(open('data/echo_visibility/echo_visibility_gpe.json'))
 	echo_visibility_qn = json.load(open('data/echo_visibility/echo_visibility_qn.json'))
@@ -83,4 +95,35 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[echo_visibility_gpe, echo_visibility_qn, echo_visibility_exp],
 		['r--', 'b-', 'k.'],
-		'figures/echo_visibility.eps')
+		'figures/echo_visibility.eps',
+		xmin=0, xmax=1.5, ymin=0, ymax=1.05)
+
+	ramsey_phnoise_qn = json.load(open('data/phase_noise/ramsey_phnoise_qn.json'))
+	ramsey_phnoise_exp = json.load(open('data/phase_noise/ramsey_phnoise_exp.json'))
+	ramsey_imgnoise = json.load(open('data/phase_noise/ramsey_imaging_noise_exp.json'))
+
+	ramsey_phnoise_total = combineNoises(ramsey_imgnoise,
+		ramsey_imgnoise['xarray'], 0.23 * numpy.array(ramsey_imgnoise['xarray']))
+	ramsey_phnoise_total = combineNoises(ramsey_phnoise_total,
+		ramsey_imgnoise['xarray'], 0.122 * numpy.array(ramsey_imgnoise['xarray']))
+
+	plotXYGraph(
+		[ramsey_phnoise_qn, ramsey_phnoise_exp, ramsey_phnoise_total],
+		['b-', 'k.', 'k-'],
+		'figures/ramsey_phnoise.eps',
+		xmin=0, xmax=0.85, ymin=0, ymax=0.6)
+
+	echo_phnoise_qn = json.load(open('data/phase_noise/echo_phnoise_qn.json'))
+	echo_phnoise_exp = json.load(open('data/phase_noise/echo_phnoise_exp.json'))
+	echo_imgnoise = json.load(open('data/phase_noise/echo_imaging_noise_exp.json'))
+
+	echo_phnoise_total = combineNoises(echo_imgnoise,
+		echo_imgnoise['xarray'], 0.21 * numpy.array(echo_imgnoise['xarray']) / (2.0 ** 0.5))
+	echo_phnoise_total = combineNoises(echo_phnoise_total,
+		echo_phnoise_qn['xarray'], echo_phnoise_qn['yarray'])
+
+	plotXYGraph(
+		[echo_phnoise_qn, echo_phnoise_exp, echo_phnoise_total],
+		['b-', 'k.', 'k-'],
+		'figures/echo_phnoise.eps',
+		xmin=0, xmax=1.65, ymin=0, ymax=0.5)
