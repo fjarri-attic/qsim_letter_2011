@@ -371,7 +371,9 @@ The Wigner representation generates symmetrically ordered correlation functions.
 In numerical simulations, the delta-function correlations are simply replaced by
 local correlations at each lattice point,
 with a variance of $1/\Delta V$, where $\Delta V$ is the lattice cell volume.
-	\remark{In fact, I am now adding vacuum particles in k-space --- it is easier.}
+	\remark{In general, we need to populate $M$ low-energy modes with $1/2$ vacuum particles.
+	For plane waves it is equivalent to adding random numbers to each lattice point in k-space,
+	but for other bases it may not be so simple.}
 If a normal ordered correlation is measured~--- typical of an absorption image~---
 one must calculate the measured atomic densities according to
 $n_{s} \left( \mathbf{x} \right) = \left\langle
