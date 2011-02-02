@@ -9,7 +9,8 @@
 \usepackage{bm}
 \usepackage[usenames]{color}
 
-\newcommand{\remark}[1]{\textcolor{red}{{[}#1{]}}}
+\newcommand{\bogdansremark}[1]{\textcolor{red}{{[}BO: #1{]}}}
+\newcommand{\petersremark}[1]{\textcolor{blue}{{[}PD: #1{]}}}
 
 \newcommand{\Rb}{$^{87}$Rb}
 \newcommand{\figref}[1]{Fig.~\ref{#1}}
@@ -50,8 +51,8 @@ in an atom interferometer measurement.
 
 \maketitle
 
-	\remark{$\delta^{(D)}$ --- do we really need to specify dimension number? it can be deduced from the arguments. Same for $d^D$ in integrals.}
-	\remark{It is better to avoid setting whole equations in bold --- we may need bold font for specific symbols (and I doubt that PRL style allows bold equations anyway)
+	\bogdansremark{$\delta^{(D)}$ --- do we really need to specify dimension number? it can be deduced from the arguments. Same for $d^D$ in integrals.}
+	\bogdansremark{It is better to avoid setting whole equations in bold --- we may need bold font for specific symbols (and I doubt that PRL style allows bold equations anyway)}
 
 Atom interferometry is an important quantum technology,
 at the heart of many suggested future applications of ultra-cold atomic physics.
@@ -135,10 +136,10 @@ $[\widehat{\Psi}_{i}(\mathbf{x}),\widehat{\Psi}_{j}^{\dagger}(\mathbf{x}')] =
 The resulting physics of a dilute, low-temperature Bose gas
 is well-described in the S-wave scattering limit by an effective Hamiltonian
 with contact interactions and external potentials:
-	\remark{Is $\nabla \widehat{\Psi}_{i}^{\dagger} \cdot \nabla \widehat{\Psi}_{i}$
+	\bogdansremark{Is $\nabla \widehat{\Psi}_{i}^{\dagger} \cdot \nabla \widehat{\Psi}_{i}$
 	equivalent to $\widehat{\Psi}_{i}^{\dagger} \nabla^2 \widehat{\Psi}_{i}$?}
-	\remark{We can use the single integral sign and set of curly braces for all terms.}
-	\remark{Do we need to explain how we performed the transition to local interaction?}
+	\bogdansremark{We can use the single integral sign and set of curly braces for all terms.}
+	\bogdansremark{Do we need to explain how we performed the transition to local interaction?}
 \begin{eqnarray}
 	\widehat{H}/\hbar & = & \int d^{D}{\mathbf{x}} \left\{
 		\frac{\hbar}{2m}{\nabla} \widehat{\Psi}_{i}^{\dagger} \cdot {\nabla} \widehat{\Psi}_{i} +
@@ -163,8 +164,8 @@ $g_{ij}$ is related to the S-wave scattering length in three dimensions by:
 Here we implicitly assume a momentum cutoff $k_{c}=2\pi/\Delta z$,
 where $\Delta z$ is a lattice cell-size which must be greater than the scattering length,
 otherwise the couplings must be renormalized~\cite{Sinatra2002}.
-	\remark{We made the transition to a discrete grid a bit too fast.}
-	\remark{Moreover, cutoff mentioned here should not be confused with momentum cutoff
+	\bogdansremark{We made the transition to a discrete grid a bit too fast.}
+	\bogdansremark{Moreover, cutoff mentioned here should not be confused with momentum cutoff
 	introduced to avoid UV divergence~--- they can be different.}
 The linear coupling term is given by:
 \begin{equation}
@@ -183,7 +184,7 @@ Although the Wigner function is not a true probability,
 its becomes one to a good approximation in the limit of large particle number,
 so that a probabilistic (random) sampling of phase-space trajectories
 can be used to treat quantum fluctuations.
-	\remark{TODO: there was some poster on AIP where people removed areas with negative $W$.
+	\bogdansremark{TODO: there was some poster on AIP where people removed areas with negative $W$.
 	Need to find this paper.}
 This means that there are no complexity problems due to exponential growth
 of the numbers of quantum states.
@@ -201,7 +202,7 @@ We note that in free-space calculations in three dimensions,
 the ultra-violet (UV) divergence in free-space mode density at large momentum cutoff
 makes the truncated Wigner method unreliable,
 unless a momentum truncation is used so that $N \gg M$.
-	\remark{As far as I understand, we need to use some cutoff even in 1D case,
+	\bogdansremark{As far as I understand, we need to use some cutoff even in 1D case,
 	but for 1D this condition is satisfied automatically when we discretise the problem
 	(see Sinatra2002, II.A).
 	In 3D case, on the other hand, the mode space is too big by default,
@@ -240,7 +241,7 @@ are all $n$-fold products of local field annihilation operators,
 	\widehat{\Psi}_{i_{n}} \left( \mathbf{r} \right)
 \end{equation}
 describing local $n$-body collision losses.
-	\remark{Jack derives this form of loss operators only for 1--1--1 losses.}
+	\bogdansremark{Jack derives this form of loss operators only for 1--1--1 losses.}
 Ignoring unitary evolution, the corresponding mean amplitude equations
 for an $n$-body loss of this form are:
 \begin{equation}
@@ -249,7 +250,7 @@ for an $n$-body loss of this form are:
 	\right\rangle =
 	-\left\langle \hat{\Gamma}_{j} \left( \mathbf{r} \right) \right\rangle
 \end{equation}
-	\remark{How was this derived?}
+	\bogdansremark{How was this derived?}
 where we have introduced a nonlinear loss operator $\hat{\Gamma}_{j} \left( \mathbf{r} \right) =
 \Gamma_{j} \left( \widehat{\boldsymbol{\Psi}} \left( \mathbf{r} \right) \right)$
 as:
@@ -274,13 +275,13 @@ this corresponds to a time-evolution equation of form:
 		\mbox{O} \left[ \frac{\delta^{3}}{\delta\psi_{i}^{3}} \right]
 	\right\} W
 \end{equation}
-	\remark{Concerning functional Wigner correspondencies:
+	\bogdansremark{Concerning functional Wigner correspondencies:
 	they are just use to simplify the derivation of FPE.
 	We should definitely mention them in big paper, but not in the letter.}
-	\remark{The form $\delta\psi_{i}^{3}$ implies that all indexes in high-order terms
-	are the same, which is not true.
-	Peter: The other way to proceed is to use a normalized field approach with a normalization
-	so that $\psi ~ \epsilon\Psi$.
+	\bogdansremark{The form $\delta\psi_{i}^{3}$ implies that all indexes in high-order terms
+	are the same, which is not true.}
+	\petersremark{The other way to proceed is to use a normalized field approach
+	with a normalization so that $\psi ~ \epsilon\Psi$.
 	Then we can simply use a notation that the terms dropped are $O(\epsilon^3)$.
 	Here $\epsilon = \sqrt(M/N)$, say.
 	Then we must change the later notation as well, for consistency.}
@@ -299,10 +300,10 @@ with additional nonlinear damping:
 	\Gamma_{i} \left( \boldsymbol{\psi} \right)
 %}
 \end{equation}
-	\remark{Think about the form of the above equation.
+	\bogdansremark{Think about the form of the above equation.
 	The point here is to make the contents of parentheses look like Hamiltonian,
 	and to avoid confusion between $g$ and $g / \hbar$.}
-	\remark{$\Gamma_{i}$ here is a classical loss term,
+	\bogdansremark{$\Gamma_{i}$ here is a classical loss term,
 	not to be confused with $\hat{\Gamma}_{i}$.}
 
 The next highest order term in the evolution equation gives rise to
@@ -313,8 +314,8 @@ with:
 	\frac{\partial O_{\mathbf{k}}^{(n)*}}{\partial\psi_{i}^{*}}
 	\frac{\partial O_{\mathbf{k}}^{(n)}}{\partial\psi_{j}}
 \end{equation}
-	\remark{Again, what is the connection between $O$ and $\hat{O}$?}
-	\remark{There are additional terms: any combination of partial derivatives
+	\bogdansremark{Again, what is the connection between $O$ and $\hat{O}$?}
+	\bogdansremark{There are additional terms: any combination of partial derivatives
 	$\partial/\partial\psi_{i}$, $\partial/\partial\psi_{i}^*$.}
 
 With the inclusion of reservoir couplings to describe losses
@@ -349,7 +350,7 @@ The multiplicative noise coefficient~---
 is needed as a fluctuation-dissipation term,
 to ensure that the losses do not remove the vacuum fluctuations,
 so that the Wigner variables remain equivalent to the corresponding operators.
-	\remark{Looks too easy. How did we make the transition from FPE to this
+	\bogdansremark{Looks too easy. How did we make the transition from FPE to this
 	without decomposing the diffusion matrix?}
 
 For initial conditions in interferometry it is usually sufficient
@@ -371,7 +372,7 @@ The Wigner representation generates symmetrically ordered correlation functions.
 In numerical simulations, the delta-function correlations are simply replaced by
 local correlations at each lattice point,
 with a variance of $1/\Delta V$, where $\Delta V$ is the lattice cell volume.
-	\remark{In general, we need to populate $M$ low-energy modes with $1/2$ vacuum particles.
+	\bogdansremark{In general, we need to populate $M$ low-energy modes with $1/2$ vacuum particles.
 	For plane waves it is equivalent to adding random numbers to each lattice point in k-space,
 	but for other bases it may not be so simple.}
 If a normal ordered correlation is measured~--- typical of an absorption image~---
@@ -387,11 +388,11 @@ As a specific example of the utility of this method,
 we consider recent three-dimensional dipole trap interference experiments,
 involving ground-states of \Rb~BEC with quantum numbers $F=1,\, m_{F}=+1$
 and $F=2,\, m_{F}=-1$ respectively~\cite{Egorov2010}.
-	\remark{The plots for visibility and phase noise are based on the same data
+	\bogdansremark{The plots for visibility and phase noise are based on the same data
 	as the ones from Egorov et al.
 	Perhaps, we should either make them identical, or completely different;
-	otherwise it won't look very good (same applies for captions).
-	Peter: I definitely agree, this is an important point!
+	otherwise it won't look very good (same applies for captions).}
+	\petersremark{I definitely agree, this is an important point!
 	It is unwise to make them identical.
 	However, you have lots of data, and we need to think of other important points
 	we can extract from the data that is not included in the other paper.}
@@ -442,8 +443,8 @@ which was supposed to partially restore interferometric contrast
 	\label{fig:phasenoise}
 \end{figure}
 
-	\remark{Should we note explicitly that Wigner method was used in Egorov et al. paper?
-	Peter: Yes, I think we should make a virtue of this, not hide it.
+	\bogdansremark{Should we note explicitly that Wigner method was used in Egorov et al. paper?}
+	\petersremark{Yes, I think we should make a virtue of this, not hide it.
 	As an example, of how to proceed, we can try to explore exactly
 	how the spin-echo method improves the results.
 	It is not exactly obvious how this works, and why it improves the results.
@@ -467,7 +468,7 @@ is accurate enough for a range of interferometric experiments,
 involving large numbers of atoms.
 It is quite sensitive to the values of scattering lengths,
 loss coefficients and some calculation parameters like the energy cutoff.
-	\remark{Yes, downside was not the right word,
+	\bogdansremark{Yes, downside was not the right word,
 	but the sensitivity is something one should have in mind---it is much more senitive to losses
 	than GPEs are, and I bumped into this already.}
 
