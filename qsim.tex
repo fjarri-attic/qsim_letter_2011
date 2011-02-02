@@ -18,8 +18,9 @@
 \newcommand{\bra}[1]{\mbox{\ensuremath{\langle #1 |}}}
 \newcommand{\ket}[1]{\mbox{\ensuremath{| #1 \rangle}}}
 \newcommand{\xvec}{\boldsymbol{x}}
-\newcommand{\jvec}{\boldsymbol{j}}
 \newcommand{\ivec}{\boldsymbol{i}}
+\newcommand{\jvec}{\boldsymbol{j}}
+\newcommand{\kvec}{\boldsymbol{k}}
 \newcommand{\Psivec}{\boldsymbol{\Psi}}
 
 % Magic macro for creating tables in figure environment
@@ -310,9 +311,9 @@ The next highest order term in the evolution equation gives rise to
 quantum noise associated with the loss reservoirs,
 with:
 \begin{equation}
-	D_{ij} = \sum_{n,\mathbf{k}} \kappa_{\ivec}^{(n)}
-	\frac{\partial O_{\mathbf{k}}^{(n)*}}{\partial\psi_{i}^{*}}
-	\frac{\partial O_{\mathbf{k}}^{(n)}}{\partial\psi_{j}}
+	D_{ij} = \sum_{n,\kvec} \kappa_{\ivec}^{(n)}
+	\frac{\partial O_{\kvec}^{(n)*}}{\partial\psi_{i}^{*}}
+	\frac{\partial O_{\kvec}^{(n)}}{\partial\psi_{j}}
 \end{equation}
 	\bogdansremark{Again, what is the connection between $O$ and $\hat{O}$?}
 	\bogdansremark{There are additional terms: any combination of partial derivatives
@@ -336,7 +337,7 @@ stochastic delta-correlated Gaussian noise with
 	\left\langle
 		\zeta_{\ivec}^{(n)} (\xvec,t) \zeta_{\jvec}^{(m)}(\xvec^\prime, t^\prime)
 	\right\rangle =
-	\delta_{\mathbf{ij}} \delta^{nm} \delta^{D} \left(
+	\delta_{\ivec \jvec} \delta^{nm} \delta^{D} \left(
 		\xvec - \xvec^\prime
 	\right)
 	\delta \left( t - t^\prime \right)\,.
@@ -345,7 +346,7 @@ The multiplicative noise coefficient~---
 \begin{equation}
 	\gamma_{\ivec,j}^{(n)} \left( \boldsymbol{\psi} \right) =
 	\sqrt{\kappa_{\ivec}^{(n)}}
-	\frac{\partial O_{\mathbf{k}}^{(n)}}{\partial\psi_{j}}
+	\frac{\partial O_{\kvec}^{(n)}}{\partial\psi_{j}}
 \end{equation}
 is needed as a fluctuation-dissipation term,
 to ensure that the losses do not remove the vacuum fluctuations,
