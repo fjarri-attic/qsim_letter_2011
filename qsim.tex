@@ -52,7 +52,6 @@ in an atom interferometer measurement.
 \maketitle
 
 	\bogdansremark{$\delta^{(D)}$ --- do we really need to specify dimension number? it can be deduced from the arguments. Same for $d^D$ in integrals.}
-	\bogdansremark{It is better to avoid setting whole equations in bold --- we may need bold font for specific symbols (and I doubt that PRL style allows bold equations anyway)}
 
 Atom interferometry is an important quantum technology,
 at the heart of many suggested future applications of ultra-cold atomic physics.
@@ -215,11 +214,9 @@ of the initial conditions and additional stochastic terms.
 Damping and losses can be included via an additional Markovian master equation~\cite{Jack2002}
 defined so that,
 \begin{equation}
-\bm{
 	\frac{d\hat{\rho}}{dt} = -\frac{i}{\hbar} \left[ \hat{H}, \hat{\rho} \right] +
 	\sum_{n,\mathbf{j}} \kappa_{\mathbf{j}}^{(n)}
 	\int d^{3}\mathbf{r}\mathcal{L}_{\mathbf{j}}^{(n)} \left[ \hat{\rho} \right],
-}
 \end{equation}
 where $n$ is the number of interacting particles,
 and $j$ marks the subtype of the interaction (1--1, 1--2 and so on).
@@ -292,13 +289,11 @@ and is therefore valid in the limit of $N \gg M$.
 The drift term $A_{i}$ corresponds to Gross-Pitaevskii type evolution,
 with additional nonlinear damping:
 \begin{equation}
-%\bm{ FIXME: bm and boldsymbol don't mix (latex just hangs)
 	A_{i} = -\frac{i}{\hbar} \left(
 	 	-\frac{\hbar^2}{2m} \nabla^{2} + g_{ij} \left| \psi_{j} \right|^{2}
 	\right) \psi_{i} -
 	\frac{i}{\hbar} \omega_{ij} \psi_{j} -
 	\Gamma_{i} \left( \boldsymbol{\psi} \right)
-%}
 \end{equation}
 	\bogdansremark{Think about the form of the above equation.
 	The point here is to make the contents of parentheses look like Hamiltonian,
