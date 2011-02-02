@@ -17,7 +17,10 @@
 \newcommand{\figref}[1]{Fig.~\ref{#1}}
 \newcommand{\bra}[1]{\mbox{\ensuremath{\langle #1 |}}}
 \newcommand{\ket}[1]{\mbox{\ensuremath{| #1 \rangle}}}
-\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\xvec}{\boldsymbol{x}}
+\newcommand{\jvec}{\boldsymbol{j}}
+\newcommand{\ivec}{\boldsymbol{i}}
+\newcommand{\Psivec}{\boldsymbol{\Psi}}
 
 % Magic macro for creating tables in figure environment
 \def\imagetop#1{\vtop{\null\hbox{#1}}}
@@ -128,30 +131,30 @@ and with experiment in one-dimensional quantum soliton propagation dynamics.
 In the present Letter, we treat an ultra-cold,
 interacting multi-component spinor Bose gas in $D$ effective dimensions.
 The basic Hamiltonian is easily expressed using quantum fields
-$\widehat{\Psi}_{i}^{\dagger}(\bx),\widehat{\Psi}_{j}(\bx)$,
-where $\widehat{\Psi}_{i}^{\dagger}(\bx)$ creates a bosonic atom of spin $i$
-at location $\bx$, and $\widehat{\Psi}_{i}(\bx)$ destroys one;
+$\widehat{\Psi}_{i}^{\dagger}(\xvec),\widehat{\Psi}_{j}(\xvec)$,
+where $\widehat{\Psi}_{i}^{\dagger}(\xvec)$ creates a bosonic atom of spin $i$
+at location $\xvec$, and $\widehat{\Psi}_{i}(\xvec)$ destroys one;
 the commutators are
-$[\widehat{\Psi}_{i}(\bx),\widehat{\Psi}_{j}^{\dagger}(\bx^\prime)] =
-\delta^{(D)}(\bx-\bx^\prime)\delta_{ij}\,\,.$
+$[\widehat{\Psi}_{i}(\xvec),\widehat{\Psi}_{j}^{\dagger}(\xvec^\prime)] =
+\delta^{(D)}(\xvec-\xvec^\prime)\delta_{ij}\,\,.$
 The resulting physics of a dilute, low-temperature Bose gas
 is well-described in the S-wave scattering limit by an effective Hamiltonian
 with contact interactions and external potentials:
 \begin{equation}
 \begin{split}
-	\widehat{H} & = \hbar \int d^{D}\bx \left\{
+	\widehat{H} & = \hbar \int d^{D}\xvec \left\{
 		-\frac{\hbar}{2m} \widehat{\Psi}_{i}^{\dagger} \nabla^2 \widehat{\Psi}_{i} +
-		\omega_{ij}(t,\bx) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}
+		\omega_{ij}(t,\xvec) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}
 	\right\} \\
-	& + \int d^{D}\bx \left\{
+	& + \int d^{D}\xvec \left\{
 		\frac{g_{ij}}{2} \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}^{\dagger}
 		\widehat{\Psi}_{j} \widehat{\Psi}_{i}
 	\right\} \,\,.
 \end{split}
 \end{equation}
-Here we omit the field argument $(\bx)$ for brevity,
+Here we omit the field argument $(\xvec)$ for brevity,
 and use the Einstein summation convention of summing over repeated indices.
-Thus $\langle \widehat{\Psi}_{i}^{\dagger}(\bx) \widehat{\Psi}_{i}(\bx) \rangle$
+Thus $\langle \widehat{\Psi}_{i}^{\dagger}(\xvec) \widehat{\Psi}_{i}(\xvec) \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
 and $g_{ij}$ is the atom-atom interaction term.
 For a dilute gas at low enough temperatures,
@@ -170,8 +173,8 @@ otherwise the couplings must be renormalized~\cite{Sinatra2002}.
 	introduced to avoid UV divergence~--- they can be different.}
 The linear coupling term is given by:
 \begin{equation}
-	\omega_{ij}(t,\bx) = \left[
-		\omega_{i} + V_{i}(\bx) / \hbar
+	\omega_{ij}(t,\xvec) = \left[
+		\omega_{i} + V_{i}(\xvec) / \hbar
 	\right] \delta_{ij} + \Omega_{ij}
 \end{equation}
 where $V_{i}$ is the external trapping potential for spin $i$,
@@ -217,27 +220,27 @@ Damping and losses can be included via an additional Markovian master equation~\
 defined so that,
 \begin{equation}
 	\frac{d\hat{\rho}}{dt} = -\frac{i}{\hbar} \left[ \hat{H}, \hat{\rho} \right] +
-	\sum_{n,\mathbf{j}} \kappa_{\mathbf{j}}^{(n)}
-	\int d^D\bx \mathcal{L}_{\mathbf{j}}^{(n)} \left[ \hat{\rho} \right],
+	\sum_{n,\jvec} \kappa_{\jvec}^{(n)}
+	\int d^D\xvec \mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho} \right],
 \end{equation}
 where $n$ is the number of interacting particles,
-and $j$ marks the subtype of the interaction (1--1, 1--2 and so on).
+and $\jvec$ marks the subtype of the interaction (1--1, 1--2 and so on).
 
 Here we introduce local Liouville loss terms,
 \begin{equation}
-	\mathcal{L}_{\mathbf{j}}^{(n)} \left[ \hat{\rho}\right] =
-	2 \hat{O}_{\mathbf{j}}^{(n)} \hat{\rho}\hat{O}_{\mathbf{j}}^{(n)\dagger} -
-	\hat{O}_{\mathbf{j}}^{(n)\dagger}\hat{O}_{\mathbf{j}}^{(n)}\hat{\rho} -
-	\hat{\rho}\hat{O}_{\mathbf{j}}^{(n)\dagger}\hat{O}_{\mathbf{j}}^{(n)}
+	\mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho}\right] =
+	2 \hat{O}_{\jvec}^{(n)} \hat{\rho}\hat{O}_{\jvec}^{(n)\dagger} -
+	\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)}\hat{\rho} -
+	\hat{\rho}\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)}
 \end{equation}
-where the reservoir coupling operators $\hat{O}_{\mathbf{i}}^{(n)}$
+where the reservoir coupling operators $\hat{O}_{\jvec}^{(n)}$
 are all $n$-fold products of local field annihilation operators,
 \begin{equation}
-	\hat{O}_{\mathbf{i}}^{(n)} =
-	O_{\mathbf{i}}^{(n)} \left( \widehat{\boldsymbol{\Psi}} \right) =
-	\widehat{\Psi}_{i_{1}} \left( \bx \right)
-	\widehat{\Psi}_{i_{2}} \left( \bx \right) \ldots
-	\widehat{\Psi}_{i_{n}} \left( \bx \right)
+	\hat{O}_{\jvec}^{(n)} =
+	O_{\jvec}^{(n)} \left( \widehat{\Psivec} \right) =
+	\widehat{\Psi}_{j_{1}} \left( \xvec \right)
+	\widehat{\Psi}_{j_{2}} \left( \xvec \right) \ldots
+	\widehat{\Psi}_{j_{n}} \left( \xvec \right)
 \end{equation}
 describing local $n$-body collision losses.
 	\bogdansremark{Jack derives this form of loss operators only for 1--1--1 losses.}
@@ -245,20 +248,20 @@ Ignoring unitary evolution, the corresponding mean amplitude equations
 for an $n$-body loss of this form are:
 \begin{equation}
 	\frac{\partial}{\partial t} \left\langle
-		\widehat{\Psi}_{j} \left( \bx \right)
+		\widehat{\Psi}_{j} \left( \xvec \right)
 	\right\rangle =
-	-\left\langle \hat{\Gamma}_{j} \left( \bx \right) \right\rangle
+	-\left\langle \hat{\Gamma}_{j} \left( \xvec \right) \right\rangle
 \end{equation}
 	\bogdansremark{How was this derived?}
-where we have introduced a nonlinear loss operator $\hat{\Gamma}_{j} \left( \bx \right) =
-\Gamma_{j} \left( \widehat{\boldsymbol{\Psi}} \left( \bx \right) \right)$
+where we have introduced a nonlinear loss operator $\hat{\Gamma}_{j} \left( \xvec \right) =
+\Gamma_{j} \left( \widehat{\boldsymbol{\Psi}} \left( \xvec \right) \right)$
 as:
 \begin{equation}
-	\hat{\Gamma}_{j} \left( \bx \right) \equiv
-	\sum_{n,\mathbf{i}} \kappa_{\mathbf{i}}^{(n)}
-	\frac{\partial\hat{O}_{\mathbf{i}}^{(n)\dagger}	\left( \bx \right)}
-		{\partial \hat{\Psi}_{j}^{\dagger} \left( \bx \right)}
-	\hat{O}_{\mathbf{i}}^{(n)} \left( \bx \right) \,.
+	\hat{\Gamma}_{j} \left( \xvec \right) \equiv
+	\sum_{n,\ivec} \kappa_{\ivec}^{(n)}
+	\frac{\partial\hat{O}_{\ivec}^{(n)\dagger}	\left( \xvec \right)}
+		{\partial \hat{\Psi}_{j}^{\dagger} \left( \xvec \right)}
+	\hat{O}_{\ivec}^{(n)} \left( \xvec \right) \,.
 \end{equation}
 
 As the full operator equations are highly nontrivial,
@@ -268,7 +271,7 @@ Defining a Wigner function $W\left(\psi_{1},\psi_{2}\right)$,
 where $\psi$ is a c-number field corresponing to the quantum field $\hat{\Psi}$,
 this corresponds to a time-evolution equation of form:
 \begin{equation}
-	\frac{\partial W}{\partial t} = \int d\bx\,\left\{
+	\frac{\partial W}{\partial t} = \int d\xvec\,\left\{
 		-\frac{\delta}{\delta\psi_{i}} A_{i} +
 		\frac{1}{2} \frac{\delta^{2}}{\delta\psi_{i} \delta\psi_{j}^{*}}D_{ij} +
 		\mbox{O} \left[ \frac{\delta^{3}}{\delta\psi_{i}^{3}} \right]
@@ -307,7 +310,7 @@ The next highest order term in the evolution equation gives rise to
 quantum noise associated with the loss reservoirs,
 with:
 \begin{equation}
-	D_{ij} = \sum_{n,\mathbf{k}} \kappa_{\mathbf{i}}^{(n)}
+	D_{ij} = \sum_{n,\mathbf{k}} \kappa_{\ivec}^{(n)}
 	\frac{\partial O_{\mathbf{k}}^{(n)*}}{\partial\psi_{i}^{*}}
 	\frac{\partial O_{\mathbf{k}}^{(n)}}{\partial\psi_{j}}
 \end{equation}
@@ -320,28 +323,28 @@ the truncated Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 	\frac{d\psi_{j}}{dt} = iK_{j} \psi_{j} - ig_{ij} |\psi_{i}|^{2} \psi_{j} - \Gamma_{j} +
-		\sum_{n,\mathbf{i}} \gamma_{\mathbf{i},j}^{(n)} \zeta_{\mathbf{i}}^{(n)} (\bx,t)
+		\sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t)
 \end{equation}
 
 Here the linear unitary evolution of the wave-function, is described by:
 \begin{equation}
-	K_{j} = \hbar \nabla^{2}/2m - \omega_{j} - V_{j} \left( \bx \right)
+	K_{j} = \hbar \nabla^{2}/2m - \omega_{j} - V_{j} \left( \xvec \right)
 \end{equation}
-while $\zeta_{\mathbf{i}}^{(n)}(t,\bx)$ is a complex,
+while $\zeta_{\ivec}^{(n)}(t,\xvec)$ is a complex,
 stochastic delta-correlated Gaussian noise with
 \begin{equation}
 	\left\langle
-		\zeta_{\mathbf{i}}^{(n)} (\bx,t) \zeta_{\mathbf{j}}^{(m)}(\bx^\prime, t^\prime)
+		\zeta_{\ivec}^{(n)} (\xvec,t) \zeta_{\jvec}^{(m)}(\xvec^\prime, t^\prime)
 	\right\rangle =
 	\delta_{\mathbf{ij}} \delta^{nm} \delta^{D} \left(
-		\bx - \bx^\prime
+		\xvec - \xvec^\prime
 	\right)
 	\delta \left( t - t^\prime \right)\,.
 \end{equation}
 The multiplicative noise coefficient~---
 \begin{equation}
-	\gamma_{\mathbf{i},j}^{(n)} \left( \boldsymbol{\psi} \right) =
-	\sqrt{\kappa_{\mathbf{i}}^{(n)}}
+	\gamma_{\ivec,j}^{(n)} \left( \boldsymbol{\psi} \right) =
+	\sqrt{\kappa_{\ivec}^{(n)}}
 	\frac{\partial O_{\mathbf{k}}^{(n)}}{\partial\psi_{j}}
 \end{equation}
 is needed as a fluctuation-dissipation term,
@@ -354,13 +357,13 @@ For initial conditions in interferometry it is usually sufficient
 to consider a coherent state amplitude $\Psi_{s}^{c}$,
 corresponding to a typical initial state with Poissonian number fluctuations.
 In this case the initial Wigner amplitude has a Gaussian random distribution,
-with $\Psi_{s}(\bx,t_{0})=\Psi_{s}^{c}(\bx)+\Delta\Psi_{s}(\bx)$,
+with $\Psi_{s}(\xvec,t_{0})=\Psi_{s}^{c}(\xvec)+\Delta\Psi_{s}(\xvec)$,
 where:
 \begin{equation}
 	\left\langle
-		\Delta\Psi_{s}(\bx) \Delta\Psi_{u}^{*}(\bx^\prime)
+		\Delta\Psi_{s}(\xvec) \Delta\Psi_{u}^{*}(\xvec^\prime)
 	\right\rangle =
-	\frac{1}{2} \delta_{su} \delta^{D} \left( \bx - \bx^\prime\right)
+	\frac{1}{2} \delta_{su} \delta^{D} \left( \xvec - \xvec^\prime\right)
 \end{equation}
 For greater accuracy, the coherent-state initial condition
 can be modified to account for initial ground-state correlations,
@@ -374,8 +377,8 @@ with a variance of $1/\Delta V$, where $\Delta V$ is the lattice cell volume.
 	but for other bases it may not be so simple.}
 If a normal ordered correlation is measured~--- typical of an absorption image~---
 one must calculate the measured atomic densities according to
-$n_{s} \left( \bx \right) = \left\langle
-	\Psi_{s}(\bx) \Psi_{s}^{*}(\bx)
+$n_{s} \left( \xvec \right) = \left\langle
+	\Psi_{s}(\xvec) \Psi_{s}^{*}(\xvec)
 \right\rangle -1/2\Delta V$,
 to correct for vacuum fluctuations.
 In practical terms, truncation errors start to become significant
