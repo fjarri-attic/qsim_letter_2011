@@ -369,18 +369,14 @@ For greater accuracy, the coherent-state initial condition
 can be modified to account for initial ground-state correlations,
 or additional number-fluctuations above the Poissonian level.
 The Wigner representation generates symmetrically ordered correlation functions.
-In numerical simulations, the delta-function correlations are simply replaced by
-local correlations at each lattice point,
-with a variance of $1/\Delta V$, where $\Delta V$ is the lattice cell volume.
-	\bogdansremark{In general, we need to populate $M$ low-energy modes with $1/2$ vacuum particles.
-	For plane waves it is equivalent to adding random numbers to each lattice point in k-space,
-	but for other bases it may not be so simple.}
+In numerical simulations, the delta-function correlations are replaced by
+populating each low-energy mode with $1/2$ of a vacuum particle.
 If a normal ordered correlation is measured~--- typical of an absorption image~---
 one must calculate the measured atomic densities according to
 $n_{s} \left( \xvec \right) = \left\langle
 	\Psi_{s}(\xvec) \Psi_{s}^{*}(\xvec)
-\right\rangle -1/2\Delta V$,
-to correct for vacuum fluctuations.
+\right\rangle - M / 2V$,
+to correct for vacuum fluctuations we introduced.
 In practical terms, truncation errors start to become significant
 when the number of particles per cell is of order unity or less.
 
