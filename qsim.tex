@@ -143,12 +143,12 @@ is well-described in the S-wave scattering limit by an effective Hamiltonian
 with contact interactions and external potentials:
 \begin{equation}
 \begin{split}
-	\widehat{H} & = \hbar \int d^{D}\xvec \left\{
+	\widehat{H} / \hbar & = \int d^{D}\xvec \left\{
 		-\frac{\hbar}{2m} \widehat{\Psi}_{i}^{\dagger} \nabla^2 \widehat{\Psi}_{i} +
 		\omega_{ij}(t,\xvec) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}
 	\right\} \\
 	& + \int d^{D}\xvec \left\{
-		\frac{g_{ij}}{2} \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}^{\dagger}
+		\frac{U_{ij}}{2} \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}^{\dagger}
 		\widehat{\Psi}_{j} \widehat{\Psi}_{i}
 	\right\} \,\,.
 \end{split}
@@ -157,11 +157,11 @@ Here we omit the field argument $(\xvec)$ for brevity,
 and use the Einstein summation convention of summing over repeated indices.
 Thus $\langle \widehat{\Psi}_{i}^{\dagger}(\xvec) \widehat{\Psi}_{i}(\xvec) \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
-and $g_{ij}$ is the atom-atom interaction term.
+and $U_{ij}$ is the atom-atom interaction term.
 For a dilute gas at low enough temperatures,
-$g_{ij}$ is related to the S-wave scattering length in three dimensions by:
+$U_{ij}$ is related to the S-wave scattering length in three dimensions by:
 \begin{equation}
-	g_{ij}=\frac{4\pi\hbar^{2}a_{ij}}{m}.
+	U_{ij}=\frac{4\pi\hbar a_{ij}}{m}.
 \end{equation}
 Here we implicitly assume a momentum cutoff $k_{c}=2\pi/\Delta z$,
 where $\Delta z$ is a lattice cell-size which must be greater than the scattering length,
@@ -295,15 +295,12 @@ and is therefore valid in the limit of $N \gg M$.
 The drift term $A_{i}$ corresponds to Gross-Pitaevskii type evolution,
 with additional nonlinear damping:
 \begin{equation}
-	A_{i} = -\frac{i}{\hbar} \left(
-	 	-\frac{\hbar^2}{2m} \nabla^{2} + g_{ij} \left| \psi_{j} \right|^{2}
+	A_{i} = -i \left(
+	 	-\frac{\hbar}{2m} \nabla^{2} + U_{ij} \left| \psi_{j} \right|^{2}
 	\right) \psi_{i} -
-	\frac{i}{\hbar} \omega_{ij} \psi_{j} -
-	\Gamma_{i} \left( \boldsymbol{\psi} \right)
+	\hbar \omega_{ij} \psi_{j} -
+	\Gamma_{i} \left( \Psivec \right)
 \end{equation}
-	\bogdansremark{Think about the form of the above equation.
-	The point here is to make the contents of parentheses look like Hamiltonian,
-	and to avoid confusion between $g$ and $g / \hbar$.}
 	\bogdansremark{$\Gamma_{i}$ here is a classical loss term,
 	not to be confused with $\hat{\Gamma}_{i}$.}
 
@@ -323,13 +320,13 @@ With the inclusion of reservoir couplings to describe losses
 the truncated Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
-	\frac{d\psi_{j}}{dt} = iK_{j} \psi_{j} - ig_{ij} |\psi_{i}|^{2} \psi_{j} - \Gamma_{j} +
-		\sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t)
+	\frac{d\psi_{j}}{dt} = iK_{j} \psi_{j} - iU_{ij} \lvert \psi_{i} \rvert ^{2} \psi_{j} -
+	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t)
 \end{equation}
 
 Here the linear unitary evolution of the wave-function, is described by:
 \begin{equation}
-	K_{j} = \hbar \nabla^{2}/2m - \omega_{j} - V_{j} \left( \xvec \right)
+	K_{j} = \hbar \nabla^{2}/2m - \omega_{j} - V_{j} \left( \xvec \right) / \hbar
 \end{equation}
 while $\zeta_{\ivec}^{(n)}(t,\xvec)$ is a complex,
 stochastic delta-correlated Gaussian noise with
