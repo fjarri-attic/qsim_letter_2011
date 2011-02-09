@@ -249,20 +249,20 @@ Ignoring unitary evolution, the corresponding mean amplitude equations
 for an $n$-body loss of this form are:
 \begin{equation}
 	\frac{\partial}{\partial t} \left\langle
-		\widehat{\Psi}_{j} \left( \xvec \right)
+		\widehat{\Psi}_{i} \left( \xvec \right)
 	\right\rangle =
-	-\left\langle \hat{\Gamma}_{j} \left( \xvec \right) \right\rangle
+	-\left\langle \hat{\Gamma}_{i} \left( \xvec \right) \right\rangle
 \end{equation}
 	\bogdansremark{How was this derived?}
-where we have introduced a nonlinear loss operator $\hat{\Gamma}_{j} \left( \xvec \right) =
-\Gamma_{j} \left( \widehat{\boldsymbol{\Psi}} \left( \xvec \right) \right)$
+where we have introduced a nonlinear loss operator $\hat{\Gamma}_{i} \left( \xvec \right) =
+\Gamma_{i} \left( \widehat{\Psivec} \left( \xvec \right) \right)$
 as:
 \begin{equation}
-	\hat{\Gamma}_{j} \left( \xvec \right) \equiv
-	\sum_{n,\ivec} \kappa_{\ivec}^{(n)}
-	\frac{\partial\hat{O}_{\ivec}^{(n)\dagger}	\left( \xvec \right)}
-		{\partial \hat{\Psi}_{j}^{\dagger} \left( \xvec \right)}
-	\hat{O}_{\ivec}^{(n)} \left( \xvec \right) \,.
+	\hat{\Gamma}_{i} \left( \xvec \right) \equiv
+	\sum_{n,\jvec} \kappa_{\jvec}^{(n)}
+	\frac{\partial\hat{O}_{\jvec}^{(n)\dagger}	\left( \xvec \right)}
+		{\partial \hat{\Psi}_{i}^{\dagger} \left( \xvec \right)}
+	\hat{O}_{\jvec}^{(n)} \left( \xvec \right) \,.
 \end{equation}
 
 As the full operator equations are highly nontrivial,
