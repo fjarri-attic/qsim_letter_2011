@@ -250,28 +250,27 @@ where we have introduced a nonlinear loss operator $\hat{\Gamma}_{i} \left( \xve
 As the full operator equations are highly nontrivial,
 we proceed by using a stochastic phase-space method
 that allows a numerical simulation of the condensate quantum dynamics~\cite{Drummond1993, Steel1998}.
-Defining a Wigner function $W\left(\psi_{1},\psi_{2}\right)$,
-	\bogdansremark{Maybe use $\Psi$ instead of $\psi$?}
-where $\psi$ is a c-number field corresponing to the quantum field $\hat{\Psi}$,
+Defining a Wigner function $W\left(\Psi_{1},\Psi_{2}\right)$,
+where $\Psi$ is a c-number field corresponing to the quantum field $\hat{\Psi}$,
 this corresponds to a time-evolution equation of form:
 \begin{equation}
 	\frac{\partial W}{\partial t} = \int d^D \xvec \,\left\{
-		-\frac{\delta}{\delta\psi_{i}} A_{i} +
-		\frac{1}{2} \frac{\delta^{2}}{\delta\psi_{i} \delta\psi_{j}^{*}}D_{ij} +
-		\mbox{O} \left[ \frac{\delta^{3}}{\delta\psi_{i}^{3}} \right]
+		-\frac{\delta}{\delta\Psi_{i}} A_{i} +
+		\frac{1}{2} \frac{\delta^{2}}{\delta\Psi_{i} \delta\Psi_{j}^{*}}D_{ij} +
+		\mbox{O} \left[ \frac{\delta^{3}}{\delta\Psi_{i}^{3}} \right]
 	\right\} W
 \end{equation}
 	\bogdansremark{Concerning functional Wigner correspondencies:
 	they are just use to simplify the derivation of FPE.
 	We should definitely mention them in big paper, but not in the letter.}
-	\bogdansremark{The form $\delta\psi_{i}^{3}$ implies that all indexes in high-order terms
+	\bogdansremark{The form $\delta\Psi_{i}^{3}$ implies that all indexes in high-order terms
 	are the same, which is not true.}
 	\petersremark{The other way to proceed is to use a normalized field approach
-	with a normalization so that $\psi \sim \epsilon\Psi$.
+	with a normalization so that $\Psi \sim \epsilon\Psi$.
 	Then we can simply use a notation that the terms dropped are $O(\epsilon^3)$.
 	Here $\epsilon = \sqrt(M/N)$, say.
 	Then we must change the later notation as well, for consistency.}
-where higher derivative terms of type $\mbox{O}\left[\delta^3/\delta\psi_{i}^{3}\right]$
+where higher derivative terms of type $\mbox{O}\left[\delta^3/\delta\Psi_{i}^{3}\right]$
 will be truncated.
 This is equivalent to neglect of higher-order terms in an expansion in $1/\sqrt{N}$,
 and is therefore valid in the limit of $N \gg M$.
@@ -279,9 +278,9 @@ The drift term $A_{i}$ corresponds to Gross-Pitaevskii type evolution,
 with additional nonlinear damping:
 \begin{equation}
 	A_{i} = -i \left(
-	 	-\frac{\hbar}{2m} \nabla^{2} + U_{ij} \left| \psi_{j} \right|^{2}
-	\right) \psi_{i} -
-	\hbar \omega_{ij} \psi_{j} -
+	 	-\frac{\hbar}{2m} \nabla^{2} + U_{ij} \left| \Psi_{j} \right|^{2}
+	\right) \Psi_{i} -
+	\hbar \omega_{ij} \Psi_{j} -
 	\Gamma_{i} \left( \Psivec \right)
 \end{equation}
 	\bogdansremark{$\Gamma_{i}$ here is a classical loss term,
@@ -292,18 +291,18 @@ quantum noise associated with the loss reservoirs,
 with:
 \begin{equation}
 	D_{ij} = \sum_{n,\kvec} \kappa_{\kvec}^{(n)}
-	\frac{\partial O_{\kvec}^{(n)*}}{\partial\psi_{i}^{*}}
-	\frac{\partial O_{\kvec}^{(n)}}{\partial\psi_{j}}
+	\frac{\partial O_{\kvec}^{(n)*}}{\partial\Psi_{i}^{*}}
+	\frac{\partial O_{\kvec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
 	\bogdansremark{Again, what is the connection between $O$ and $\hat{O}$?}
 	\bogdansremark{There are additional terms: any combination of partial derivatives
-	$\partial/\partial\psi_{i}$, $\partial/\partial\psi_{i}^*$.}
+	$\partial/\partial\Psi_{i}$, $\partial/\partial\Psi_{i}^*$.}
 
 With the inclusion of reservoir couplings to describe losses
 the truncated Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
-	\frac{d\psi_{j}}{dt} = iK_{j} \psi_{j} - iU_{ij} \lvert \psi_{i} \rvert ^{2} \psi_{j} -
+	\frac{d\Psi_{j}}{dt} = iK_{j} \Psi_{j} - iU_{ij} \lvert \Psi_{i} \rvert ^{2} \Psi_{j} -
 	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t)
 \end{equation}
 
@@ -326,7 +325,7 @@ The multiplicative noise coefficient~---
 \begin{equation}
 	\gamma_{\ivec,j}^{(n)} \left( \Psivec \right) =
 	\sqrt{\kappa_{\ivec}^{(n)}}
-	\frac{\partial O_{\ivec}^{(n)}}{\partial\psi_{j}}
+	\frac{\partial O_{\ivec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
 is needed as a fluctuation-dissipation term,
 to ensure that the losses do not remove the vacuum fluctuations,
