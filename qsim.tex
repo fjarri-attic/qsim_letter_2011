@@ -57,8 +57,6 @@ in an atom interferometer measurement.
 
 \maketitle
 
-	\bogdansremark{$\delta^{(D)}$ --- do we really need to specify dimension number? it can be deduced from the arguments. Same for $d^D$ in integrals.}
-
 Atom interferometry is an important quantum technology,
 at the heart of many suggested future applications of ultra-cold atomic physics.
 Bose-Einstein condensates or atom lasers have potential advantages as detectors or sensors,
@@ -274,7 +272,7 @@ Defining a Wigner function $W\left(\psi_{1},\psi_{2}\right)$,
 where $\psi$ is a c-number field corresponing to the quantum field $\hat{\Psi}$,
 this corresponds to a time-evolution equation of form:
 \begin{equation}
-	\frac{\partial W}{\partial t} = \int d\xvec\,\left\{
+	\frac{\partial W}{\partial t} = \int d^D \xvec \,\left\{
 		-\frac{\delta}{\delta\psi_{i}} A_{i} +
 		\frac{1}{2} \frac{\delta^{2}}{\delta\psi_{i} \delta\psi_{j}^{*}}D_{ij} +
 		\mbox{O} \left[ \frac{\delta^{3}}{\delta\psi_{i}^{3}} \right]
