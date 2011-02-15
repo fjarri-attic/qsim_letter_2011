@@ -161,15 +161,8 @@ $U_{ij}$ is related to the S-wave scattering length in three dimensions by:
 \begin{equation}
 	U_{ij}=\frac{4\pi\hbar a_{ij}}{m}.
 \end{equation}
-Here we implicitly assume a momentum cutoff $k_{c}=2\pi/\Delta z$,
-where $\Delta z$ is a lattice cell-size which must be greater than the scattering length,
+Here we implicitly assume a momentum cutoff $k_{c} \ll 1 / a_{ij}$,
 otherwise the couplings must be renormalized~\cite{Sinatra2002}.
-	\bogdansremark{This is one of the two places where we mention discrete grid;
-	the second one is when we describe initial conditions.
-	In both places it is not really necessary; probably we should leave
-	discretisation for a larger paper.}
-	\bogdansremark{Moreover, cutoff mentioned here should not be confused with momentum cutoff
-	introduced to avoid UV divergence~--- they can be different.}
 The linear coupling term is given by:
 \begin{equation}
 	\omega_{ij}(t,\xvec) = \left[
