@@ -254,11 +254,14 @@ Defining a Wigner function $W\left(\Psi_{1},\Psi_{2}\right)$,
 where $\Psi$ is a c-number field corresponing to the quantum field $\hat{\Psi}$,
 this corresponds to a time-evolution equation of form:
 \begin{equation}
-	\frac{\partial W}{\partial t} = \int d^D \xvec \,\left\{
-		-\frac{\delta}{\delta\Psi_{i}} A_{i} +
-		\frac{1}{2} \frac{\delta^{2}}{\delta\Psi_{i} \delta\Psi_{j}^{*}}D_{ij} +
+\begin{split}
+	\frac{\partial W}{\partial t} & = \int d^D \xvec \,\left\{
+		-\frac{\delta}{\delta\Psi_{i}} A_{i} -
+		\frac{\delta}{\delta\Psi_{i}^*} A_{i}^* \right. \\
+& + \left. \frac{1}{2} \frac{\delta^{2}}{\delta\Psi_{i} \delta\Psi_{j}^{*}}D_{ij} +
 		\mbox{O} \left[ \frac{\delta^{3}}{\delta\Psi_{i}^{3}} \right]
 	\right\} W
+\end{split}
 \end{equation}
 	\bogdansremark{Concerning functional Wigner correspondencies:
 	they are just use to simplify the derivation of FPE.
