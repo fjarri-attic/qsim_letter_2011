@@ -279,10 +279,18 @@ with additional nonlinear damping:
 	 	-\frac{\hbar}{2m} \nabla^{2} + U_{ij} \left| \Psi_{j} \right|^{2}
 	\right) \Psi_{i} -
 	\hbar \omega_{ij} \Psi_{j} -
-	\Gamma_{i} \left( \Psivec \right)
+	\Gamma_{i} \left( \Psivec \right),
 \end{equation}
-	\bogdansremark{$\Gamma_{i}$ here is a classical loss term,
-	not to be confused with $\hat{\Gamma}_{i}$.}
+where $\Gamma_{i}$ is a classical loss term:
+\begin{equation}
+	\Gamma_{i} = \sum_{n,\jvec} \kappa_{\jvec}^{(n)}
+	\frac{
+		\partial O_{\jvec}^{(n)*} \left( \Psivec \right)
+	}{
+		\partial \Psi_{i}^* \left( \xvec \right)
+	}
+	O_{\jvec}^{(n)} \left( \xvec \right)
+\end{equation}
 
 The next highest order term in the evolution equation gives rise to
 quantum noise associated with the loss reservoirs,
