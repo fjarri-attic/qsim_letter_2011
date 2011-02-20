@@ -258,7 +258,7 @@ this corresponds to a time-evolution equation of form:
 	\frac{\partial W}{\partial t} & = \int d^D \xvec \,\left\{
 		-\frac{\delta}{\delta\Psi_{i}} A_{i} -
 		\frac{\delta}{\delta\Psi_{i}^*} A_{i}^* \right. \\
-& + \left. \frac{1}{2} \frac{\delta^{2}}{\delta\Psi_{i} \delta\Psi_{j}^{*}}D_{ij} +
+& + \left. \frac{\delta^{2}}{\delta\Psi_{i} \delta\Psi_{j}^{*}}D_{ij} +
 		\mbox{O} \left[ \frac{\delta^{3}}{\delta\Psi_{i}^{3}} \right]
 	\right\} W
 \end{split}
@@ -296,7 +296,7 @@ The next highest order term in the evolution equation gives rise to
 quantum noise associated with the loss reservoirs,
 with:
 \begin{equation}
-	D_{ij} = 2 \sum_{n,\kvec} \kappa_{\kvec}^{(n)}
+	D_{ij} = \sum_{n,\kvec} \kappa_{\kvec}^{(n)}
 	\frac{\partial O_{\kvec}^{(n)*}}{\partial\Psi_{i}^{*}}
 	\frac{\partial O_{\kvec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
@@ -333,8 +333,6 @@ The multiplicative noise coefficient~---
 is needed as a fluctuation-dissipation term,
 to ensure that the losses do not remove the vacuum fluctuations,
 so that the Wigner variables remain equivalent to the corresponding operators.
-	\bogdansremark{Looks too easy. How did we make the transition from FPE to this
-	without decomposing the diffusion matrix?}
 
 For initial conditions in interferometry it is usually sufficient
 to consider a coherent state amplitude $\Psi_{s}^{c}$,
