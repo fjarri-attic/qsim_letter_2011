@@ -350,17 +350,28 @@ where:
 For greater accuracy, the coherent-state initial condition
 can be modified to account for initial ground-state correlations,
 or additional number-fluctuations above the Poissonian level.
-The Wigner representation generates symmetrically ordered correlation functions.
 In numerical simulations, the delta-function correlations are replaced by
 populating each low-energy mode with $1/2$ of a vacuum particle.
-If a normal ordered correlation is measured\---typical of an absorption image\---
-one must calculate the measured atomic densities according to
-$n_{s} \left( \xvec \right) = \left\langle
-	\Psi_{s}(\xvec) \Psi_{s}^{*}(\xvec)
-\right\rangle - M / 2V$,
-to correct for vacuum fluctuations we introduced.
-In practical terms, truncation errors start to become significant
-when the number of particles per cell is of order unity or less.
+The Wigner representation generates symmetrically ordered correlation functions,
+therefore when normal ordered correlations are measured\---which is a typical case\---
+one has to express them as a sum of symmetrically ordered terms first.
+For example atomic density of the component $s$ can be calculated as:
+\begin{equation}
+\begin{split}
+n_{s} (\xvec) & =
+\langle \widehat{\Psi}^\dagger_{s} (\xvec) \widehat{\Psi}_{s} (\xvec) \rangle \\
+& = \langle \left\{ \widehat{\Psi}^\dagger_{s} (\xvec)
+	\widehat{\Psi}_{s} (\xvec) \right\}_{sym} \rangle -
+	\frac{1}{2} \delta(\xvec, \xvec) \\
+& = \int \Psi^*_{s} \Psi_{s} W(\Psivec, \Psivec^*) d\Psivec d\Psivec^* -
+	\frac{1}{2} \delta(\xvec, \xvec) \\
+& = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{paths} - \frac{1}{2} \delta(\xvec, \xvec)
+\end{split}
+\end{equation}
+Here we used the fact that Wigner function can be treated as probability distribution
+and transformed the integral into an averaged sum over different simulation paths.
+When the restricted mode basis is used, the value of $\delta(\xvec, \xvec)$ is finite
+and equals $M / V$.
 
 As a specific example of the utility of this method,
 we consider recent three-dimensional dipole trap interference experiments,
