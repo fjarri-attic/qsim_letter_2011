@@ -8,4 +8,5 @@ qsimNotes.bib
 *.blg
 figures_precreated/*.pdf
 figured_generated/*.pdf
+temp/*
 
