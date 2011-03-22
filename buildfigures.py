@@ -80,24 +80,57 @@ if __name__ == '__main__':
 
 	updateParams()
 
-	ramsey_visibility_gpe = json.load(open('data/ramsey_visibility/ramsey_visibility_gpe.json'))
-	ramsey_visibility_qn = json.load(open('data/ramsey_visibility/ramsey_visibility_qn.json'))
-	ramsey_visibility_exp = json.load(open('data/ramsey_visibility/ramsey_visibility_exp.json'))
+	"""
+	ramsey_visibility_gpe = json.load(open('data/echo_ramsey_visibility/ramsey_gpe_vis.json'))
+	ramsey_visibility_qn = json.load(open('data/echo_ramsey_visibility/ramsey_wigner_vis.json'))
 	plotXYGraph(
-		[ramsey_visibility_gpe, ramsey_visibility_qn, ramsey_visibility_exp],
-		['r--', 'b-', 'k.'],
+		[ramsey_visibility_gpe, ramsey_visibility_qn],
+		['r-', 'b-'],
 		'figures_generated/ramsey_visibility.eps',
-		xmin=0, xmax=1.3, ymin=0, ymax=1.05)
+		xmin=0, xmax=1.4, ymin=0, ymax=1.05)
 
-	echo_visibility_gpe = json.load(open('data/echo_visibility/echo_visibility_gpe.json'))
-	echo_visibility_qn = json.load(open('data/echo_visibility/echo_visibility_qn.json'))
-	echo_visibility_exp = json.load(open('data/echo_visibility/echo_visibility_exp.json'))
+	echo_visibility_gpe = json.load(open('data/echo_ramsey_visibility/echo_gpe_vis.json'))
+	echo_visibility_qn = json.load(open('data/echo_ramsey_visibility/echo_wigner_vis.json'))
 	plotXYGraph(
-		[echo_visibility_gpe, echo_visibility_qn, echo_visibility_exp],
-		['r--', 'b-', 'k.'],
+		[echo_visibility_gpe, echo_visibility_qn],
+		['r-', 'b-'],
 		'figures_generated/echo_visibility.eps',
-		xmin=0, xmax=1.5, ymin=0, ymax=1.05)
+		xmin=0, xmax=1.4, ymin=0, ymax=1.05)
+	"""
 
+	ramsey_visibility_gpe = json.load(open('data/long_time_ramsey/ramsey_gpe_vis.json'))
+	ramsey_visibility_qn = json.load(open('data/long_time_ramsey/ramsey_wigner_vis.json'))
+	plotXYGraph(
+		[ramsey_visibility_gpe, ramsey_visibility_qn],
+		['r-', 'b-'],
+		'figures_generated/long_ramsey_visibility.eps',
+		xmin=0, xmax=8.0, ymin=0, ymax=1.05)
+
+	ramsey_visibility_gpe = json.load(open('data/long_time_rephasing/rephasing_gpe_vis.json'))
+	ramsey_visibility_qn = json.load(open('data/long_time_rephasing/rephasing_wigner_vis.json'))
+	plotXYGraph(
+		[ramsey_visibility_gpe, ramsey_visibility_qn],
+		['r-', 'b-'],
+		'figures_generated/long_rephasing_visibility.eps',
+		xmin=0, xmax=8.0, ymin=0, ymax=1.05)
+
+
+	ramsey_squeezing_qn = json.load(open('data/squeezing/squeezing_ramsey.json'))
+	plotXYGraph(
+		[ramsey_squeezing_qn],
+		['b-'],
+		'figures_generated/ramsey_squeezing.eps',
+		xmin=0, xmax=1.9, ymin=-0.05, ymax=0.9)
+
+	rephasing_squeezing_qn = json.load(open('data/squeezing/squeezing_rephasing.json'))
+	plotXYGraph(
+		[rephasing_squeezing_qn],
+		['b-'],
+		'figures_generated/rephasing_squeezing.eps',
+		xmin=0, xmax=1.9, ymin=-0.1, ymax=1.15)
+
+
+	"""
 	ramsey_phnoise_qn = json.load(open('data/phase_noise/ramsey_phnoise_qn.json'))
 	ramsey_phnoise_exp = json.load(open('data/phase_noise/ramsey_phnoise_exp.json'))
 	ramsey_imgnoise = json.load(open('data/phase_noise/ramsey_imaging_noise_exp.json'))
@@ -127,3 +160,4 @@ if __name__ == '__main__':
 		['b-', 'k.', 'k-'],
 		'figures_generated/echo_phnoise.eps',
 		xmin=0, xmax=1.65, ymin=0, ymax=0.5)
+	"""
