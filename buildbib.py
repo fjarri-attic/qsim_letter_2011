@@ -1,9 +1,11 @@
 import sys, re
+from unidecode import unidecode
+import codecs
 
 source = sys.argv[1]
 dest = sys.argv[2]
 
-f = open(source)
+f = codecs.open(source, 'r', 'utf-8')
 text = f.read()
 f.close()
 
@@ -17,7 +19,7 @@ for raw_entry in raw_entries:
 	# read header
 	mo = re.match(r'^(\w+)\{(.*),$', lines[0])
 	entry_type = mo.group(1)
-	entry_key = mo.group(2)
+	entry_key = unidecode(mo.group(2))
 
 	# read fields
 	entry_fields = {}
