@@ -428,39 +428,34 @@ This is the effect of quantum noise, and it does not appear in GPE simulations.
 
 \begin{figure}
 	\begin{tabular}{l l}
-	\imagetop{\includegraphics{figures_generated/ramsey_phnoise.eps}} & \imagetop{(a)} \\
+	\imagetop{\includegraphics{figures_generated/ramsey_squeezing.eps}} & \imagetop{(a)} \\
 	%	\vskip 0.2cm
-	\imagetop{\includegraphics{figures_generated/echo_phnoise.eps}} & \imagetop{(b)}
+	\imagetop{\includegraphics{figures_generated/rephasing_squeezing.eps}} & \imagetop{(b)}
 	\end{tabular}
 
 	\caption{(color online).
-    Phase uncertainties for Ramsey (a) and spin echo (b) sequences.
-    Contributions of local oscillator noise (dash-dotted lines),
-	atom number uncertainty (dotted lines) and quantum noise (dashed lines)
-	are shown along with their combined effect (solid lines).}
+	Degree of squeezing for Ramsey (a) and spin echo (b) sequences.
+	Simulation parameters are the same as in~\figref{fig:visibility}.}
 
-	\label{fig:phasenoise}
+	\label{fig:squeezing}
 \end{figure}
 
-	\bogdansremark{Should we note explicitly that Wigner method was used in Egorov et al. paper?}
-	\petersremark{Yes, I think we should make a virtue of this, not hide it.
-	As an example, of how to proceed, we can try to explore exactly
-	how the spin-echo method improves the results.
-	It is not exactly obvious how this works, and why it improves the results.
-	A good numerical study may be able to shed light on this.}
-
-We performed the calculations for these experiments using Wigner method and found that
-it gives much better predictions than simulations with classical GPEs.
-Wigner simulations have shown perfect results for spin-echo sequence (\figref{fig:visibility},~(d)),
-although the fit for Ramsey sequence is not very accurate.
-This can be explained, among other reasons, by the influence of classical noise,
-which is eliminated in spin-echo sequence.
-Comparison of experimentally measured phase noise and the noise given by simulations
-(\figref{fig:phasenoise},~(a,~b)) confirms this;
-the noise introduced by quantum effects is significantly smaller than the observed one.
-Simulation results can be improved by the inclusion of ``classical'' noise sources,
-such as frequency fluctuations of coupling pulses and uncertainty in the measured atom number
-(their total effect is plotted as solid black lines on~\figref{fig:phasenoise}).
+Wigner method is able to produce not only average values of different measurables,
+but variances too.
+As an example, we can obtain the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
+It can be defined as following~\cite{Li2009}:
+\begin{equation}
+	\xi^2 = \frac{N \Delta S^2_{\perp, min}}{\langle S \rangle^2},
+\end{equation}
+where $N$ is the total number of atoms,
+$\Delta S^2_{\perp, min}$ is the minimal variance of the spin in the plane orthogonal to the mean spin,
+and $\langle S \rangle$ is the length of the average spin.
+This parameter serves as a measure of atomic entanglement in the condensate,
+when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
+It can be represented using moments of wave operators $\widehat{\Psi}_1$ and $\widehat{\Psi}_2$~\cite{Li2009}.
+Squeezing parameter for Ramsey and spin echo sequences is plotted on~\figref{fig:squeezing}.
+In both cases the parameter never goes below the threshold of $\xi^2 = 1$,
+which means that squeezing is not achieved in the experiments.
 
 In conclusion, Wigner method of simulating BEC dynamics
 is accurate enough for a range of interferometric experiments,
