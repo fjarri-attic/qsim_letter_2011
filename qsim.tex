@@ -371,38 +371,37 @@ n_{s} (\xvec) & =
 Here we used the fact that Wigner function can be treated as probability distribution
 and transformed the integral into an averaged sum over different simulation paths.
 When the restricted mode basis is used, the value of $\delta(\xvec, \xvec)$ is finite
-and equals $M / V$.
+and depends on the chosen basis.
+In the simulations presented in this paper we used the basis of plane waves in a closed volume $V$,
+in which case $\delta(\xvec, \xvec) = M / V$.
 
 As a specific example of the utility of this method,
 we consider recent three-dimensional dipole trap interference experiments,
 involving ground-states of \Rb~BEC with quantum numbers $F=1,\, m_{F}=+1$
 and $F=2,\, m_{F}=-1$ respectively~\cite{Egorov2010}.
-	\bogdansremark{The plots for visibility and phase noise are based on the same data
-	as the ones from Egorov et al.
-	Perhaps, we should either make them identical, or completely different;
-	otherwise it won't look very good (same applies for captions).}
-	\andreisremark{We can present result for visibility for long times,
-	and visibility graphs for rephasing (showing the exact point of rephasing.)}
-	\petersremark{I definitely agree, this is an important point!
-	It is unwise to make them identical.
-	However, you have lots of data, and we need to think of other important points
-	we can extract from the data that is not included in the other paper.}
 
 \begin{figure}
 	\begin{tabular}{l l}
 	\imagetop{\hspace*{0.381in}\includegraphics[width=1.95in]{figures_precreated/ramsey_sequence.eps}} & \imagetop{(a)} \\
-	\imagetop{\includegraphics{figures_generated/ramsey_visibility.eps}} & \imagetop{(b)} \\
+	\imagetop{\includegraphics{figures_generated/long_ramsey_visibility.eps}} & \imagetop{(b)} \\
 %	\vskip 0.2cm
 	\imagetop{\hspace*{0.381in}\includegraphics[width=1.95in]{figures_precreated/echo_sequence.eps}} & \imagetop{(c)} \\
-	\imagetop{\includegraphics{figures_generated/echo_visibility.eps}} & \imagetop{(d)}
+	\imagetop{\includegraphics{figures_generated/long_rephasing_visibility.eps}} & \imagetop{(d)}
 	\end{tabular}
 
 	\caption{(color online).
 	Timeline of the experiment for Ramsey (a) and Ramsey with symmetric spin-echo (c),
 	(b) and (d) are the corresponding plots of interferometric visibility.
-	Plots feature classical GPE calculations (red dashed lines),
-	quantum noise simulations (solid blue lines) and
-	experimental data (black circles).}
+	Classical GPE (red dashed lines) and Wigner calculations (solid blue lines)
+	are shown. $N = 4.4 \times 10^4$,
+	$\omega_x = \omega_y = 2 \pi \times 97.0 \mathrm{Hz}$,
+	$\omega_z = 2 \pi \times 11.69 \mathrm{Hz}$,
+	$a_{11} = 100.4 a_0$, $a_{12} = 97.93 a_0$, $a_{22} = 95.4 a_0$~\cite{EgorovPrivate},
+	$a_0$ is the Bohr radius.
+	Particle losses:
+	$\kappa_{111} = 9.0 \times 10^{-43} \mathrm{m^6/s}$~\cite{Mertes2007},
+	$\kappa_{12} = 1.52 \times 10^{-20} \mathrm{m^3/s}$,
+	$\kappa_{22} = 7.7 \times 10^{-20} \mathrm{m^3/s}$~\cite{EgorovPrivate}.}
 
 	\label{fig:visibility}
 \end{figure}
