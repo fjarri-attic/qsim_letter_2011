@@ -465,11 +465,15 @@ such as frequency fluctuations of coupling pulses and uncertainty in the measure
 In conclusion, Wigner method of simulating BEC dynamics
 is accurate enough for a range of interferometric experiments,
 involving large numbers of atoms.
-It is quite sensitive to the values of scattering lengths,
-loss coefficients and some calculation parameters like the energy cutoff.
-	\bogdansremark{Yes, downside was not the right word,
-	but the sensitivity is something one should have in mind\---it is much more senitive to losses
-	than GPEs are, and I bumped into this already.}
+It allows to obtain both average values and variances of different measurables,
+properly accounting for quantum effects in the condensate.
+At the same time, its computational complexity does not directly depend on number of atoms,
+which, together with its perfect parallelizability, makes it very fast and scalable.
+Its disadvantage is that it is quite sensitive to the lattice size and the value of energy cutoff.
+The choice of basis is also important, and the plane wave basis we used,
+while being easy to work with, is not very suitable for the trapped condensate.
+Nevertheless, even with this basis simulation results agree with experimental data,
+allowing the method to serve as a testing framework for experiments.
 
 \bibliography{qsim}
 
