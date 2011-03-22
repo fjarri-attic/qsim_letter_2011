@@ -7,6 +7,6 @@ qsimNotes.bib
 *.bbl
 *.blg
 figures_precreated/*.pdf
-figured_generated/*.pdf
+figures_generated/*.pdf
 temp/*
 
