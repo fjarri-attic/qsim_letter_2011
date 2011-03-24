@@ -139,20 +139,23 @@ The resulting physics of a dilute, low-temperature Bose gas
 is well-described in the S-wave scattering limit by an effective Hamiltonian
 with contact interactions and external potentials:
 \begin{equation}
-\begin{split}
-	\widehat{H} / \hbar & = \int d^{D}\xvec \left\{
-		-\frac{\hbar}{2m} \widehat{\Psi}_{i}^{\dagger} \nabla^2 \widehat{\Psi}_{i} +
-		\Omega_{ij}(t) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}
-	\right. \\
-	& + \left.
-		(\omega_i + V_i(\xvec) / \hbar) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} +
+	\hat{H} / \hbar = \int d^{D}\xvec \left\{
+		\widehat{\Psi}_{i}^{\dagger} K_{ij} \widehat{\Psi}_{j} +
 		\frac{U_{ij}}{2} \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}^{\dagger}
 		\widehat{\Psi}_{j} \widehat{\Psi}_{i}
 	\right\} \,\,.
-\end{split}
 \end{equation}
 Here we omit the field argument $(\xvec)$ after field operators for brevity,
 and use the Einstein summation convention of summing over repeated indices.
+$K_{ij}$ is the unitary evolution operator:
+\begin{equation}
+	K_{ij} = \left( -\frac{\hbar}{2m} \nabla^2 + \omega_i + V_i(\xvec) / \hbar \right) \delta_{ij} +
+		\Omega_{ij}(t),
+\end{equation}
+where $V_{i}$ is the external trapping potential for spin $i$,
+$\omega_{i}$ is the internal Zeeman energy splitting associated with spin $i$,
+and $\Omega_{ij}$ represents a time-dependent coupling
+that is used to rotate one spin projection into another.
 Thus $\langle \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
 and $U_{ij}$ is the atom-atom interaction term.
@@ -163,10 +166,6 @@ $U_{ij}$ is related to the S-wave scattering length in three dimensions by:
 \end{equation}
 Here we implicitly assume a momentum cutoff $k_{c} \ll 1 / a_{ij}$,
 otherwise the couplings must be renormalized~\cite{Sinatra2002}.
-$V_{i}$ is the external trapping potential for spin $i$,
-$\omega_{i}$ is the internal Zeeman energy splitting associated with spin $i$,
-and $\Omega_{ij}$ represents a time-dependent coupling
-that is used to rotate one spin projection into another.
 
 The truncated Wigner-Moyal quantum phase-space theory is well-suited
 to these types of calculation of many-body dynamics.
@@ -268,10 +267,7 @@ and is therefore valid in the limit of $N \gg M$.
 The drift term $A_{i}$ corresponds to Gross-Pitaevskii type evolution,
 with additional nonlinear damping:
 \begin{equation}
-	A_{i} = -i \left(
-	 	-\frac{\hbar}{2m} \nabla^{2} + U_{ij} \left| \Psi_{j} \right|^{2}
-	\right) \Psi_{i} -
-	\hbar \omega_{ij} \Psi_{j} -
+	A_{i} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{j} \rvert^{2} \right) \Psi_{j} -
 	\Gamma_{i} \left( \Psivec \right),
 \end{equation}
 where $\Gamma_{i}$ is a classical loss term:
@@ -298,15 +294,10 @@ With the inclusion of reservoir couplings to describe losses
 the truncated Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
-	\frac{d\Psi_{j}}{dt} = iK_{j} \Psi_{j} - iU_{ij} \lvert \Psi_{i} \rvert ^{2} \Psi_{j} -
+	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
 	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t)
 \end{equation}
-
-Here the linear unitary evolution of the wave-function, is described by:
-\begin{equation}
-	K_{j} = \hbar \nabla^{2}/2m - \omega_{j} - V_{j} \left( \xvec \right) / \hbar
-\end{equation}
-while $\zeta_{\ivec}^{(n)}(\xvec, t)$ is a complex,
+Here $\zeta_{\ivec}^{(n)}(\xvec, t)$ is a complex,
 stochastic delta-correlated Gaussian noise with
 \begin{equation}
 	\left\langle
