@@ -338,25 +338,21 @@ populating each low-energy mode with $1/2$ of a vacuum particle.
 The Wigner representation generates symmetrically ordered correlation functions,
 therefore when normal ordered correlations are measured\---which is a typical case\---
 one has to express them as a sum of symmetrically ordered terms first.
-For example, the atomic density of component $s$ can be calculated as:
+The exact equation depends on the chosen basis and its low-energy subset.
+In this work we used the simple basis of plane waves in the volume $V$,
+and, for example, the atomic density of component $s$ can be calculated as:
 \begin{equation}
 \begin{split}
 n_{s} (\xvec) & =
 \langle \widehat{\Psi}^\dagger_{s} (\xvec) \widehat{\Psi}_{s} (\xvec) \rangle \\
 & = \langle \left\{ \widehat{\Psi}^\dagger_{s} (\xvec)
-	\widehat{\Psi}_{s} (\xvec) \right\}_{sym} \rangle -
-	\frac{1}{2} \delta(\xvec, \xvec) \\
-& = \int \Psi^*_{s} \Psi_{s} W(\Psivec, \Psivec^*) d\Psivec d\Psivec^* -
-	\frac{1}{2} \delta(\xvec, \xvec) \\
-& = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{paths} - \frac{1}{2} \delta(\xvec, \xvec)
+	\widehat{\Psi}_{s} (\xvec) \right\}_{sym} \rangle -	\frac{M}{2V} \\
+& = \int \Psi^*_{s} \Psi_{s} W(\Psivec, \Psivec^*) d\Psivec d\Psivec^* - \frac{M}{2V} \\
+& = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{paths} - \frac{M}{2V}
 \end{split}
 \end{equation}
 Here we used the fact that Wigner function can be treated as probability distribution
 and transformed the integral into an averaged sum over different simulation paths.
-When the restricted mode basis is used, the value of $\delta(\xvec, \xvec)$ is finite
-and depends on the chosen basis.
-In the simulations presented in this paper we used the basis of plane waves in a closed volume $V$,
-in which case $\delta(\xvec, \xvec) = M / V$.
 
 As a specific example of the utility of this method,
 we consider recent three-dimensional dipole trap interference experiments,
