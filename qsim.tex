@@ -142,17 +142,18 @@ with contact interactions and external potentials:
 \begin{split}
 	\widehat{H} / \hbar & = \int d^{D}\xvec \left\{
 		-\frac{\hbar}{2m} \widehat{\Psi}_{i}^{\dagger} \nabla^2 \widehat{\Psi}_{i} +
-		\omega_{ij}(t,\xvec) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}
-	\right\} \\
-	& + \int d^{D}\xvec \left\{
+		\Omega_{ij}(t) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}
+	\right. \\
+	& + \left.
+		(\omega_i + V_i(\xvec) / \hbar) \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} +
 		\frac{U_{ij}}{2} \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}^{\dagger}
 		\widehat{\Psi}_{j} \widehat{\Psi}_{i}
 	\right\} \,\,.
 \end{split}
 \end{equation}
-Here we omit the field argument $(\xvec)$ for brevity,
+Here we omit the field argument $(\xvec)$ after field operators for brevity,
 and use the Einstein summation convention of summing over repeated indices.
-Thus $\langle \widehat{\Psi}_{i}^{\dagger}(\xvec) \widehat{\Psi}_{i}(\xvec) \rangle$
+Thus $\langle \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
 and $U_{ij}$ is the atom-atom interaction term.
 For a dilute gas at low enough temperatures,
@@ -162,13 +163,7 @@ $U_{ij}$ is related to the S-wave scattering length in three dimensions by:
 \end{equation}
 Here we implicitly assume a momentum cutoff $k_{c} \ll 1 / a_{ij}$,
 otherwise the couplings must be renormalized~\cite{Sinatra2002}.
-The linear coupling term is given by:
-\begin{equation}
-	\omega_{ij}(t,\xvec) = \left[
-		\omega_{i} + V_{i}(\xvec) / \hbar
-	\right] \delta_{ij} + \Omega_{ij}
-\end{equation}
-where $V_{i}$ is the external trapping potential for spin $i$,
+$V_{i}$ is the external trapping potential for spin $i$,
 $\omega_{i}$ is the internal Zeeman energy splitting associated with spin $i$,
 and $\Omega_{ij}$ represents a time-dependent coupling
 that is used to rotate one spin projection into another.
