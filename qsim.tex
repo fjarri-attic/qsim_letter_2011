@@ -425,6 +425,7 @@ but variances too.
 As an example, we can obtain the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
 It can be defined as following~\cite{Li2009}:
 \begin{equation}
+\label{eqn:squeezing}
 	\xi^2 = \frac{N \Delta S^2_{\perp, min}}{\langle S \rangle^2},
 \end{equation}
 where $N$ is the total number of atoms,
@@ -433,9 +434,20 @@ and $\langle S \rangle$ is the length of the average spin.
 This parameter serves as a measure of atomic entanglement in the condensate,
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
 It can be represented using moments of wave operators $\widehat{\Psi}_1$ and $\widehat{\Psi}_2$~\cite{Li2009}.
-Squeezing parameter for Ramsey and spin echo sequences is plotted on~\figref{fig:squeezing}.
-In both cases the parameter never goes below the threshold of $\xi^2 = 1$,
-which means that squeezing is not achieved in the experiments.
+Squeezing parameter for Ramsey sequence is plotted on~\figref{fig:squeezing},~(a).
+Equation~(\ref{eqn:squeezing}) explicitly takes into account spatial overlap between components
+and, therefore, gives pessimistic predictions in case when components are separated.
+For our parameters, though, the overlap
+\begin{equation}
+	\lambda =
+		\left.
+		\int d^D \xvec \lvert \Psi_1 \rvert^2 \lvert \Psi_2 \rvert^2
+		\middle/
+		\sqrt{\int d^D \xvec \lvert \Psi_1 \rvert^2 \int d^D \xvec \lvert \Psi_2 \rvert^2}
+		\right.
+\end{equation}
+is significant during the simulation period (see~\figref{fig:squeezing},~(b)),
+which means that the equation~(\ref{eqn:squeezing}) represents the degree of entanglement quite well.
 
 In conclusion, Wigner method of simulating BEC dynamics
 is accurate enough for a range of interferometric experiments,
