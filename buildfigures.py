@@ -120,14 +120,14 @@ if __name__ == '__main__':
 		[ramsey_squeezing_qn],
 		['b-'],
 		'figures_generated/ramsey_squeezing.eps',
-		xmin=0, xmax=1.9, ymin=-0.05, ymax=0.9)
+		xmin=0, xmax=200.0, ymin=-3.6, ymax=0.5)
 
-	rephasing_squeezing_qn = json.load(open('data/squeezing/squeezing_rephasing.json'))
+	ramsey_overlap = json.load(open('data/squeezing/squeezing_overlap.json'))
 	plotXYGraph(
-		[rephasing_squeezing_qn],
+		[ramsey_overlap],
 		['b-'],
-		'figures_generated/rephasing_squeezing.eps',
-		xmin=0, xmax=1.9, ymin=-0.1, ymax=1.15)
+		'figures_generated/ramsey_squeezing_overlap.eps',
+		xmin=0, xmax=200.0, ymin=0.0, ymax=1.05)
 
 
 	"""
