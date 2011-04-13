@@ -43,9 +43,9 @@ def plotXYGraph(datasets, linetypes, name, xmin=None, xmax=None, ymin=None, ymax
 
 	fig = plt.figure()
 
-	a = 0.16
+	a = 0.19
 	b = 0.23
-	axes = [a, b, 0.98-a, 0.97-b]
+	axes = [a, b, 0.95-a, 0.96-b]
 
 	subplot = fig.add_axes(axes, xlabel=datasets[0]['xname'], ylabel=datasets[0]['yname'])
 
