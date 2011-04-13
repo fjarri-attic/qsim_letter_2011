@@ -81,7 +81,7 @@ def testRephasing(wigner):
 			ypss.append(yps)
 
 		XYData(name, numpy.array(times), numpy.array(vis),
-			ymin=0, ymax=1, xname="T, s", yname="Visibility").save(name + '_vis.json')
+			ymin=0, ymax=1, xname="T, s", yname="$\\mathcal{V}$").save(name + '_vis.json')
 
 		if wigner:
 			XYData(name, numpy.array(times), numpy.array(phnoise), ymin=0,
