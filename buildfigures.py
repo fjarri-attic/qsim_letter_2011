@@ -103,7 +103,7 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[ramsey_visibility_gpe, ramsey_visibility_qn],
 		['r-', 'b-'],
-		'figures_generated/long_ramsey_visibility.eps',
+		'figures_generated/long_ramsey_visibility.pdf',
 		xmin=0, xmax=8.0, ymin=0, ymax=1.05)
 
 	ramsey_visibility_gpe = json.load(open('data/long_time_rephasing/rephasing_gpe_vis.json'))
@@ -111,7 +111,7 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[ramsey_visibility_gpe, ramsey_visibility_qn],
 		['r-', 'b-'],
-		'figures_generated/long_rephasing_visibility.eps',
+		'figures_generated/long_rephasing_visibility.pdf',
 		xmin=0, xmax=8.0, ymin=0, ymax=1.05)
 
 
@@ -119,14 +119,14 @@ if __name__ == '__main__':
 	plotXYGraph(
 		[ramsey_squeezing_qn],
 		['b-'],
-		'figures_generated/ramsey_squeezing.eps',
+		'figures_generated/ramsey_squeezing.pdf',
 		xmin=0, xmax=200.0, ymin=-3.6, ymax=0.5)
 
 	ramsey_overlap = json.load(open('data/squeezing/squeezing_overlap.json'))
 	plotXYGraph(
 		[ramsey_overlap],
 		['b-'],
-		'figures_generated/ramsey_squeezing_overlap.eps',
+		'figures_generated/ramsey_squeezing_overlap.pdf',
 		xmin=0, xmax=200.0, ymin=0.0, ymax=1.05)
 
 
