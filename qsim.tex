@@ -48,8 +48,8 @@
 
 \begin{abstract}
 We give a first-principles comparison of a calculation of quantum
-phase-diffusion in a three-dimensional Bose gas,
-as compared to recent experimental measurements.
+phase-diffusion and squeezing in a three-dimensional Bose gas, with nonlinear losses
+as compared to recent experimental measurements, using a truncated Wigner simulation.
 Without using fitting parameters, we find excellent agreement
 between the predicted fringe contrast and experimental data,
 in an atom interferometer measurement.
@@ -61,26 +61,25 @@ in an atom interferometer measurement.
 
 Atom interferometry is an important quantum technology,
 at the heart of many suggested future applications of ultra-cold atomic physics.
-Bose-Einstein condensates or atom lasers have potential advantages as detectors or sensors,
+Bose-Einstein condensates or atom lasers have potential advantages as interferometric detectors and sensors,
 provided one can extract atomic phase information.
-However, there is a challenge to be met.
-Unlike photons, atoms can interact rather strongly, causing dephasing.
-An intimate understanding of quantum many-body dynamics is essential in understanding
+However, unlike photons, atoms can interact strongly, causing dephasing.
+An intimate understanding of quantum many-body dynamics is the key to understanding
 the precise nature of interaction-induced dephasing in the measurement process.
-Progress in this technology therefore requires a quantitative theory of atom interferometry.
+This is essential for a quantitative theory of atom interferometry.
 
 In this Letter we give a simple, yet quantitatively accurate
 theoretical approach to calculations of atom interferometry at large atom number,
-using a truncated Wigner representation.
+using a truncated Wigner representation~\cite{Drummond1993,Steel1998,Sinatra2002}.
 This method extends the conventional Gross-Pitaevski equations
-describing a Bose condensate to include quantum noise effects.
-We show through comparison with experimental interferometric measurements on Bose condensates,
-that the theory predicts observed dephasing results, within experimental errors.
+describing a Bose condensate to include quantum noise effects, including noise due to linear and nonlinear losses.
+We show through comparison with interferometric measurements on Bose condensates,
+that the theory predicts observed results, within experimental errors.
 No fitting parameters are required in these comparisons.
 As a result, we suggest that the theoretical approach employed here
 can be reliably used as a benchmark for predictions.
 Importantly, we can clearly demonstrate where phase decay is driven by quantum fluctuations,
-and where it is driven by trap inhomogeneity or other effects.
+and where it is driven by trap inhomogeneity, in order to choose optimal conditions for quantum noise reduction and spin-squeezing.
 
 Quantum phase-diffusion is defined as the phase noise induced by number fluctuations,
 which are intrinsically conjugate to phase.
@@ -117,10 +116,10 @@ If we regard the commonly used Gross-Pitaevskii equation as a classical,
 first approximation to mean-field condensate dynamics,
 the truncated Wigner approach is best thought of as the second approximation
 in an expansion in inverse particle number.
-Such truncations have been shown to be valid in the limit of large particle number~\cite{Sinatra2002},
+Such truncations have been shown to be valid in the limit of large particle number~\cite{Drummond1993,Steel1998,Sinatra2002},
 provided the effects of unoccupied vacuum modes can be neglected.
 They are particularly useful in low-dimensional or trap environments,
-where they have been succesful in predictions of quantum squeezing
+where they have been successful in predictions of quantum squeezing
 and phase-diffusion effects to high accuracy in photonics~\cite{Corney2008}.
 The truncation approximation has been further validated by comparison
 with the exact positive-P method,
@@ -201,9 +200,9 @@ defined so that,
 	\int d^D\xvec \mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho} \right],
 \end{equation}
 where $n$ is the number of interacting particles,
-and $\jvec$ marks the subtype of the interaction (1--1--1, 1--2 and so on).
+and $\jvec$ is a vector indicating the spins that are coupled.
 
-Here we introduce local Liouville loss terms,
+Here we have introduced local Liouville loss terms,
 \begin{equation}
 	\mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho}\right] =
 	2 \hat{O}_{\jvec}^{(n)} \hat{\rho}\hat{O}_{\jvec}^{(n)\dagger} -
@@ -220,16 +219,15 @@ are all $n$-fold products of local field annihilation operators,
 	\widehat{\Psi}_{j_{n}} \left( \xvec \right)
 \end{equation}
 describing local $n$-body collision losses.
-Ignoring unitary evolution, the corresponding mean amplitude equations
-for an $n$-body loss of this form are:
+Temporarily ignoring unitary evolution, the corresponding mean amplitude equations
+for an $n$-body loss of this form are
 \begin{equation}
 	\frac{\partial}{\partial t} \left\langle
 		\widehat{\Psi}_{i} \left( \xvec \right)
 	\right\rangle =
-	-\left\langle \hat{\Gamma}_{i} \left( \xvec \right) \right\rangle
+	-\left\langle \hat{\Gamma}_{i} \left( \xvec \right) \right\rangle ,
 \end{equation}
-where we have introduced a nonlinear loss operator $\hat{\Gamma}_{i} \left( \xvec \right) =
-\hat{\Gamma}_{i} \left( \widehat{\Psivec} \left( \xvec \right) \right)$ as:
+where we have introduced  nonlinear loss operators:
 \begin{equation}
 	\hat{\Gamma}_{i} \left( \xvec \right) \equiv
 	\sum_{n,\jvec} \kappa_{\jvec}^{(n)}
@@ -238,12 +236,11 @@ where we have introduced a nonlinear loss operator $\hat{\Gamma}_{i} \left( \xve
 	\hat{O}_{\jvec}^{(n)} \left( \xvec \right) \,.
 \end{equation}
 
-As the full operator equations are highly nontrivial,
-we proceed by using a stochastic phase-space method
-that allows a numerical simulation of the condensate quantum dynamics~\cite{Drummond1993,Steel1998,Hoffmann2008}.
+We proceed by using a stochastic phase-space method
+that allows a numerical simulation of the quantum dynamics~\cite{Drummond1993,Steel1998,Hoffmann2008}.
 Defining a Wigner function $W\left(\Psi_{1},\Psi_{2}\right)$,
-where $\Psi$ is a c-number field corresponing to the quantum field $\hat{\Psi}$,
-this corresponds to a time-evolution equation of form:
+where $\Psi$ is a c-number field corresponding to the quantum field $\hat{\Psi}$,
+this has a time-evolution equation:
 \begin{equation}
 \begin{split}
 	\frac{\partial W}{\partial t} & = \int d^D \xvec \,\left\{
@@ -262,10 +259,9 @@ this corresponds to a time-evolution equation of form:
 %	Then we must change the later notation as well, for consistency.}
 where higher derivative terms of type $\mbox{O}\left[\delta^3/\delta\Psi_{i}^{3}\right]$
 will be truncated.
-This is equivalent to neglect of higher-order terms in an expansion in $1/\sqrt{N}$,
+This approximation neglects higher-order terms in an expansion in $1/\sqrt{N}$,
 and is therefore valid in the limit of $N \gg M$.
-The drift term $A_{i}$ corresponds to Gross-Pitaevskii type evolution,
-with additional nonlinear damping:
+The drift term $A_{i}$ gives Gross-Pitaevskii evolution with nonlinear damping:
 \begin{equation}
 	A_{i} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{j} \rvert^{2} \right) \Psi_{j} -
 	\Gamma_{i} \left( \Psivec \right),
@@ -281,7 +277,7 @@ where $\Gamma_{i}$ is a classical loss term:
 	O_{\jvec}^{(n)} \left( \xvec \right)
 \end{equation}
 
-The next highest order term in the evolution equation gives rise to
+The next terms in the evolution equation give rise to
 quantum noise associated with the loss reservoirs,
 with:
 \begin{equation}
@@ -290,8 +286,7 @@ with:
 	\frac{\partial O_{\kvec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
 
-With the inclusion of reservoir couplings to describe losses
-the truncated Fokker-Planck equation can be transformed
+This effective Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
@@ -314,8 +309,7 @@ The multiplicative noise coefficient\---
 	\sqrt{\kappa_{\ivec}^{(n)}}
 	\frac{\partial O_{\ivec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
-is needed as a fluctuation-dissipation term,
-to ensure that the losses do not remove the vacuum fluctuations,
+is a fluctuation-dissipation term,
 so that the Wigner variables remain equivalent to the corresponding operators.
 
 For initial conditions in interferometry it is usually sufficient
@@ -333,14 +327,14 @@ where:
 For greater accuracy, the coherent-state initial condition
 can be modified to account for initial ground-state correlations,
 or additional number-fluctuations above the Poissonian level.
-In numerical simulations, the delta-function correlations are replaced by
-populating each low-energy mode with $1/2$ of a vacuum particle.
-The Wigner representation generates symmetrically ordered correlation functions,
-therefore when normal ordered correlations are measured\---which is a typical case\---
+In numerical simulations, the delta-function correlations mean that
+each low-energy mode has a vacuum occupation of a $1/2$ of a particle.
+This is because the Wigner representation generates symmetrically ordered correlation functions,
+so that when normal ordered correlations are measured\---which is a typical case\---
 one has to express them as a sum of symmetrically ordered terms first.
 The exact equation depends on the chosen basis and its low-energy subset.
 In this work we used the simple basis of plane waves in the volume $V$,
-and, for example, the atomic density of component $s$ can be calculated as:
+and the atomic density of component $s$ is therefore:
 \begin{equation}
 \begin{split}
 n_{s} (\xvec) & =
@@ -351,8 +345,8 @@ n_{s} (\xvec) & =
 & = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{paths} - \frac{M}{2V}
 \end{split}
 \end{equation}
-Here we used the fact that Wigner function can be treated as probability distribution
-and transformed the integral into an averaged sum over different simulation paths.
+Here we used the fact that the approximate Wigner function is a probability distribution
+equivalent to an averaged sum over different simulation paths.
 
 As a specific example of the utility of this method,
 we consider recent three-dimensional dipole trap interference experiments,
@@ -385,25 +379,25 @@ and $F=2,\, m_{F}=-1$ respectively~\cite{Egorov2010}.
 	\label{fig:visibility}
 \end{figure}
 
-The experiment consisted of preparation of stable BEC with state $\ket{1,+1}$ in a magnetic trap
-and application of coupling electromagnetic pulses at certain times.
+The experiment consisted of the preparation of a stable BEC with state $\ket{1,+1}$ in a magnetic trap
+together with the application of coupling electromagnetic pulses acting as beam-splitters in spin-space.
 Two different schemes were used.
 The first one was Ramsey interferometry with $\pi/2$-pulse in the beginning,
 evolution of resulting non-equilibrium superposition of states $\ket{1,+1}$ and $\ket{2,-1}$,
 and the final $\pi/2$-pulse, which transformed the phase difference of the components
-into the population difference (see~\figref{fig:visibility},~(a) for the timeline).
-The second scheme had additional $\pi$-pulse (``spin echo'') in the middle of the evolution,
-which was supposed to partially restore interferometric contrast
+into a population difference (see~\figref{fig:visibility},~(a) for the timeline).
+The second scheme had an additional $\pi$-pulse (``spin echo'') in the middle of the evolution,
+which partially restored interferometric contrast lost due to spatial propagation
 (\figref{fig:visibility},~(c)).
 
-Fringe visibility $\mathcal{V}$ for Ramsey and spin echo schemes is plotted on~\figref{fig:visibility}.
+The fringe visibility $\mathcal{V}$ for Ramsey and spin echo schemes is plotted on~\figref{fig:visibility}.
 Simulations of Ramsey scheme experiment (\figref{fig:visibility},~(b)) with Wigner method
 using typical experimental parameters
 show that quantum noise amplifies the speed of visibility decay noticeably.
-In spin echo scheme (\figref{fig:visibility},~(d)) the central $\pi$-pulse is supposed
+In the spin echo scheme (\figref{fig:visibility},~(d)) the central $\pi$-pulse is supposed
 to restore visibility by inverting the evolution of the condensate.
-In simulations with Wigner method visibility is not restored to its initial value even at revival points.
-This is the effect of quantum noise, and it does not appear in GPE simulations.
+In simulations with the Wigner method, visibility is not restored to its initial value even at revival points.
+This is the effect of quantum noise, which does not appear in GPE simulations.
 
 \begin{figure}
 	\begin{tabular}{l l}
@@ -420,8 +414,8 @@ This is the effect of quantum noise, and it does not appear in GPE simulations.
 	\label{fig:squeezing}
 \end{figure}
 
-Wigner method is able to produce not only average values of different measurables,
-but variances too.
+The Wigner method is able to produce not only the average values of different measurables,
+but their variances too.
 As an example, we can obtain the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
 It can be defined as following~\cite{Li2009}:
 \begin{equation}
@@ -433,34 +427,33 @@ $\Delta S^2_{\perp, min}$ is the minimal variance of the spin in the plane ortho
 and $\langle S \rangle$ is the length of the average spin.
 This parameter serves as a measure of atomic entanglement in the condensate,
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
-It can be represented using moments of wave operators $\widehat{\Psi}_1$ and $\widehat{\Psi}_2$~\cite{Li2009}.
-Squeezing parameter for Ramsey sequence is plotted on~\figref{fig:squeezing},~(a).
-Equation~(\ref{eqn:squeezing}) explicitly takes into account spatial overlap between components
-and, therefore, gives pessimistic predictions in case when components are separated.
-For our parameters, though, the overlap
-\begin{equation}
-	\lambda =
-		\left.
-		\int d^D \xvec \lvert \Psi_1 \rvert^2 \lvert \Psi_2 \rvert^2
-		\middle/
-		\sqrt{\int d^D \xvec \lvert \Psi_1 \rvert^2 \int d^D \xvec \lvert \Psi_2 \rvert^2}
-		\right.
-\end{equation}
-is significant during the simulation period (see~\figref{fig:squeezing},~(b)),
-which means that the equation~(\ref{eqn:squeezing}) represents the degree of entanglement quite well.
+It can be represented using moments of wave operators $\widehat{\Psi}_1$
+and $\widehat{\Psi}_2$~\cite{Li2009}.
+The squeezing parameter for a Ramsey sequence is plotted on~\figref{fig:squeezing}.
 
-In conclusion, Wigner method of simulating BEC dynamics
-is accurate enough for a range of interferometric experiments,
-involving large numbers of atoms.
-It allows to obtain both average values and variances of different measurables,
-properly accounting for quantum effects in the condensate.
+The important feature of these quantum dynamical simulations
+is that they are able to treat large numbers of atoms (40,000 in this case),
+while correctly tracking all the quantum noise sources, and also extending the simulations to long time-scales.
+Both these features, of large atom numbers and long time-scales,
+are essential ingredients to accurate interferometric measurements.
+As can be seen from the graphs, there is excellent agreement
+with experimental visibility measurements over the entire experimentally accessible time-scale.
+The simulations give accurate results despite large, multi-mode dynamical motion in three dimensions
+and substantial losses of most of the condensate atoms.
+On longer time-scales, the experimental accuracy is limited by technical noise in the RF signal generators,
+and we have no data for comparisons.
+
+In conclusion, the Wigner method of simulating BEC dynamics
+is quantitatively accurate  for a range of interferometric experiments
+involving large numbers of atoms and multiple loss mechanisms.
+It allows one to obtain both average values and variances of different measurables,
+properly accounting for both quantum effects and nonlinear losses in the condensate.
 At the same time, its computational complexity does not directly depend on number of atoms,
 which, together with its perfect parallelizability, makes it very fast and scalable.
-Its disadvantage is that it is quite sensitive to the lattice size and the value of energy cutoff.
-The choice of basis is also important, and the plane wave basis we used,
-while being easy to work with, is not very suitable for the trapped condensate.
-Nevertheless, even with this basis simulation results agree with experimental data,
-allowing the method to serve as a testing framework for experiments.
+A disadvantage is that it is quite sensitive to the lattice size, the value of energy cutoff, and
+the choice of basis.
+Nevertheless,  the simulation results agree very well with experimental data,
+allowing the method to serve as a useful predictive framework for experiments.
 
 \bibliography{qsim}
 
