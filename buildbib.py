@@ -53,6 +53,33 @@ for raw_entry in raw_entries:
 
 	entries.append((entry_type, entry_key, entry_fields))
 
+# prepare entries for PRL
+for entry_type, entry_key, entry_fields in entries:
+
+	if entry_type != 'article':
+		continue
+
+	# fix special symbols in authors
+	entry_fields['author'] = entry_fields['author'].replace('\\o ', '{\\o}')
+
+	# truncate author list
+	authors = entry_fields['author'].split(' and ')
+	if len(authors) >= 4:
+		entry_fields['author'] = authors[0] + ' and others'
+
+	# replace journal names with abbreviations
+	abbreviations = {
+		'Physical Review A': 'Phys. Rev. A',
+		'Journal of Physics B: Atomic, Molecular and Optical Physics': 'J. Phys. B',
+		'Physical Review Letters': 'Phys. Rev. Lett.',
+		'The European Physical Journal B': 'Eur. Phys. J. B',
+		'Europhysics Letters (EPL)': 'Europhys. Lett.',
+	}
+
+	if 'journal' in entry_fields and entry_fields['journal'] in abbreviations:
+		entry_fields['journal'] = abbreviations[entry_fields['journal']]
+
+
 # write bib file
 f = open(dest, 'w')
 for entry_type, entry_key, entry_fields in entries:
