@@ -142,7 +142,7 @@ with contact interactions and external potentials:
 		\widehat{\Psi}_{i}^{\dagger} K_{ij} \widehat{\Psi}_{j} +
 		\frac{U_{ij}}{2} \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{j}^{\dagger}
 		\widehat{\Psi}_{j} \widehat{\Psi}_{i}
-	\right\} \,\,.
+	\right\}.
 \end{equation}
 Here we omit the field argument $(\xvec)$ after field operators for brevity,
 and use the Einstein summation convention of summing over repeated indices.
@@ -207,7 +207,7 @@ Here we have introduced local Liouville loss terms,
 	\mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho}\right] =
 	2 \hat{O}_{\jvec}^{(n)} \hat{\rho}\hat{O}_{\jvec}^{(n)\dagger} -
 	\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)}\hat{\rho} -
-	\hat{\rho}\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)}
+	\hat{\rho}\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)},
 \end{equation}
 where the reservoir coupling operators $\hat{O}_{\jvec}^{(n)}$
 are all $n$-fold products of local field annihilation operators,
@@ -216,7 +216,7 @@ are all $n$-fold products of local field annihilation operators,
 	\hat{O}_{\jvec}^{(n)} \left( \widehat{\Psivec} \right) =
 	\widehat{\Psi}_{j_{1}} \left( \xvec \right)
 	\widehat{\Psi}_{j_{2}} \left( \xvec \right) \ldots
-	\widehat{\Psi}_{j_{n}} \left( \xvec \right)
+	\widehat{\Psi}_{j_{n}} \left( \xvec \right),
 \end{equation}
 describing local $n$-body collision losses.
 Temporarily ignoring unitary evolution, the corresponding mean amplitude equations
@@ -233,7 +233,7 @@ where we have introduced  nonlinear loss operators:
 	\sum_{n,\jvec} \kappa_{\jvec}^{(n)}
 	\frac{\partial\hat{O}_{\jvec}^{(n)\dagger}	\left( \widehat{\Psivec} \right)}
 		{\partial \hat{\Psi}_{i}^{\dagger} \left( \xvec \right)}
-	\hat{O}_{\jvec}^{(n)} \left( \xvec \right) \,.
+	\hat{O}_{\jvec}^{(n)} \left( \xvec \right) .
 \end{equation}
 
 We proceed by using a stochastic phase-space method
@@ -274,7 +274,7 @@ where $\Gamma_{i}$ is a classical loss term:
 	}{
 		\partial \Psi_{i}^* \left( \xvec \right)
 	}
-	O_{\jvec}^{(n)} \left( \xvec \right)
+	O_{\jvec}^{(n)} \left( \xvec \right).
 \end{equation}
 
 The next terms in the evolution equation give rise to
@@ -283,14 +283,14 @@ with:
 \begin{equation}
 	D_{ij} = \sum_{n,\kvec} \kappa_{\kvec}^{(n)}
 	\frac{\partial O_{\kvec}^{(n)*}}{\partial\Psi_{i}^{*}}
-	\frac{\partial O_{\kvec}^{(n)}}{\partial\Psi_{j}}
+	\frac{\partial O_{\kvec}^{(n)}}{\partial\Psi_{j}}.
 \end{equation}
 
 This effective Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
-	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t)
+	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t).
 \end{equation}
 Here $\zeta_{\ivec}^{(n)}(\xvec, t)$ is a complex,
 stochastic delta-correlated Gaussian noise with
@@ -301,9 +301,9 @@ stochastic delta-correlated Gaussian noise with
 	\delta_{\ivec \jvec} \delta^{nm} \delta^{D} \left(
 		\xvec - \xvec^\prime
 	\right)
-	\delta \left( t - t^\prime \right)\,.
+	\delta \left( t - t^\prime \right).
 \end{equation}
-The multiplicative noise coefficient\---
+The multiplicative noise coefficient
 \begin{equation}
 	\gamma_{\ivec,j}^{(n)} \left( \Psivec \right) =
 	\sqrt{\kappa_{\ivec}^{(n)}}
@@ -322,7 +322,7 @@ where:
 	\left\langle
 		\Delta\Psi_{s}(\xvec) \Delta\Psi_{u}^{*}(\xvec^\prime)
 	\right\rangle =
-	\frac{1}{2} \delta_{su} \delta^{D} \left( \xvec - \xvec^\prime\right)
+	\frac{1}{2} \delta_{su} \delta^{D} \left( \xvec - \xvec^\prime\right).
 \end{equation}
 For greater accuracy, the coherent-state initial condition
 can be modified to account for initial ground-state correlations,
@@ -342,7 +342,7 @@ n_{s} (\xvec) & =
 & = \langle \left\{ \widehat{\Psi}^\dagger_{s} (\xvec)
 	\widehat{\Psi}_{s} (\xvec) \right\}_{\mathrm{sym}} \rangle - \frac{M}{2V} \\
 & = \int \Psi^*_{s} \Psi_{s} W(\Psivec, \Psivec^*) d\Psivec d\Psivec^* - \frac{M}{2V} \\
-& = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}
+& = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
 \end{split}
 \end{equation}
 Here we used the fact that the approximate Wigner function is a probability distribution
