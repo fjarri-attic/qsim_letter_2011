@@ -44,12 +44,16 @@ for raw_entry in raw_entries:
 
 	# fix Arxiv references
 	if 'arxivId' in entry_fields:
-		aid = entry_fields['arxivId']
-		del entry_fields['arxivId']
+		if 'journal' in entry_fields:
+		# already published, no need to cite arxiv
+			del entry_fields['arxivId']
+		else:
+			aid = entry_fields['arxivId']
+			del entry_fields['arxivId']
 
-		entry_fields['archivePrefix'] = 'arXiv'
-		entry_fields['eprint'] = aid[:4] + aid[5:]
-		entry_fields['SLACcitation'] = "%%CITATION=" + aid[:4] + aid[5:] + ";%%"
+			entry_fields['archivePrefix'] = 'arXiv'
+			entry_fields['eprint'] = aid[:4] + aid[5:]
+			entry_fields['SLACcitation'] = "%%CITATION=" + aid[:4] + aid[5:] + ";%%"
 
 	entries.append((entry_type, entry_key, entry_fields))
 
