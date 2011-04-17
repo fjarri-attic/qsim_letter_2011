@@ -122,6 +122,7 @@ if __name__ == '__main__':
 		'figures_generated/ramsey_squeezing.pdf',
 		xmin=0, xmax=200.0, ymin=-3.6, ymax=0.5)
 
+	"""
 	ramsey_overlap = json.load(open('data/squeezing/squeezing_overlap.json'))
 	plotXYGraph(
 		[ramsey_overlap],
@@ -130,7 +131,6 @@ if __name__ == '__main__':
 		xmin=0, xmax=200.0, ymin=0.0, ymax=1.05)
 
 
-	"""
 	ramsey_phnoise_qn = json.load(open('data/phase_noise/ramsey_phnoise_qn.json'))
 	ramsey_phnoise_exp = json.load(open('data/phase_noise/ramsey_phnoise_exp.json'))
 	ramsey_imgnoise = json.load(open('data/phase_noise/ramsey_imaging_noise_exp.json'))
