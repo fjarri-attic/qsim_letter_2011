@@ -20,17 +20,17 @@ def testRephasing(wigner):
 		nvz = 128
 		dt_evo = 1e-5
 
-	m = Model(N=44000, detuning=-37,
+	m = Model(N=55000, detuning=-37,
 		nvx=nvx, nvy=nvy, nvz=nvz, dt_evo=dt_evo, ensembles=64, e_cut=1e6,
 		fx=97.0, fy=97.0 * 1.03, fz=11.69,
-		gamma12=1.52e-20, gamma22=7.7e-20,
-		a12=97.93, a22=95.4)
+		gamma12=1.53e-20, gamma22=7.7e-20,
+		a12=97.99, a22=95.57)
 
 	t_max = 8.0
 	t_step = 0.05
 
 	constants = Constants(m, double=True)
-	env = envs.cuda()
+	env = envs.cuda(device_num=0)
 	evolution = SplitStepEvolution(env, constants)
 	pulse = Pulse(env, constants)
 
@@ -89,7 +89,7 @@ def testRephasing(wigner):
 
 			Data('spins',
 				['name', 'phi', 'yps', 'time', 'timename', 'phiname', 'ypsname'],
-				time=numpy.array(times), phi=numpy.array(phis), yps=numpy.array(ypss), timename="T, s",
+				time=numpy.array(times), phi=numpy.array(phis), yps=numpy.array(ypss), timename="T (s)",
 				phiname="Spin, azimuth, rad", ypsname="Spin, inclination, rad",
 				name=name).save(name + "_phnoise_points.pickle")
 

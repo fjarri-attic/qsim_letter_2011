@@ -17,14 +17,14 @@ def calculateRamsey(wigner, echo):
 		nvz = 128
 		dt_evo = 1e-5
 
-	m = Model(N=44000, detuning=-37,
+	m = Model(N=55000, detuning=-37,
 		nvx=nvx, nvy=nvy, nvz=nvz, dt_evo=dt_evo, ensembles=256, e_cut=1e6,
 		fx=97.0, fy=97.0 * 1.03, fz=11.69,
-		gamma12=1.52e-20, gamma22=7.7e-20,
-		a12=97.93, a22=95.4)
+		gamma12=1.53e-20, gamma22=7.7e-20,
+		a12=97.99, a22=95.57)
 
 	constants = Constants(m, double=True)
-	env = envs.cuda(device_num=1)
+	env = envs.cuda(device_num=0)
 	evolution = SplitStepEvolution(env, constants)
 	pulse = Pulse(env, constants)
 
@@ -61,7 +61,7 @@ def calculateRamsey(wigner, echo):
 
 	if wigner:
 		times, noise = b.getData()
-		noise_data = XYData(name, times, noise, xname="T, s", ymin=0,
+		noise_data = XYData(name, times, noise, xname="T (s)", ymin=0,
 			yname="Phase noise, rad")
 
 		times, phi, yps = c.getData()
