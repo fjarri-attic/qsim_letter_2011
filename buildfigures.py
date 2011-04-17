@@ -120,7 +120,7 @@ if __name__ == '__main__':
 		[ramsey_squeezing_qn],
 		['b-'],
 		'figures_generated/ramsey_squeezing.pdf',
-		xmin=0, xmax=200.0, ymin=-3.6, ymax=0.5)
+		xmin=0, xmax=200.0, ymin=-3.7, ymax=0.1)
 
 	"""
 	ramsey_overlap = json.load(open('data/squeezing/squeezing_overlap.json'))
