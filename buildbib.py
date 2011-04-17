@@ -50,9 +50,10 @@ for raw_entry in raw_entries:
 		else:
 			aid = entry_fields['arxivId']
 			del entry_fields['arxivId']
+			del entry_fields['year']
 
 			entry_fields['archivePrefix'] = 'arXiv'
-			entry_fields['eprint'] = aid[:4] + aid[5:]
+			entry_fields['eprint'] = aid[:4] + '.' + aid[5:]
 			entry_fields['SLACcitation'] = "%%CITATION=" + aid[:4] + aid[5:] + ";%%"
 
 	entries.append((entry_type, entry_key, entry_fields))
