@@ -9,7 +9,7 @@ import copy
 
 
 def updateParams():
-	fig_width_pt = 0.7 * 246.0
+	fig_width_pt = 0.9 * 246.0
 	inches_per_pt = 1.0 / 72.27               # Convert pt to inches
 	golden_mean = (math.sqrt(5) - 1.0) / 2.4         # Aesthetic ratio
 	fig_width = fig_width_pt * inches_per_pt  # width in inches
