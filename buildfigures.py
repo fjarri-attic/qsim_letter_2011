@@ -115,12 +115,15 @@ if __name__ == '__main__':
 		xmin=0, xmax=8.0, ymin=0, ymax=1.05)
 
 
-	ramsey_squeezing_qn = json.load(open('data/squeezing/squeezing_ramsey.json'))
+	ramsey_squeezing_qn_80 = json.load(open('data/squeezing/squeezing_ramsey_80.0.json'))
+	ramsey_squeezing_qn_85 = json.load(open('data/squeezing/squeezing_ramsey_85.0.json'))
+	ramsey_squeezing_qn_90 = json.load(open('data/squeezing/squeezing_ramsey_90.0.json'))
+	ramsey_squeezing_qn_96 = json.load(open('data/squeezing/squeezing_ramsey_96.0.json'))
 	plotXYGraph(
-		[ramsey_squeezing_qn],
-		['b-'],
+		[ramsey_squeezing_qn_80, ramsey_squeezing_qn_85, ramsey_squeezing_qn_90, ramsey_squeezing_qn_96],
+		['b-', 'r--', 'g-.', 'k:'],
 		'figures_generated/ramsey_squeezing.pdf',
-		xmin=0, xmax=200.0, ymin=-3.7, ymax=0.1)
+		xmin=0, xmax=200.0, ymin=-11.0, ymax=11.0)
 
 	"""
 	ramsey_overlap = json.load(open('data/squeezing/squeezing_overlap.json'))
