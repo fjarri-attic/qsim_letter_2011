@@ -112,7 +112,7 @@ if __name__ == '__main__':
 		[ramsey_visibility_gpe, ramsey_visibility_qn],
 		['r-', 'b-'],
 		'figures_generated/long_rephasing_visibility.pdf',
-		xmin=0, xmax=8.0, ymin=0, ymax=1.05)
+		xmin=0, xmax=5.0, ymin=0, ymax=1.05)
 
 
 	ramsey_squeezing_qn_80 = json.load(open('data/squeezing/squeezing_ramsey_80.0.json'))
