@@ -210,10 +210,11 @@ Here we have introduced local Liouville loss terms,
 	\hat{\rho}\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)},
 \end{equation}
 where the reservoir coupling operators $\hat{O}_{\jvec}^{(n)}$
-are all $n$-fold products of local field annihilation operators,
+are sum of all distinct $n$-fold products of local field annihilation operators,
 \begin{equation}
 	\hat{O}_{\jvec}^{(n)} =
 	\hat{O}_{\jvec}^{(n)} \left( \widehat{\Psivec} \right) =
+	\sum_{\mathrm{permutations}}
 	\widehat{\Psi}_{j_{1}} \left( \xvec \right)
 	\widehat{\Psi}_{j_{2}} \left( \xvec \right) \ldots
 	\widehat{\Psi}_{j_{n}} \left( \xvec \right),
@@ -289,6 +290,7 @@ with:
 This effective Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
+\label{eqn:SDE}
 	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
 	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t).
 \end{equation}
@@ -311,6 +313,21 @@ The multiplicative noise coefficient
 \end{equation}
 is a fluctuation-dissipation term,
 so that the Wigner variables remain equivalent to the corresponding operators.
+
+Loss coefficient in equations~(\ref{eqn:SDE}) can be converted to their alternative form,
+which is defined using atom number losses:
+\begin{equation}
+	\dot{n_i} = - \gamma^{(n)}_{\jvec,i} n^{m_1}_1 n^{m_2}_2 \ldots ,
+\end{equation}
+where $n_i$ is the density of component $i$ and $m_i$
+is its multiplicity in the operator $\hat{O}^{(n)}_{\jvec}$
+(in other words, the number of atoms lost in the collision).
+Thus
+\begin{equation}
+	\gamma^{(n)}_{\jvec,i} = 2 {n \choose m_1, m_2, \ldots} m_i \kappa^{(n)}_{\jvec}.
+\end{equation}
+When only one $m_i$ is non-zero, or they are all equal for some type of the interaction,
+the index $i$ in $\gamma^{(n)}_{\jvec,i}$ can be omitted.
 
 For initial conditions in interferometry it is usually sufficient
 to consider a coherent state amplitude $\Psi_{s}^{c}$,
