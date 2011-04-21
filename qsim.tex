@@ -292,7 +292,7 @@ to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 \label{eqn:SDE}
 	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
-	\Gamma_{j} + \sum_{n,\ivec} \gamma_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t).
+	\Gamma_{j} + \sum_{n,\ivec} \beta_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t).
 \end{equation}
 Here $\zeta_{\ivec}^{(n)}(\xvec, t)$ is a complex,
 stochastic delta-correlated Gaussian noise with
@@ -307,7 +307,7 @@ stochastic delta-correlated Gaussian noise with
 \end{equation}
 The multiplicative noise coefficient
 \begin{equation}
-	\gamma_{\ivec,j}^{(n)} \left( \Psivec \right) =
+	\beta_{\ivec,j}^{(n)} \left( \Psivec \right) =
 	\sqrt{\kappa_{\ivec}^{(n)}}
 	\frac{\partial O_{\ivec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
