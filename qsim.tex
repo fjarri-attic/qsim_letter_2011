@@ -89,13 +89,9 @@ and can only be removed when there are no interactions driving phase evolution.
 However, there are other causes of density fluctuations as well as the overall number uncertainty,
 which are also important in causing observed phase decays.
 The important feature of the approach used here is that it is able to capture
-all three significant features of atom interferometry that can result in decoherence.
-These are:
-\begin{itemize}
-\item fluctuations caused by an atomic beam-splitter,
-\item linear and nonlinear losses
-\item trap inhomogeneity and propagation
-\end{itemize}
+all three significant features of atom interferometry that can result in decoherence:
+these are fluctuations caused by the atomic beam-splitter, losses,
+and trap inhomogeneity effects.
 The results given in this paper require a controllable truncation
 of an expansion in the inverse atom number.
 They are applicable to simulations where the atom number per lattice point or mode is large.
@@ -105,9 +101,8 @@ We expect that multi-configurational Hartree theories should give comparable or 
 in principle, as they do not require truncation.
 However, MCH methods are currently limited to lossless,
 one-dimensional calculations with small atom numbers,
-owing to computational complexity issues.
+owing to computational complexity issues. % TODO: reference to Streltsov et al PRL
 
-The theory we use is straightforward.
 We start by assuming that the trapped BEC has $s$-wave interactions,
 together with Markovian losses due to $n$-body collisions.
 We employ the Wigner-Moyal quantum phase-space representation~\cite{Gardiner2004}
@@ -160,10 +155,7 @@ Thus $\langle \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
 and $U_{ij}$ is the atom-atom interaction term.
 For a dilute gas at low enough temperatures,
-$U_{ij}$ is related to the $s$-wave scattering length in three dimensions by:
-\begin{equation}
-	U_{ij}=\frac{4\pi\hbar a_{ij}}{m}.
-\end{equation}
+$U_{ij}=4\pi\hbar a_{ij} / m$, where $a_{ij}$ is the $s$-wave scattering length in three dimensions.
 Here we implicitly assume a momentum cutoff $k_{c} \ll 1 / a_{ij}$,
 otherwise the couplings must be renormalized~\cite{Sinatra2002}.
 
@@ -211,11 +203,10 @@ Here we have introduced local Liouville loss terms,
 	\hat{\rho}\hat{O}_{\lvec}^{(n)\dagger}\hat{O}_{\lvec}^{(n)},
 \end{equation}
 where the reservoir coupling operators $\hat{O}_{\lvec}^{(n)}$
-are sum of all distinct $n$-fold products of local field annihilation operators,
+are the distinct $n$-fold products of local field annihilation operators,
 \begin{equation}
 	\hat{O}_{\lvec}^{(n)} =
 	\hat{O}_{\lvec}^{(n)} \left( \widehat{\Psivec} \right) =
-	\sum_{\mathrm{permutations}}
 	\widehat{\Psi}_{l_{1}} \left( \xvec \right)
 	\widehat{\Psi}_{l_{2}} \left( \xvec \right) \ldots
 	\widehat{\Psi}_{l_{n}} \left( \xvec \right),
@@ -315,19 +306,19 @@ The multiplicative noise coefficient
 is a fluctuation-dissipation term,
 so that the Wigner variables remain equivalent to the corresponding operators.
 
-Loss coefficient in equations~(\ref{eqn:SDE}) can be converted to their alternative form,
+The loss coefficients in equations~(\ref{eqn:SDE}) can be converted to the conventional form,
 which is defined using atom number losses:
 \begin{equation}
 	\dot{n_i} = - \gamma^{(n)}_{\lvec,i} n^{m_1}_1 n^{m_2}_2 \ldots ,
 \end{equation}
 where $n_i$ is the density of component $i$ and $m_i$
 is its multiplicity in the operator $\hat{O}^{(n)}_{\lvec}$
-(in other words, the number of atoms lost in the collision).
+(in other words, the number of spin-$i$ atoms lost in the collision).
 Thus
 \begin{equation}
-	\gamma^{(n)}_{\lvec,i} = 2 {n \choose m_1, m_2, \ldots} m_i \kappa^{(n)}_{\lvec}.
+	\gamma^{(n)}_{\lvec,i} = 2 m_i \kappa^{(n)}_{\lvec}.
 \end{equation}
-When only one $m_i$ is non-zero, or they are all equal for some type of the interaction,
+When only one $m_i$ is non-zero, or if they are all equal,
 the index $i$ in $\gamma^{(n)}_{\lvec,i}$ can be omitted.
 
 For initial conditions in interferometry it is usually sufficient
@@ -345,12 +336,10 @@ where:
 For greater accuracy, the coherent-state initial condition
 can be modified to account for initial ground-state correlations,
 or additional number-fluctuations above the Poissonian level.
-In numerical simulations, the delta-function correlations mean that
-each low-energy mode has a vacuum occupation of a $1/2$ of a particle.
-This is because the Wigner representation generates symmetrically ordered correlation functions,
-so that when normal ordered correlations are measured\---which is a typical case\---
-one has to express them as a sum of symmetrically ordered terms first.
-The exact equation depends on the chosen basis and its low-energy subset.
+In numerical simulations, the initial delta-function correlations are necessary
+because the Wigner representation generates symmetrically ordered correlation functions. When normal ordered correlations are measured,
+one has to express them as a sum of symmetrically ordered terms.
+
 In this work we used the simple basis of plane waves in the volume $V$,
 and the atomic density of component $s$ is therefore:
 \begin{equation}
@@ -367,7 +356,7 @@ Here we used the fact that the approximate Wigner function is a probability dist
 equivalent to an averaged sum over different simulation paths.
 
 As a specific example of the utility of this method,
-we consider recent three-dimensional dipole trap interference experiments,
+we consider recent three-dimensional magnetic trap interference experiments,
 involving ground-states of \Rb~BEC with quantum numbers ${F=1,\, m_{F}=-1}$
 and ${F=2,\, m_{F}=+1}$ respectively~\cite{Egorov2010}.
 
@@ -398,39 +387,38 @@ and ${F=2,\, m_{F}=+1}$ respectively~\cite{Egorov2010}.
 	\label{fig:visibility}
 \end{figure}
 
-The experiment consisted of the preparation of a stable BEC with state $\ket{1,-1}$ in a magnetic trap
+The experiment consisted of the preparation of a stable BEC with state $\ket{1,-1}$ in a trap
 together with the application of coupling electromagnetic pulses acting as beam-splitters in spin-space.
 Two different schemes were used.
-The first one was Ramsey interferometry with $\pi/2$-pulse in the beginning,
-evolution of resulting non-equilibrium superposition of states $\ket{1,-1}$ and $\ket{2,+1}$,
-and the final $\pi/2$-pulse, which transformed the phase difference of the components
+The first was Ramsey interferometry with a $\pi/2$-pulse in the beginning, followed by
+evolution of the resulting non-equilibrium superposition of states $\ket{1,-1}$ and $\ket{2,+1}$,
+and a final $\pi/2$-pulse, which transformed the phase difference of the components
 into a population difference (see~\figref{fig:visibility},~(a) for the timeline).
 The second scheme had an additional $\pi$-pulse (``spin echo'') in the middle of the evolution,
 which partially restored interferometric contrast lost due to spatial propagation
 (\figref{fig:visibility},~(c)).
 
 % Egorov
-By means of applying the first $\pi/2$ pulse a coherent superposition of two different spin-states is created.
-Ground state for that consists of state $\ket{2,+1}$ focused in the center of the trap,
-while state $\ket{1,-1}$ is pushed towards the edges of it~\cite{Mertes2007}.
-However, after the short $\pi/2$ pulse is applied, both components have parabolic density profiles.
-Thus, this superposition is not in equilibrium and collective oscillations set on,
-both components oscillate about their two-component ground state.
-In the process of oscillations local BEC velocities periodically become equal to almost $0$ at the turnover points,
+In a multi-mode trap, the
+ground state for the superposition state consists of atoms in state $\ket{2,+1}$ in the center of the trap,
+with atoms in state $\ket{1,-1}$ at the edges~\cite{Mertes2007}.
+However, both components initially have parabolic density profiles.
+Thus, this superposition is not in equilibrium and collective oscillations occur,
+with both components oscillating about their two-component ground state.
+During these oscillations, the local BEC velocities periodically vanish at the turnover points,
 which means that the phase of each is spatially uniform.
-Both components are best overlapped at one of the turnover points as well.
-As such, interference contrast of the two-component BEC in Ramsey interferometry experiences periodical revivals at that
-turnover points with the frequency of collective oscillations~(\figref{fig:visibility},~(b)).
+Both components overlap at these turnover points, so that
+the interference contrast of the two-component BEC experiences periodical revivals at the
+turnover points~(\figref{fig:visibility},~(b)).
 % TODO maybe need a better join of this with the next paragraph, avoid repeating visibility
 
-The fringe visibility $\mathcal{V}$ for Ramsey and spin echo schemes is plotted on~\figref{fig:visibility}.
-Simulations of Ramsey scheme experiment (\figref{fig:visibility},~(b)) with Wigner method
+The fringe visibility $\mathcal{V}$ for Ramsey and spin echo schemes is plotted in~\figref{fig:visibility}.
+Simulations of Ramsey scheme experiment (\figref{fig:visibility},~(b)) with the Wigner method
 using typical experimental parameters
-show that quantum noise amplifies the speed of visibility decay noticeably.
-In the spin echo scheme (\figref{fig:visibility},~(d)) the central $\pi$-pulse is supposed
-to restore visibility by inverting the evolution of the condensate.
-In simulations with the Wigner method, visibility is not restored to its initial value even at revival points.
-This is the effect of quantum noise, which does not appear in GPE simulations.
+show that quantum noise increases the rate of decay of the visibility.
+In the spin echo scheme (\figref{fig:visibility},~(d)) the central $\pi$-pulse helps
+to restore visibility by inverting the evolution of the condensate, thus cancelling asymmetries in the loss terms.
+In simulations with the Wigner method, the visibility is not restored to its initial value even at revival points due to quantum noise, which does not appear in GPE simulations.
 
 \begin{figure}
 	\includegraphics{figures_generated/ramsey_squeezing.pdf}
@@ -462,10 +450,10 @@ This parameter serves as a measure of atomic entanglement in the condensate,
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
 It can be represented using moments of field operators $\widehat{\Psi}_1$
 and $\widehat{\Psi}_2$~\cite{Li2009}.
-As an illustration consider~\figref{fig:squeezing}, which shows calculations of squeezing parameter
-for optically trapped $\ket{1,+1}$ and $\ket{2,-1}$ BEC in Ramsey sequence.
-Different inter-component scattering lengths were used in order to find optimal regime
-with significant squeezing, lasting for maximum amount of time.
+As an illustration consider~\figref{fig:squeezing}, which shows calculations of the squeezing parameter
+for optically trapped $\ket{1,+1}$ and $\ket{2,-1}$ BEC in a Ramsey sequence, for an $^{87}Rb$ BEC near a Feshbach resonance.
+Different inter-component scattering lengths (corresponding to different magnetic fields) were used in order to find the optimal regime
+with significant squeezing, lasting for the maximum time.
 
 The important feature of these quantum dynamical simulations
 is that they are able to treat large numbers of atoms (55,000 in this case),
@@ -482,12 +470,6 @@ is quantitatively accurate  for a range of interferometric experiments
 involving large numbers of atoms and multiple loss mechanisms.
 It allows one to obtain both average values and variances of different measurables,
 properly accounting for both quantum effects and nonlinear losses in the condensate.
-At the same time, its computational complexity does not directly depend on number of atoms,
-which, together with its perfect parallelizability, makes it very fast and scalable.
-A disadvantage is that it is quite sensitive to the lattice size, the value of energy cutoff, and
-the choice of basis.
-Nevertheless,  the simulation results agree very well with experimental data,
-allowing the method to serve as a useful predictive framework for experiments.
 
 \bibliography{qsim.bib}
 
