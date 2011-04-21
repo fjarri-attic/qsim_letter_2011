@@ -23,6 +23,7 @@
 \newcommand{\ivec}{\boldsymbol{i}}
 \newcommand{\jvec}{\boldsymbol{j}}
 \newcommand{\kvec}{\boldsymbol{k}}
+\newcommand{\lvec}{\boldsymbol{l}}
 \newcommand{\Psivec}{\boldsymbol{\Psi}}
 
 % Magic macro for creating tables in figure environment
@@ -196,28 +197,28 @@ Damping and losses can be included via an additional Markovian master equation~\
 defined so that,
 \begin{equation}
 	\frac{d\hat{\rho}}{dt} = -\frac{i}{\hbar} \left[ \hat{H}, \hat{\rho} \right] +
-	\sum_{n,\jvec} \kappa_{\jvec}^{(n)}
-	\int d^D\xvec \mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho} \right],
+	\sum_{n,\lvec} \kappa_{\lvec}^{(n)}
+	\int d^D\xvec \mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho} \right],
 \end{equation}
 where $n$ is the number of interacting particles,
-and $\jvec$ is a vector indicating the spins that are coupled.
+and $\lvec$ is a vector indicating the spins that are coupled.
 
 Here we have introduced local Liouville loss terms,
 \begin{equation}
-	\mathcal{L}_{\jvec}^{(n)} \left[ \hat{\rho}\right] =
-	2 \hat{O}_{\jvec}^{(n)} \hat{\rho}\hat{O}_{\jvec}^{(n)\dagger} -
-	\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)}\hat{\rho} -
-	\hat{\rho}\hat{O}_{\jvec}^{(n)\dagger}\hat{O}_{\jvec}^{(n)},
+	\mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho}\right] =
+	2 \hat{O}_{\lvec}^{(n)} \hat{\rho}\hat{O}_{\lvec}^{(n)\dagger} -
+	\hat{O}_{\lvec}^{(n)\dagger}\hat{O}_{\lvec}^{(n)}\hat{\rho} -
+	\hat{\rho}\hat{O}_{\lvec}^{(n)\dagger}\hat{O}_{\lvec}^{(n)},
 \end{equation}
-where the reservoir coupling operators $\hat{O}_{\jvec}^{(n)}$
+where the reservoir coupling operators $\hat{O}_{\lvec}^{(n)}$
 are sum of all distinct $n$-fold products of local field annihilation operators,
 \begin{equation}
-	\hat{O}_{\jvec}^{(n)} =
-	\hat{O}_{\jvec}^{(n)} \left( \widehat{\Psivec} \right) =
+	\hat{O}_{\lvec}^{(n)} =
+	\hat{O}_{\lvec}^{(n)} \left( \widehat{\Psivec} \right) =
 	\sum_{\mathrm{permutations}}
-	\widehat{\Psi}_{j_{1}} \left( \xvec \right)
-	\widehat{\Psi}_{j_{2}} \left( \xvec \right) \ldots
-	\widehat{\Psi}_{j_{n}} \left( \xvec \right),
+	\widehat{\Psi}_{l_{1}} \left( \xvec \right)
+	\widehat{\Psi}_{l_{2}} \left( \xvec \right) \ldots
+	\widehat{\Psi}_{l_{n}} \left( \xvec \right),
 \end{equation}
 describing local $n$-body collision losses.
 Temporarily ignoring unitary evolution, the corresponding mean amplitude equations
@@ -231,10 +232,10 @@ for an $n$-body loss of this form are
 where we have introduced  nonlinear loss operators:
 \begin{equation}
 	\hat{\Gamma}_{i} \left( \xvec \right) \equiv
-	\sum_{n,\jvec} \kappa_{\jvec}^{(n)}
-	\frac{\partial\hat{O}_{\jvec}^{(n)\dagger}	\left( \widehat{\Psivec} \right)}
+	\sum_{n,\lvec} \kappa_{\lvec}^{(n)}
+	\frac{\partial\hat{O}_{\lvec}^{(n)\dagger}	\left( \widehat{\Psivec} \right)}
 		{\partial \hat{\Psi}_{i}^{\dagger} \left( \xvec \right)}
-	\hat{O}_{\jvec}^{(n)} \left( \xvec \right) .
+	\hat{O}_{\lvec}^{(n)} \left( \xvec \right) .
 \end{equation}
 
 We proceed by using a stochastic phase-space method
@@ -269,22 +270,22 @@ The drift term $A_{i}$ gives Gross-Pitaevskii evolution with nonlinear damping:
 \end{equation}
 where $\Gamma_{i}$ is a classical loss term:
 \begin{equation}
-	\Gamma_{i} = \sum_{n,\jvec} \kappa_{\jvec}^{(n)}
+	\Gamma_{i} = \sum_{n,\lvec} \kappa_{\lvec}^{(n)}
 	\frac{
-		\partial O_{\jvec}^{(n)*} \left( \Psivec \right)
+		\partial O_{\lvec}^{(n)*} \left( \Psivec \right)
 	}{
 		\partial \Psi_{i}^* \left( \xvec \right)
 	}
-	O_{\jvec}^{(n)} \left( \xvec \right).
+	O_{\lvec}^{(n)} \left( \xvec \right).
 \end{equation}
 
 The next terms in the evolution equation give rise to
 quantum noise associated with the loss reservoirs,
 with:
 \begin{equation}
-	D_{ij} = \sum_{n,\kvec} \kappa_{\kvec}^{(n)}
-	\frac{\partial O_{\kvec}^{(n)*}}{\partial\Psi_{i}^{*}}
-	\frac{\partial O_{\kvec}^{(n)}}{\partial\Psi_{j}}.
+	D_{ij} = \sum_{n,\lvec} \kappa_{\lvec}^{(n)}
+	\frac{\partial O_{\lvec}^{(n)*}}{\partial\Psi_{i}^{*}}
+	\frac{\partial O_{\lvec}^{(n)}}{\partial\Psi_{j}}.
 \end{equation}
 
 This effective Fokker-Planck equation can be transformed
@@ -292,24 +293,24 @@ to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 \label{eqn:SDE}
 	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
-	\Gamma_{j} + \sum_{n,\ivec} \beta_{\ivec,j}^{(n)} \zeta_{\ivec}^{(n)} (\xvec,t).
+	\Gamma_{j} + \sum_{n,\lvec} \beta_{\lvec,j}^{(n)} \zeta_{\lvec}^{(n)} (\xvec,t).
 \end{equation}
-Here $\zeta_{\ivec}^{(n)}(\xvec, t)$ is a complex,
+Here $\zeta_{\lvec}^{(n)}(\xvec, t)$ is a complex,
 stochastic delta-correlated Gaussian noise with
 \begin{equation}
 	\left\langle
-		\zeta_{\ivec}^{(n)} (\xvec,t) \zeta_{\jvec}^{(m)}(\xvec^\prime, t^\prime)
+		\zeta_{\lvec}^{(n)} (\xvec,t) \zeta_{\kvec}^{(m)}(\xvec^\prime, t^\prime)
 	\right\rangle =
-	\delta_{\ivec \jvec} \delta^{nm} \delta^{D} \left(
+	\delta_{\lvec \kvec} \delta^{nm} \delta^{D} \left(
 		\xvec - \xvec^\prime
 	\right)
 	\delta \left( t - t^\prime \right).
 \end{equation}
 The multiplicative noise coefficient
 \begin{equation}
-	\beta_{\ivec,j}^{(n)} \left( \Psivec \right) =
-	\sqrt{\kappa_{\ivec}^{(n)}}
-	\frac{\partial O_{\ivec}^{(n)}}{\partial\Psi_{j}}
+	\beta_{\lvec,j}^{(n)} \left( \Psivec \right) =
+	\sqrt{\kappa_{\lvec}^{(n)}}
+	\frac{\partial O_{\lvec}^{(n)}}{\partial\Psi_{j}}
 \end{equation}
 is a fluctuation-dissipation term,
 so that the Wigner variables remain equivalent to the corresponding operators.
@@ -317,17 +318,17 @@ so that the Wigner variables remain equivalent to the corresponding operators.
 Loss coefficient in equations~(\ref{eqn:SDE}) can be converted to their alternative form,
 which is defined using atom number losses:
 \begin{equation}
-	\dot{n_i} = - \gamma^{(n)}_{\jvec,i} n^{m_1}_1 n^{m_2}_2 \ldots ,
+	\dot{n_i} = - \gamma^{(n)}_{\lvec,i} n^{m_1}_1 n^{m_2}_2 \ldots ,
 \end{equation}
 where $n_i$ is the density of component $i$ and $m_i$
-is its multiplicity in the operator $\hat{O}^{(n)}_{\jvec}$
+is its multiplicity in the operator $\hat{O}^{(n)}_{\lvec}$
 (in other words, the number of atoms lost in the collision).
 Thus
 \begin{equation}
-	\gamma^{(n)}_{\jvec,i} = 2 {n \choose m_1, m_2, \ldots} m_i \kappa^{(n)}_{\jvec}.
+	\gamma^{(n)}_{\lvec,i} = 2 {n \choose m_1, m_2, \ldots} m_i \kappa^{(n)}_{\lvec}.
 \end{equation}
 When only one $m_i$ is non-zero, or they are all equal for some type of the interaction,
-the index $i$ in $\gamma^{(n)}_{\jvec,i}$ can be omitted.
+the index $i$ in $\gamma^{(n)}_{\lvec,i}$ can be omitted.
 
 For initial conditions in interferometry it is usually sufficient
 to consider a coherent state amplitude $\Psi_{s}^{c}$,
