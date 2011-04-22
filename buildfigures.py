@@ -55,10 +55,15 @@ def plotXYGraph(datasets, linetypes, name, xmin=None, xmax=None, ymin=None, ymax
 	for dataset, linetype in zip(datasets, linetypes):
 
 		if 'yerrors' not in dataset:
+
+			kwds = dict(label=dataset['name'])
+			if linetype.endswith('--'):
+				kwds['dashes'] = (6, 3)
+
 			subplot.plot(
 				numpy.array(dataset['xarray']),
 				numpy.array(dataset['yarray']),
-				linetype, label=dataset['name'])
+				linetype, **kwds)
 		else:
 			subplot.scatter(
 				numpy.array(dataset['xarray']),
@@ -102,7 +107,7 @@ if __name__ == '__main__':
 	ramsey_visibility_qn = json.load(open('data/long_time_ramsey/ramsey_wigner_vis.json'))
 	plotXYGraph(
 		[ramsey_visibility_gpe, ramsey_visibility_qn],
-		['r-', 'b-'],
+		['r--', 'b-'],
 		'figures_generated/long_ramsey_visibility.pdf',
 		xmin=0, xmax=5.0, ymin=0, ymax=1.05)
 
@@ -110,7 +115,7 @@ if __name__ == '__main__':
 	ramsey_visibility_qn = json.load(open('data/long_time_rephasing/rephasing_wigner_vis.json'))
 	plotXYGraph(
 		[ramsey_visibility_gpe, ramsey_visibility_qn],
-		['r-', 'b-'],
+		['r--', 'b-'],
 		'figures_generated/long_rephasing_visibility.pdf',
 		xmin=0, xmax=5.0, ymin=0, ymax=1.05)
 
