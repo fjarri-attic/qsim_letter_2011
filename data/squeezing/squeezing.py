@@ -4,7 +4,7 @@ import math
 
 from beclab import *
 from beclab.state import ParticleStatistics, Uncertainty
-from helpers import *
+from beclab.helpers import *
 
 
 class AveragesCollector:
@@ -176,10 +176,10 @@ def combinedTest(N, a12, gamma12, losses):
 		times * 1e3, 10 * numpy.log10(numpy.array(xi)),
 		xname="T (ms)", yname="$\\xi^2$ (dB)")
 
-xi1nl = combinedTest(1, 80.0, 7.3e-19, False)
-xi2nl = combinedTest(1, 85.0, 3.67e-19, False)
-xi3nl = combinedTest(1, 90.0, 1.34e-19, False)
-xi4nl = combinedTest(1, 96.0, 1.53e-20, False)
+xi1nl = combinedTest(1, 80.0, 38.8e-19, False)
+xi2nl = combinedTest(1, 85.0, 19.5e-19, False)
+xi3nl = combinedTest(1, 90.0, 7.13e-19, False)
+xi4nl = combinedTest(1, 95.0, 0.854e-19, False)
 
 xi1nl.color = 'red'
 xi2nl.color = 'blue'
@@ -189,15 +189,15 @@ xi4nl.color = 'black'
 xi1nl.save('squeezing_ramsey_80.0_nolosses.json')
 xi2nl.save('squeezing_ramsey_85.0_nolosses.json')
 xi3nl.save('squeezing_ramsey_90.0_nolosses.json')
-xi4nl.save('squeezing_ramsey_96.0_nolosses.json')
+xi4nl.save('squeezing_ramsey_95.0_nolosses.json')
 
 for x in (xi1nl, xi2nl, xi3nl, xi4nl):
 	x.linestyle = '--'
 
-xi1 = combinedTest(1, 80.0, 7.3e-19, True)
-xi2 = combinedTest(1, 85.0, 3.67e-19, True)
-xi3 = combinedTest(1, 90.0, 1.34e-19, True)
-xi4 = combinedTest(1, 96.0, 1.53e-20, True)
+xi1 = combinedTest(1, 80.0, 38.8e-19, True)
+xi2 = combinedTest(1, 85.0, 19.5e-19, True)
+xi3 = combinedTest(1, 90.0, 7.13e-19, True)
+xi4 = combinedTest(1, 95.0, 0.854e-19, True)
 
 xi1.color = 'red'
 xi2.color = 'blue'
@@ -207,7 +207,7 @@ xi4.color = 'black'
 xi1.save('squeezing_ramsey_80.0.json')
 xi2.save('squeezing_ramsey_85.0.json')
 xi3.save('squeezing_ramsey_90.0.json')
-xi4.save('squeezing_ramsey_96.0.json')
+xi4.save('squeezing_ramsey_95.0.json')
 
 XYPlot([xi1nl, xi2nl, xi3nl, xi4nl, xi1, xi2, xi3, xi4],
 	location="upper left").save('squeezing.pdf')
