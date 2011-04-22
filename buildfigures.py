@@ -125,9 +125,9 @@ if __name__ == '__main__':
 	ramsey_squeezing_qn_80 = json.load(open('data/squeezing/squeezing_ramsey_80.0.json'))
 	ramsey_squeezing_qn_85 = json.load(open('data/squeezing/squeezing_ramsey_85.0.json'))
 	ramsey_squeezing_qn_90 = json.load(open('data/squeezing/squeezing_ramsey_90.0.json'))
-	ramsey_squeezing_qn_96 = json.load(open('data/squeezing/squeezing_ramsey_96.0.json'))
+	ramsey_squeezing_qn_95 = json.load(open('data/squeezing/squeezing_ramsey_95.0.json'))
 	plotXYGraph(
-		[ramsey_squeezing_qn_80, ramsey_squeezing_qn_85, ramsey_squeezing_qn_90, ramsey_squeezing_qn_96],
+		[ramsey_squeezing_qn_80, ramsey_squeezing_qn_85, ramsey_squeezing_qn_90, ramsey_squeezing_qn_95],
 		['b-', 'r--', 'g-.', 'k:'],
 		'figures_generated/ramsey_squeezing.pdf',
 		xmin=0, xmax=200.0, ymin=-11.0, ymax=11.0)
