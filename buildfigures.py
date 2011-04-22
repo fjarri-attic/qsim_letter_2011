@@ -58,7 +58,9 @@ def plotXYGraph(datasets, linetypes, name, xmin=None, xmax=None, ymin=None, ymax
 
 			kwds = dict(label=dataset['name'])
 			if linetype.endswith('--'):
-				kwds['dashes'] = (6, 3)
+				kwds['dashes'] = (6, 3) # default value is (6, 6)
+			elif linetype.endswith('-.'):
+				kwds['dashes'] = (5, 3, 1, 3) # default value is (3, 5, 1, 5)
 
 			subplot.plot(
 				numpy.array(dataset['xarray']),
