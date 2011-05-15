@@ -81,11 +81,11 @@ def testRephasing(wigner):
 			ypss.append(yps)
 
 		XYData(name, numpy.array(times), numpy.array(vis),
-			ymin=0, ymax=1, xname="T, s", yname="$\\mathcal{V}$").save(name + '_vis.json')
+			ymin=0, ymax=1, xname="T (s)", yname="$\\mathcal{V}$").save(name + '_vis.json')
 
 		if wigner:
 			XYData(name, numpy.array(times), numpy.array(phnoise), ymin=0,
-				xname="T, s", yname="Phase noise, rad").save(name + '_phnoise.json')
+				xname="T (s)", yname="Phase noise, rad").save(name + '_phnoise.json')
 
 			Data('spins',
 				['name', 'phi', 'yps', 'time', 'timename', 'phiname', 'ypsname'],

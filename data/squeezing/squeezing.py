@@ -46,13 +46,13 @@ def testUncertainties(a12, gamma12, losses):
 
 	# normal parameters
 	if losses:
-		m = Model(N=44000, detuning=-37,
+		m = Model(N=55000, detuning=-37,
 			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024, e_cut=1e6,
 			fx=97.0, fy=97.0 * 1.03, fz=11.69,
 			gamma12=gamma12, gamma22=7.7e-20,
 			a12=a12, a22=95.57)
 	else:
-		m = Model(N=44000, detuning=-37,
+		m = Model(N=55000, detuning=-37,
 			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024, e_cut=1e6,
 			fx=97.0, fy=97.0 * 1.03, fz=11.69,
 			gamma111=0, gamma12=0, gamma22=0,
@@ -151,13 +151,13 @@ def combinedTest(N, a12, gamma12, losses):
 	xi = []
 
 	if losses:
-		m = Model(N=44000, detuning=-37,
+		m = Model(N=55000, detuning=-37,
 			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024 * N, e_cut=1e6,
 			fx=97.0, fy=97.0 * 1.03, fz=11.69,
 			gamma12=gamma12, gamma22=7.7e-20,
 			a12=a12, a22=95.4)
 	else:
-		m = Model(N=44000, detuning=-37,
+		m = Model(N=55000, detuning=-37,
 			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024 * N, e_cut=1e6,
 			fx=97.0, fy=97.0 * 1.03, fz=11.69,
 			gamma111=0, gamma12=0, gamma22=0,

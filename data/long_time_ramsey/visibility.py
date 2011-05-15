@@ -57,7 +57,7 @@ def calculateRamsey(wigner, echo):
 		("Wigner" if wigner else "GPE")
 
 	times, vis = a.getData()
-	vis_data = XYData(name, times, vis, xname="T, s", ymin=0, ymax=1, yname="$\\mathcal{V}$")
+	vis_data = XYData(name, times, vis, xname="T (s)", ymin=0, ymax=1, yname="$\\mathcal{V}$")
 
 	if wigner:
 		times, noise = b.getData()
@@ -66,7 +66,7 @@ def calculateRamsey(wigner, echo):
 
 		times, phi, yps = c.getData()
 		noise_points = Data('spins', ['phi', 'yps', 'time', 'timename', 'phiname', 'ypsname'],
-			time=time, phi=phi, yps=yps, timename="T, s",
+			time=time, phi=phi, yps=yps, timename="T (s)",
 			phiname="Spin, azimuth, rad", ypsname="Spin, inclination, rad")
 
 	env.release()
