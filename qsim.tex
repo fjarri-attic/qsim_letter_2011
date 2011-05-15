@@ -360,11 +360,6 @@ n_{s} (\xvec) & =
 Here we used the fact that the approximate Wigner function is a probability distribution
 equivalent to an averaged sum over different simulation paths.
 
-As a specific example of the utility of this method,
-we consider recent three-dimensional magnetic trap interference experiments,
-involving ground-states of \Rb~BEC with quantum numbers ${F=1,\, m_{F}=-1}$
-and ${F=2,\, m_{F}=+1}$ respectively~\cite{Egorov2010}.
-
 \begin{figure}
 	\begin{tabular}{l l}
 	% 0.381in 1.95in for 0.7 size
@@ -392,38 +387,64 @@ and ${F=2,\, m_{F}=+1}$ respectively~\cite{Egorov2010}.
 	\label{fig:visibility}
 \end{figure}
 
-The experiment consisted of the preparation of a stable BEC with state $\ket{1,-1}$ in a trap
-together with the application of coupling electromagnetic pulses acting as beam-splitters in spin-space.
-Two different schemes were used.
-The first was Ramsey interferometry with a $\pi/2$-pulse in the beginning, followed by
-evolution of the resulting non-equilibrium superposition of states $\ket{1,-1}$ and $\ket{2,+1}$,
-and a final $\pi/2$-pulse, which transformed the phase difference of the components
-into a population difference (see~\figref{fig:visibility},~(a) for the timeline).
-The second scheme had an additional $\pi$-pulse (``spin echo'') in the middle of the evolution,
-which partially restored interferometric contrast lost due to spatial propagation
-(\figref{fig:visibility},~(c)).
+To utilise abilities of this method we consider recent interference experiments
+with a two-component BEC involving two hyperfine states
+${F=1,\, m_{F}=-1}$ and ${F=2,\, m_{F}=+1}$ in \Rb~\cite{Egorov2010}.
+A conventional Ramsey sequence (\figref{fig:visibility},~(a)) has been used
+with the BEC confined in a cigar-shaped magnetic trap with the frequencies $(97.0, 97.0, 11.69)\,\mathrm{Hz}$
+in a bias magnetic field of $3.23\,\mathrm{G}$ where magnetic field dephasing is largely eliminated~\cite{Hall1998}.
+The first $\pi/2$ pulse prepares a non-equilibrium superposition of states ${\ket{1,-1}}$ and ${\ket{2,+1}}$
+and the spatial modes of two components periodically separate and merge again~\cite{Mertes2007}.
+These collective oscillations lead to periodic dephasing and self-rephasing of the BEC components,
+clearly visible in both GPE and Wigner simulations of interference fringe visibility
+$\mathcal{V}$ (\figref{fig:visibility},~(b)).
+Quantum noise (solid line) noticeably speeds up visibility decay.
+Asymmetric losses of two states are the main cause of the contrast decay,
+and this has been partially compensated by the application of a spin echo pulse
+mid-way through the evolution (\figref{fig:visibility},~(c)).
+The GPE simulations indicate that visibility is largely recovered at long evolution times,
+however, Wigner simulations show that quantum noise is the dominant source of the visibility decay.
+
+% FIXME: this old text will be kept for some time just in case.
+% Remove it if it is no longer needed.
+
+%As a specific example of the utility of this method,
+%we consider recent three-dimensional magnetic trap interference experiments,
+%involving ground-states of \Rb~BEC with quantum numbers ${F=1,\, m_{F}=-1}$
+%and ${F=2,\, m_{F}=+1}$ respectively~\cite{Egorov2010}.
+
+%The experiment consisted of the preparation of a stable BEC with state $\ket{1,-1}$ in a trap
+%together with the application of coupling electromagnetic pulses acting as beam-splitters in spin-space.
+%Two different schemes were used.
+%The first was Ramsey interferometry with a $\pi/2$-pulse in the beginning, followed by
+%evolution of the resulting non-equilibrium superposition of states $\ket{1,-1}$ and $\ket{2,+1}$,
+%and a final $\pi/2$-pulse, which transformed the phase difference of the components
+%into a population difference (see~\figref{fig:visibility},~(a) for the timeline).
+%The second scheme had an additional $\pi$-pulse (``spin echo'') in the middle of the evolution,
+%which partially restored interferometric contrast lost due to spatial propagation
+%(\figref{fig:visibility},~(c)).
 
 % Egorov
-In a multi-mode trap, the
-ground state for the superposition state consists of atoms in state $\ket{2,+1}$ in the center of the trap,
-with atoms in state $\ket{1,-1}$ at the edges~\cite{Mertes2007}.
-However, both components initially have parabolic density profiles.
-Thus, this superposition is not in equilibrium and collective oscillations occur,
-with both components oscillating about their two-component ground state.
-During these oscillations, the local BEC velocities periodically vanish at the turnover points,
-which means that the phase of each is spatially uniform.
-Both components overlap at these turnover points, so that
-the interference contrast of the two-component BEC experiences periodical revivals at the
-turnover points~(\figref{fig:visibility},~(b)).
+%In a multi-mode trap, the
+%ground state for the superposition state consists of atoms in state $\ket{2,+1}$ in the center of the trap,
+%with atoms in state $\ket{1,-1}$ at the edges~\cite{Mertes2007}.
+%However, both components initially have parabolic density profiles.
+%Thus, this superposition is not in equilibrium and collective oscillations occur,
+%with both components oscillating about their two-component ground state.
+%During these oscillations, the local BEC velocities periodically vanish at the turnover points,
+%which means that the phase of each is spatially uniform.
+%Both components overlap at these turnover points, so that
+%the interference contrast of the two-component BEC experiences periodical revivals at the
+%turnover points~(\figref{fig:visibility},~(b)).
 % TODO maybe need a better join of this with the next paragraph, avoid repeating visibility
 
-The fringe visibility $\mathcal{V}$ for Ramsey and spin echo schemes is plotted in~\figref{fig:visibility}.
-Simulations of Ramsey scheme experiment (\figref{fig:visibility},~(b)) with the Wigner method
-using typical experimental parameters
-show that quantum noise increases the rate of decay of the visibility.
-In the spin echo scheme (\figref{fig:visibility},~(d)) the central $\pi$-pulse helps
-to restore visibility by inverting the evolution of the condensate, thus cancelling asymmetries in the loss terms.
-In simulations with the Wigner method, the visibility is not restored to its initial value even at revival points due to quantum noise, which does not appear in GPE simulations.
+%The fringe visibility $\mathcal{V}$ for Ramsey and spin echo schemes is plotted in~\figref{fig:visibility}.
+%Simulations of Ramsey scheme experiment (\figref{fig:visibility},~(b)) with the Wigner method
+%using typical experimental parameters
+%show that quantum noise increases the rate of decay of the visibility.
+%In the spin echo scheme (\figref{fig:visibility},~(d)) the central $\pi$-pulse helps
+%to restore visibility by inverting the evolution of the condensate, thus cancelling asymmetries in the loss terms.
+%In simulations with the Wigner method, the visibility is not restored to its initial value even at revival points due to quantum noise, which does not appear in GPE simulations.
 
 \begin{figure}
 	\includegraphics{figures_generated/ramsey_squeezing.pdf}
