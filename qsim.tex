@@ -291,8 +291,14 @@ This effective Fokker-Planck equation can be transformed
 to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 \label{eqn:SDE}
-	\frac{d\Psi_{j}}{dt} = -i \left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2} \right) \Psi_{j} -
-	\Gamma_{j} + \sum_{n,\lvec} \beta_{\lvec,j}^{(n)} \zeta_{\lvec}^{(n)} (\xvec,t).
+\begin{split}
+	d\Psi_{j} & = \left(
+		-i \left(
+			K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2}
+		\right) \Psi_{j} - \Gamma_{j}
+	\right) dt \\
+	& +	\sum_{n,\lvec} \beta_{\lvec,j}^{(n)} \zeta_{\lvec}^{(n)} (\xvec,t).
+\end{split}
 \end{equation}
 Here $\zeta_{\lvec}^{(n)}(\xvec, t)$ is a complex,
 stochastic delta-correlated Gaussian noise with
