@@ -1,24 +1,16 @@
-\documentclass[aps,prl,twocolumn,showpacs,amsmath,amssymb,superscriptaddress]{revtex4-1}
+\documentclass[aps,prl,twocolumn,showpacs,amsmath,amssymb,superscriptaddress,flushbottom,noraggedfooter]{revtex4-1}
 
 \usepackage{graphicx}
-\usepackage[justification=centerlast]{caption} % FIXME: 'justified' should be default, but it does not work
+%\usepackage[justification=justified]{caption} % FIXME: 'justified' should be default, but it does not work
 \usepackage{subfig}
-\usepackage{amsbsy}
 \usepackage{amssymb}
-\usepackage{esint}
 \usepackage{bm}
-\usepackage[usenames]{color}
-\usepackage[shortcuts]{extdash}
-
-\newcommand{\bogdansremark}[1]{\textcolor{red}{{[}BO: #1{]}}}
-\newcommand{\petersremark}[1]{\textcolor{cyan}{{[}PD: #1{]}}}
-\newcommand{\andreisremark}[1]{\textcolor{green}{{[}AS: #1{]}}}
 
 % macros for different symbols
 \newcommand{\Rb}{$^{87}$Rb}
 \newcommand{\figref}[1]{Fig.~\ref{#1}}
-\newcommand{\bra}[1]{\mbox{\ensuremath{\langle #1 |}}}
-\newcommand{\ket}[1]{\mbox{\ensuremath{| #1 \rangle}}}
+\newcommand{\bra}[1]{\mbox{\ensuremath{\langle #1 \vert}}}
+\newcommand{\ket}[1]{\mbox{\ensuremath{\vert #1 \rangle}}}
 \newcommand{\xvec}{\boldsymbol{x}}
 \newcommand{\ivec}{\boldsymbol{i}}
 \newcommand{\jvec}{\boldsymbol{j}}
