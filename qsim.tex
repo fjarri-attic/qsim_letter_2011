@@ -292,19 +292,17 @@ to a coupled stochastic Gross-Pitaevskii equation:
 \begin{equation}
 \label{eqn:SDE}
 \begin{split}
-	d\Psi_{j} & = \left(
-		-i \left(
-			K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2}
-		\right) \Psi_{j} - \Gamma_{j}
-	\right) dt \\
-	& +	\sum_{n,\lvec} \beta_{\lvec,j}^{(n)} \zeta_{\lvec}^{(n)} (\xvec,t).
+	\frac{d\Psi_{j}}{dt} = -i \left(
+		K_{ij} + U_{ij} \lvert \Psi_{i} \rvert ^{2}
+	\right) \Psi_{j} - \Gamma_{j} +
+	\sum_{n,\lvec} \beta_{\lvec,j}^{(n)} \zeta_{\lvec}^{(n)} (\xvec,t).
 \end{split}
 \end{equation}
 Here $\zeta_{\lvec}^{(n)}(\xvec, t)$ is a complex,
 stochastic delta-correlated Gaussian noise with
 \begin{equation}
 	\left\langle
-		\zeta_{\lvec}^{(n)} (\xvec,t) \zeta_{\kvec}^{(m)}(\xvec^\prime, t^\prime)
+		\zeta_{\lvec}^{(n)} (\xvec,t) \zeta_{\kvec}^{(m)*}(\xvec^\prime, t^\prime)
 	\right\rangle =
 	\delta_{\lvec \kvec} \delta^{nm} \delta^{D} \left(
 		\xvec - \xvec^\prime
