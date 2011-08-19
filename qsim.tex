@@ -165,26 +165,27 @@ where higher derivative terms of type $\mbox{O} \left[ \delta^3 / \delta\Psi_i^3
 This approximation neglects higher-order terms in an expansion in $1 / \sqrt{N}$,
 and is therefore valid in the limit of $N \gg M$
 where $N$ is the atom number and $M$ is the number of low-energy modes included~\cite{Drummond1993,Sinatra2002,Norrie2006}.
-In free-space calculations it is important maintain this mode truncation,
+In free-space calculations it is important to maintain this mode truncation,
 otherwise the truncated Wigner method is unreliable.
 In the relevant limits where the technique is applicable, the equations
 simply reduce to Gross-Pitaevskii equations with Gaussian fluctuations
 of the initial conditions:
 \begin{equation}
 \label{eqn:SDE-1}
-	\frac{d\Psi_j}{dt} = -i \left(
-		K_{ij} + U_{ij} \lvert \Psi_i \rvert^2
-	\right) \Psi_j.
+	\frac{d\Psi_i}{dt} = -i \left(
+		K_{ij} + U_{ij} \lvert \Psi_j \rvert^2
+	\right) \Psi_i.
 \end{equation}
 For initial conditions in interferometry it is usually sufficient to consider
 a coherent state amplitude $\Psi_s^c$,
 corresponding to a typical initial state with Poissonian number fluctuations,
 as produced by a beam-splitter.
 In this case the initial Wigner amplitude has a Gaussian random distribution, with
-$\Psi_s(\xvec, t_0) = \Psi_s^c(\xvec) + \Delta \Psi_s(\xvec)$, where:
-$\left\langle \Delta \Psi_s(\xvec) \Delta \Psi_u^*(\xvec^{\prime}) \right\rangle = \delta_{su} \delta^D \left( \xvec - \xvec^{\prime} \right) / 2.$
+$\Psi_i(\xvec, t_0) = \Psi_i^c(\xvec) + \Delta \Psi_i(\xvec)$, where:
+$\left\langle \Delta \Psi_i(\xvec) \Delta \Psi_j^*(\xvec^{\prime}) \right\rangle =
+\delta_{ij} \delta^D(\xvec - \xvec^{\prime}) / 2.$
 For greater accuracy, the initial state can be modified to account for
-initial ground-state correlations, thermal noise, or additional number-fluctuations.
+initial ground-state correlations, thermal noise, or additional number fluctuations.
 This initial noise is necessary because the Wigner representation generates
 symmetrically ordered correlation functions.
 When normal ordered correlations are measured, one has to express them
@@ -212,7 +213,9 @@ defined so that,
 		+ \sum_{n,\lvec} \kappa_{\lvec}^{(n)} \int d^{D}\xvec
 			\mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho} \right],
 \end{equation}
-where $n$ is the number of interacting particles, and $\lvec$ is a vector indicating the spins that are coupled, and have introduced local Liouville loss terms,
+where $n$ is the number of interacting particles,
+and $\lvec$ is a vector indicating the spins that are coupled,
+and we have introduced local Liouville loss terms,
 \begin{equation}
 	\mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho} \right] =
 		2\hat{O}_{\lvec}^{(n)} \hat{\rho} \hat{O}_{\lvec}^{(n)\dagger}
@@ -220,7 +223,10 @@ where $n$ is the number of interacting particles, and $\lvec$ is a vector indica
 		- \hat{\rho} \hat{O}_{\lvec}^{(n)\dagger} \hat{O}_{\lvec}^{(n)},
 \end{equation}
 where the reservoir coupling operators $\hat{O}_{\lvec}^{(n)}$ are the distinct $n$-fold products of local field annihilation operators,
-$\hat{O}_{\lvec}^{(n)} = \hat{O}_{\lvec}^{(n)} \left( \widehat{\Psivec} \right) = \widehat{\Psi}_{l_{1}} \left( \xvec \right) \widehat{\Psi}_{l_{2}} \left( \xvec \right) \ldots \widehat{\Psi}_{l_{n}} \left( \xvec \right),$
+$\hat{O}_{\lvec}^{(n)} = \hat{O}_{\lvec}^{(n)} (\widehat{\Psivec}) =
+	\widehat{\Psi}_{l_{1}} (\xvec)
+	\widehat{\Psi}_{l_{2}} (\xvec) \ldots
+	\widehat{\Psi}_{l_{n}} (\xvec),$
 describing local $n$-body collision losses.
 
 After transforming these new terms to evolution equations for the Wigner distribution, the drift term $A_{i}$
@@ -239,19 +245,20 @@ given by:
 This in turn leads to a stochastic equation:
 \begin{equation}
 \label{eqn:SDE}
-	\frac{d\Psi_{j}}{dt} =
-		- i\left( K_{ij} + U_{ij} \lvert \Psi_{i} \rvert^{2} \right) \Psi_{j}
-		- \Gamma_{j}
-		+ \sum_{n,\lvec} \beta_{\lvec,j}^{(n)} \zeta_{\lvec}^{(n)}(\xvec,t).
+	\frac{d\Psi_{i}}{dt} =
+		- i\left( K_{ij} + U_{ij} \lvert \Psi_{j} \rvert^{2} \right) \Psi_{i}
+		- \Gamma_{i}
+		+ \sum_{n,\lvec} \beta_{\lvec,i}^{(n)} \zeta_{\lvec}^{(n)}(\xvec,t),
 \end{equation}
 where the nonlinear loss has the form:
 \begin{equation}
 	\Gamma_{i} = \sum_{n,\lvec}
 		\kappa_{\lvec}^{(n)}
-		\frac{\partial O_{\lvec}^{(n)*} \left(\Psivec\right)}{\partial\Psi_{i}^{*}\left(\xvec\right)}
-		O_{\lvec}^{(n)}\left(\xvec\right),
+		\frac{\partial O_{\lvec}^{(n)*} (\Psivec)}{\partial\Psi_{i}^{*} (\xvec)}
+		O_{\lvec}^{(n)}(\xvec),
 \end{equation}
-and $\zeta_{\lvec}^{(n)}(\xvec, t)$ is a corresponding complex, stochastic delta-correlated Gaussian noise with
+and $\zeta_{\lvec}^{(n)}(\xvec, t)$ is a corresponding complex,
+stochastic delta-correlated Gaussian noise with
 \begin{equation}
 	\left\langle
 		\zeta_{\lvec}^{(n)} (\xvec,t) \zeta_{\kvec}^{(m)*}(\xvec^\prime, t^\prime)
@@ -263,9 +270,9 @@ and $\zeta_{\lvec}^{(n)}(\xvec, t)$ is a corresponding complex, stochastic delta
 \end{equation}
 The multiplicative noise coefficient
 \begin{equation}
-	\beta_{\lvec,j}^{(n)} \left( \Psivec \right) =
+	\beta_{\lvec,i}^{(n)} \left( \Psivec \right) =
 	\sqrt{\kappa_{\lvec}^{(n)}}
-	\frac{\partial O_{\lvec}^{(n)}}{\partial\Psi_{j}}
+	\frac{\partial O_{\lvec}^{(n)}}{\partial\Psi_{i}}
 \end{equation}
 is a fluctuation-dissipation term,
 so that the Wigner variables remain equivalent to the corresponding operators.
@@ -286,9 +293,8 @@ In this work we used the simple basis of plane waves in the volume $V$,
 and the atomic density of component $s$ is therefore:
 \begin{equation}
 \begin{split}
-n_{s} (\xvec) & =
-\langle \widehat{\Psi}^\dagger_{s} (\xvec) \widehat{\Psi}_{s} (\xvec) \rangle \\
-& = \langle \Psi^*_{s} (\xvec) \Psi_{s} (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
+	n_i (\xvec) & = \langle \widehat{\Psi}^\dagger_i (\xvec) \widehat{\Psi}_i (\xvec) \rangle \\
+		& = \langle \Psi^*_i (\xvec) \Psi_i (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
 \end{split}
 \end{equation}
 Here we used the fact that the approximate Wigner function is a probability distribution
@@ -401,7 +407,7 @@ For lossless environments, this effect is optimized when the cross-species
 scattering length is maximally different to the intra-species scattering
 length, which is found near the Feshbach resonance.
 However, there are competing nonlinear loss effects at the Feshbach resonance,
-which mean that some detuning of the magnetic field is essential to reduce
+which means that some detuning of the magnetic field is essential to reduce
 these detrimental losses.
 Subsequently, the squeezing is destroyed in time as the two fields recombine
 and interfere with each other.
@@ -419,10 +425,11 @@ to treat quantum fluctuations.
 This means that there are no complexity problems due to exponential growth
 of the numbers of quantum states.
 Furthermore, it is straightforward to treat a spatially inhomogeneous,
-many-mode problem as found in an extended D-dimensional environment.
+many-mode problem as found in an extended $D$-dimensional environment.
 Initial conditions such as a coherent beam-splitter as employed in typical
-atom interferometry experiments can be readily included.Wigner method of
-simulating BEC dynamics is quantitatively accurate for a range of interferometric experiments involving large numbers of atoms and multiple loss mechanisms.
+atom interferometry experiments can be readily included.
+Wigner method of simulating BEC dynamics is quantitatively accurate
+for a range of interferometric experiments involving large numbers of atoms and multiple loss mechanisms.
 It allows one to obtain both average values and variances of different measurables,
 properly accounting for both quantum effects and nonlinear losses in the condensate.
 
