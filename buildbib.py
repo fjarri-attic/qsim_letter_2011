@@ -53,7 +53,8 @@ for raw_entry in raw_entries:
 			del entry_fields['year']
 
 			entry_fields['archivePrefix'] = 'arXiv'
-			entry_fields['eprint'] = aid[:4] + '.' + aid[5:]
+			mo = re.search(r"(\d+).(\d+)$", aid)
+			entry_fields['eprint'] = mo.group(1) + '.' + mo.group(2)
 			entry_fields['SLACcitation'] = "%%CITATION=" + aid[:4] + aid[5:] + ";%%"
 
 	entries.append((entry_type, entry_key, entry_fields))
