@@ -292,6 +292,7 @@ the index $i$ in $\gamma^{(n)}_{\lvec,i}$ can be omitted.
 In this work we used the simple basis of plane waves in the volume $V$,
 and the atomic density of component $s$ is therefore:
 \begin{equation}
+\label{eqn:wigner-density}
 \begin{split}
 	n_i (\xvec) & = \langle \widehat{\Psi}^\dagger_i (\xvec) \widehat{\Psi}_i (\xvec) \rangle \\
 		& = \langle \Psi^*_i (\xvec) \Psi_i (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
@@ -368,20 +369,46 @@ these large particle numbers.
 The Wigner method is able to produce not only the average values of different measurables,
 but their variances too.
 As an example, we can obtain the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
-It can be defined as following~\cite{Li2009}:
+If we Define spin component operators as
+\begin{equation}
+\begin{split}
+	\hat{S}_x & = \frac{1}{2} \int d^D\xvec \left[
+		\widehat{\Psi}^\dagger_2 (\xvec) \widehat{\Psi}_1 (\xvec)
+		+ \widehat{\Psi}^\dagger_1 (\xvec) \widehat{\Psi}_2 (\xvec)
+	\right], \\
+	\hat{S}_y & = \frac{i}{2} \int d^D\xvec \left[
+		\widehat{\Psi}^\dagger_2 (\xvec) \widehat{\Psi}_1 (\xvec)
+		- \widehat{\Psi}^\dagger_1 (\xvec) \widehat{\Psi}_2 (\xvec)
+	\right], \\
+	\hat{S}_z & = \frac{1}{2} \int d^D\xvec \left[
+		\widehat{\Psi}^\dagger_1 (\xvec) \widehat{\Psi}_1 (\xvec)
+		- \widehat{\Psi}^\dagger_2 (\xvec) \widehat{\Psi}_2 (\xvec)
+	\right],
+\end{split}
+\end{equation}
+average values of spin vector components $\langle \hat{S}_x \rangle$, $\langle \hat{S}_y \rangle$,
+$\langle \hat{S}_z \rangle$ can be calculated similarly to average density in
+equation~(\ref{eqn:wigner-density}).
+Now we can shift the centre of coordinates to the end of the vector
+$\langle \boldsymbol{S} \rangle = \{ \langle \hat{S}_x \rangle, \langle \hat{S}_y \rangle, \langle \hat{S}_z \rangle \}$
+and rotate it, making $z^\prime$ axis parallel to $\boldsymbol{S}$ and choosing the remaining axes $x^\prime$ and $y^\prime$ so that
+\begin{equation}
+\begin{split}
+	\Delta \hat{S}^2_{x^\prime} & = \max\limits_{(x^\prime,y^\prime)} \Delta \hat{S}^2_{x^\prime}, \\
+	\Delta \hat{S}^2_{y^\prime} & = \min\limits_{(x^\prime,y^\prime)} \Delta \hat{S}^2_{y^\prime}.
+\end{split}
+\end{equation}
+Second-order moments of spin operators are represented using fourth-order moments of field operators
+and, therefore, can be calculated using wavefunctions in Wigner representation.
+In this new coordinate system the squeezing parameter is expressed simply as
 \begin{equation}
 \label{eqn:squeezing}
-	\xi^2 = \frac{N \Delta S^2_{\perp, \mathrm{min}}}{\langle S \rangle^2},
+	\xi^2 = \frac{N \Delta \hat{S}^2_{y^\prime}}{\langle S \rangle^2},
 \end{equation}
-where $N$ is the total number of atoms,
-$\Delta S^2_{\perp, \mathrm{min}}$ is the minimal variance of the spin in the plane orthogonal to the mean spin,
-and $\langle S \rangle$ is the length of the average spin.
-This parameter serves as a measure of atomic entanglement in the condensate,
+where $N$ is the total number of atoms.
+The formula for the squeezing parameter in the original coordinate system can be found elsewhere~\cite{Li2009}.
+The squeezing parameter serves as a measure of atomic entanglement in the condensate,
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
-It can be represented using moments of field operators $\widehat{\Psi}_1$
-and $\widehat{\Psi}_2$~\cite{Li2009}.
-
-*****************************NEED AN EXPLICIT LINK TO SIMULATIONS HERE*****************************************
 
 As an illustration consider~\figref{fig:squeezing}, which shows calculations of the squeezing parameter
 for optically trapped $\ket{1,+1}$ and $\ket{2,-1}$ BEC in a Ramsey sequence, for an $^{87}Rb$ BEC near a Feshbach resonance at $9.1\,\mathrm{G}$~\cite{Kaufman2009}.
