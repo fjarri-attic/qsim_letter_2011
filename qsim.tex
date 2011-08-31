@@ -71,9 +71,8 @@ using a truncated Wigner representation~\cite{Drummond1993,Steel1998,Sinatra2002
 This method extends the conventional Gross-Pitaevskii equations
 describing a Bose condensate to include quantum noise effects,
 including noise due to linear and nonlinear losses.
-The theory we describe here allows the accurate inclusion of quantum fluctuations due to nonlinear losses,
+The theory allows the accurate inclusion of quantum fluctuations due to nonlinear losses,
 which is a dominant effect when atom numbers are increased to improve fringe visibility.
-As a result, this theoretical approach can be reliably used as a benchmark for predictions.
 
 Importantly, we can clearly demonstrate where fringe visibility is driven by quantum fluctuations,
 and where it is driven by trap inhomogeneity and dynamical effects,
@@ -86,8 +85,8 @@ collisional and nonlinear loss dynamics~\cite{Norrie2005,Deuar2007}.
 Our theory can be readily extended to include finite temperature initial conditions~\cite{Steel1998,Isella2006},
 which will be treated elsewhere.
 
-Quantum phase-diffusion is defined as the phase noise induced by number fluctuations,
-which are conjugate to phase and amplified by atomic interactions.
+Quantum phase-diffusion is defined as the phase noise induced by number fluctuations
+which are conjugate to phase.
 This is a fundamental feature of BEC interferometry, and can only be removed when there are no interactions.
 However, there are other reasons for decoherence, which are also important.
 The approach used here captures all three significant features of atom
@@ -95,8 +94,9 @@ interferometry that can result in decoherence: phase-diffusion, losses,
 and trap inhomogeneity effects.
 The results given in this paper are applicable to simulations where the
 atom number per lattice point or mode is large.
+We focus on trapped BEC interferometry, for definiteness, although the method has a more general applicability.
 
-We start by assuming that the trapped BEC has $s$-wave interactions,
+We start by assuming that the BEC has $s$-wave interactions,
 together with Markovian losses due to $n$-body collisions.
 We employ a master equation together with the Wigner-Moyal quantum phase-space representation~\cite{Gardiner2004}
 and a truncation of third and higher-order derivatives in the equations of motion.
@@ -109,7 +109,7 @@ It has been further tested by comparison with the exact positive-P simulation me
 The truncated Wigner method is particularly useful in low-dimensional and
 trap environments, where it has successfully predicted quantum squeezing
 and phase-diffusion effects, in good agreement with dynamical experiments
-in one-dimensional quantum soliton propagation in photonics~\cite{Carter1987,Corney2008}.
+in photonic quantum soliton propagation~\cite{Carter1987,Corney2008}.
 
 In the present Letter, we treat an ultra-cold,
 interacting multi-component spinor Bose gas in $D$ effective dimensions.
@@ -130,7 +130,7 @@ with contact interactions and external potentials:
 		\widehat{\Psi}_{j} \widehat{\Psi}_{i}
 	\right\}.
 \end{equation}
-Here we omit the field argument $(\xvec)$ after field operators for brevity,
+Here we omit the field argument $(\xvec)$ for brevity,
 and use the Einstein summation convention of summing over repeated indices.
 $K_{ij}$ is the single-particle Hamiltonian:
 \begin{equation}
@@ -141,7 +141,7 @@ where $V_{i}$ is the external trapping potential for spin $i$,
 $\omega_{i}$ is the internal Zeeman energy splitting associated with spin $i$,
 and $\Omega_{ij}$ represents a time-dependent coupling
 that is used to rotate one spin projection into another.
-Thus $\langle \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} \rangle$
+Thus, $n_i = \langle \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
 and $U_{ij}$ is the atom-atom interaction term.
 For a dilute gas at low enough temperatures,
@@ -165,8 +165,7 @@ where higher derivative terms of type $\mbox{O} \left[ \delta^3 / \delta\Psi_i^3
 This approximation neglects higher-order terms in an expansion in $1 / \sqrt{N}$,
 and is therefore valid in the limit of $N \gg M$
 where $N$ is the atom number and $M$ is the number of low-energy modes included~\cite{Drummond1993,Sinatra2002,Norrie2006}.
-In free-space calculations it is important to maintain this mode truncation,
-otherwise the truncated Wigner method is unreliable.
+In free-space calculations it is important to maintain this mode truncation.
 In the relevant limits where the technique is applicable, the equations
 simply reduce to Gross-Pitaevskii equations with Gaussian fluctuations
 of the initial conditions:
@@ -184,11 +183,11 @@ In this case the initial Wigner amplitude has a Gaussian random distribution, wi
 $\Psi_i(\xvec, t_0) = \Psi_i^c(\xvec) + \Delta \Psi_i(\xvec)$, where:
 $\left\langle \Delta \Psi_i(\xvec) \Delta \Psi_j^*(\xvec^{\prime}) \right\rangle =
 \delta_{ij} \delta^D(\xvec - \xvec^{\prime}) / 2.$
-For greater accuracy, the initial state can be modified to account for
-initial ground-state correlations, thermal noise, or additional number fluctuations.
 This initial noise is necessary because the Wigner representation generates
-symmetrically ordered correlation functions.
-When normal ordered correlations are measured, one has to express them
+symmetrically ordered correlation functions, and includes vacuum fluctuations.
+For greater accuracy, the initial state can be modified to account for
+initial  correlations, thermal noise, or additional fluctuations.
+If normal ordered correlations are measured, one has to express them
 as a sum of symmetrically ordered terms.
 
 This includes all the known nonlinear quantum noise effects of quantum dynamics,
@@ -214,7 +213,7 @@ defined so that,
 			\mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho} \right],
 \end{equation}
 where $n$ is the number of interacting particles,
-and $\lvec$ is a vector indicating the spins that are coupled,
+$\lvec = (l_1, l_2, \ldots, l_n)$ is a vector indicating the spins that are coupled,
 and we have introduced local Liouville loss terms,
 \begin{equation}
 	\mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho} \right] =
@@ -283,20 +282,15 @@ which is defined using atom number losses:
 	\dot{n_i} = - \gamma^{(n)}_{\lvec,i} n^{m_1}_1 n^{m_2}_2 \ldots ,
 \end{equation}
 where $n_i$ is the density of component $i$ and $m_i$
-is its multiplicity in the operator $\hat{O}^{(n)}_{\lvec}$
-(in other words, the number of spin-$i$ atoms lost in the collision).
+is the number of spin-$i$ atoms lost in the collision.
 The conversion can be carried out as $\gamma^{(n)}_{\lvec,i} = 2 m_i \kappa^{(n)}_{\lvec}$.
-When only one $m_i$ is non-zero, or if they are all equal,
-the index $i$ in $\gamma^{(n)}_{\lvec,i}$ can be omitted.
 
-In this work we used the simple basis of plane waves in the volume $V$,
-and the atomic density of component $s$ is therefore:
+In this work we use a basis of plane waves in the volume $V$,
+and the density of component $s$ is calculated as a probabilistic average:
 \begin{equation}
 \label{eqn:wigner-density}
-\begin{split}
-	n_i (\xvec) & = \langle \widehat{\Psi}^\dagger_i (\xvec) \widehat{\Psi}_i (\xvec) \rangle \\
-		& = \langle \Psi^*_i (\xvec) \Psi_i (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
-\end{split}
+	n_i (\xvec)
+		= \langle \Psi^*_i (\xvec) \Psi_i (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
 \end{equation}
 Here we used the fact that the approximate Wigner function is a probability distribution
 equivalent to an averaged sum over different simulation paths.
@@ -349,8 +343,18 @@ recovered at long evolution times using the spin-echo method.
 However, the addition of quantum noise (solid line) via the Wigner simulations
 noticeably speeds up the visibility decay even with a spin-echo pulse present.
 This is in agreement with experimental observations, and shows that these
-effects play a very significant part in the decay of visibility, even for
-these large particle numbers.
+effects play a significant part in the decay of visibility, even for
+large particle numbers.
+
+The important feature of these quantum dynamical simulations
+is that they are able to treat large numbers of atoms (55,000 in this case),
+while correctly tracking all the quantum noise sources, and also extending the simulations to long time-scales.
+Both of these features, large atom numbers and long time-scales,
+are essential ingredients to accurate interferometric measurements.
+The simulations give accurate predictions despite large, multi-mode dynamical motion in three dimensions
+and substantial losses of most of the condensate atoms~\cite{Egorov2011}.
+On longer time-scales, the experimental accuracy is limited by technical noise in the RF signal generators,
+and we have no data for comparisons.
 
 \begin{figure}
 	\includegraphics{ramsey_squeezing.eps}
@@ -366,19 +370,17 @@ these large particle numbers.
 	\label{fig:squeezing}
 \end{figure}
 
-The Wigner method is able to produce not only the average values of different measurables,
+The Wigner method is able to produce not only the average values of different observables,
 but their variances too.
-As an example, we can obtain the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
+As an example, we now calculate the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
+This allows the analysis of experiments beyond the usual shot-noise limit ***** - need references here!!****.
 If we define spin component operators as
+$\hat{S}_{x} = [ \hat{S}_+ + \hat{S}_+^\dagger ] / 2 $,
+$\hat{S}_{y} = i [ \hat{S}_+ - \hat{S}_+^\dagger ] / 2 $ and
 \begin{equation}
 \begin{split}
-	\hat{S}_x & = \frac{1}{2} \int d^D\xvec \left[
+	\hat{S}_+ & = \int d^D\xvec \left[
 		\widehat{\Psi}^\dagger_2 (\xvec) \widehat{\Psi}_1 (\xvec)
-		+ \widehat{\Psi}^\dagger_1 (\xvec) \widehat{\Psi}_2 (\xvec)
-	\right], \\
-	\hat{S}_y & = \frac{i}{2} \int d^D\xvec \left[
-		\widehat{\Psi}^\dagger_2 (\xvec) \widehat{\Psi}_1 (\xvec)
-		- \widehat{\Psi}^\dagger_1 (\xvec) \widehat{\Psi}_2 (\xvec)
 	\right], \\
 	\hat{S}_z & = \frac{1}{2} \int d^D\xvec \left[
 		\widehat{\Psi}^\dagger_1 (\xvec) \widehat{\Psi}_1 (\xvec)
@@ -386,18 +388,13 @@ If we define spin component operators as
 	\right],
 \end{split}
 \end{equation}
-average values of spin vector components $\langle \hat{S}_x \rangle$, $\langle \hat{S}_y \rangle$,
-$\langle \hat{S}_z \rangle$ can be calculated similarly to average density in
+the average values of spin vector components can be calculated similarly to the average density in
 equation~(\ref{eqn:wigner-density}).
 Now we can shift the centre of coordinates to the end of the vector
 $\langle \boldsymbol{S} \rangle = \{ \langle \hat{S}_x \rangle, \langle \hat{S}_y \rangle, \langle \hat{S}_z \rangle \}$
-and rotate it, making $z^\prime$ axis parallel to $\boldsymbol{S}$ and choosing the remaining axes $x^\prime$ and $y^\prime$ so that
-\begin{equation}
-\begin{split}
-	\Delta \hat{S}^2_{x^\prime} & = \max\limits_{(x^\prime,y^\prime)} \Delta \hat{S}^2_{x^\prime}, \\
-	\Delta \hat{S}^2_{y^\prime} & = \min\limits_{(x^\prime,y^\prime)} \Delta \hat{S}^2_{y^\prime}.
-\end{split}
-\end{equation}
+and rotate it, making the $z^\prime$ axis parallel to $\boldsymbol{S}$ and choosing the remaining axes $x^\prime$ and $y^\prime$ so that
+$\Delta \hat{S}^2_{y^\prime} $ is minimized.
+
 Second-order moments of spin operators are represented using fourth-order moments of field operators
 and, therefore, can be calculated using wavefunctions in Wigner representation.
 In this new coordinate system the squeezing parameter is expressed simply as
@@ -411,19 +408,10 @@ The squeezing parameter serves as a measure of atomic entanglement in the conden
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
 
 As an illustration consider~\figref{fig:squeezing}, which shows calculations of the squeezing parameter
-for optically trapped $\ket{1,+1}$ and $\ket{2,-1}$ BEC in a Ramsey sequence, for an \Rb~BEC near a Feshbach resonance at $9.1\,\mathrm{G}$~\cite{Kaufman2009}.
-Different inter-component scattering lengths (corresponding to different magnetic fields) were used in order to find the optimal regime
-with significant squeezing, lasting for the maximum time.
-
-The important feature of these quantum dynamical simulations
-is that they are able to treat large numbers of atoms (55,000 in this case),
-while correctly tracking all the quantum noise sources, and also extending the simulations to long time-scales.
-Both of these features, large atom numbers and long time-scales,
-are essential ingredients to accurate interferometric measurements.
-The simulations give accurate predictions despite large, multi-mode dynamical motion in three dimensions
-and substantial losses of most of the condensate atoms~\cite{Egorov2011}.
-On longer time-scales, the experimental accuracy is limited by technical noise in the RF signal generators,
-and we have no data for comparisons.
+for optically trapped $\ket{1,+1}$ and $\ket{2,-1}$ BEC in a Ramsey sequence,
+for an \Rb~BEC near a Feshbach resonance at $9.1\,\mathrm{G}$~\cite{Kaufman2009}.
+Different inter-component scattering lengths (corresponding to different magnetic fields)
+were used in order to find the optimal regime with significant squeezing.
 
 These simulations predict the degree of quantum noise-reduction, which
 is a technique that can be used to improve precision quantum interferometry.
@@ -439,8 +427,8 @@ these detrimental losses.
 Subsequently, the squeezing is destroyed in time as the two fields recombine
 and interfere with each other.
 Importantly, these quantum squeezing calculations indicate conditions that
-will allow this important macroscopic quantum effect to be experimentally
-observed in ultra-cold atomic BEC for an order of magnitude larger atom
+will allow this macroscopic quantum effect to be experimentally
+observed in ultra-cold atomic BEC for much larger atom
 numbers than calculated previously.
 
 In conclusion, the truncated Wigner-Moyal quantum phase-space theory is
@@ -449,16 +437,11 @@ Although the Wigner function is not a true probability, it becomes one
 to a good approximation in the limit of large particle number, so that
 a probabilistic (random) sampling of phase-space trajectories can be used
 to treat quantum fluctuations.
-This means that there are no complexity problems due to exponential growth
-of the numbers of quantum states.
 Furthermore, it is straightforward to treat a spatially inhomogeneous,
 many-mode problem as found in an extended $D$-dimensional environment.
 Initial conditions such as a coherent beam-splitter as employed in typical
-atom interferometry experiments can be readily included.
-Wigner method of simulating BEC dynamics is quantitatively accurate
-for a range of interferometric experiments involving large numbers of atoms and multiple loss mechanisms.
-It allows one to obtain both average values and variances of different measurables,
-properly accounting for both quantum effects and nonlinear losses in the condensate.
+atom interferometry experiments can be readily included,
+with proper accounting for both quantum effects and nonlinear losses in the condensate.
 
 \bibliography{qsim.bib}
 
