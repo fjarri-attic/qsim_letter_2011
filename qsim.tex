@@ -135,11 +135,11 @@ and use the Einstein summation convention of summing over repeated indices.
 $K_{ij}$ is the single-particle Hamiltonian:
 \begin{equation}
 	K_{ij} = \left( -\frac{\hbar}{2m} \nabla^2 + \omega_i + V_i(\xvec) / \hbar \right) \delta_{ij} +
-		\Omega_{ij}(t),
+		\tilde{\Omega}_{ij}(t),
 \end{equation}
 where $V_{i}$ is the external trapping potential for spin $i$,
 $\omega_{i}$ is the internal Zeeman energy splitting associated with spin $i$,
-and $\Omega_{ij}$ represents a time-dependent coupling
+and $\tilde{\Omega}_{ij}$ represents a time-dependent coupling
 that is used to rotate one spin projection into another.
 Thus, $n_i = \langle \widehat{\Psi}_{i}^{\dagger} \widehat{\Psi}_{i} \rangle$
 is the spin $i$ atomic density, $m$ is the atomic mass,
@@ -323,7 +323,7 @@ equivalent to an averaged sum over different simulation paths.
 
 To illustrate the applications of this method we consider recent interferometry
 experiments with a two-component BEC involving two hyperfine states
-${F=1,\, m_{F}=-1}$ and ${F=2,\, m_{F}=+1}$ in \Rb~\cite{Egorov2011}.
+${\ket{F=1,\, m_F=-1}}$ and ${\ket{F=2,\, m_F=+1}}$ in \Rb~\cite{Egorov2011}.
 A conventional Ramsey sequence (\figref{fig:visibility},~(a)) has been used
 with the BEC confined in a cigar-shaped magnetic trap with the frequencies $(97.0, 97.0, 11.69)\,\mathrm{Hz}$
 in a bias magnetic field of $3.23\,\mathrm{G}$ where magnetic field dephasing is largely eliminated~\cite{Hall1998}.
@@ -408,7 +408,7 @@ The squeezing parameter serves as a measure of atomic entanglement in the conden
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
 
 As an illustration consider~\figref{fig:squeezing}, which shows calculations of the squeezing parameter
-for optically trapped $\ket{1,+1}$ and $\ket{2,-1}$ BEC in a Ramsey sequence,
+for optically trapped ${\ket{F=1,\, m_F=+1}}$ and ${\ket{F=2,\, m_F=-1}}$ BEC in a Ramsey sequence,
 for an \Rb~BEC near a Feshbach resonance at $9.1\,\mathrm{G}$~\cite{Kaufman2009}.
 Different inter-component scattering lengths (corresponding to different magnetic fields)
 were used in order to find the optimal regime with significant squeezing.
