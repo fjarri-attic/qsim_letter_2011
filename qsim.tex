@@ -39,11 +39,8 @@
 \affiliation{Centre for Atom Optics and Ultrafast Spectroscopy, Swinburne University of Technology, Hawthorn, VIC 3122, Australia}
 
 \begin{abstract}
-We develop a theory of quantum noise, fringe contrast and squeezing
-in a three-dimensional Bose-Einstein condensate atom interferometer with nonlinear losses,
-using a truncated Wigner simulation.
-Our results indicate the limits of atom interferometry,
-showing how quantum noise is modified due to nonlinear losses in mesoscopic atom interferometry.
+Using a truncated Wigner representation we present a theory of quantum noise and spin squeezing in interferometry of a multi-component three-dimensional Bose-Einstein condensate.
+Our approach includes the effects of stochastic processes of nonlinear atomic losses and the multi-mode spatial evolution of spinor components and adequately describes many-body dynamics of a mesoscopic quantum system.
 \end{abstract}
 
 \pacs{03.75.Gg, 03.75.Dg, 67.85.Fg, 67.85.De}
@@ -56,17 +53,17 @@ showing how quantum noise is modified due to nonlinear losses in mesoscopic atom
 
 \maketitle
 
-Atom interferometry is an important quantum technology,
-at the heart of many suggested future applications of ultra-cold atomic physics.
-Bose-Einstein condensates (BECs) or atom lasers have potential advantages as interferometric detectors and sensors,
-provided one can extract atomic phase information.
-However, unlike photons, atoms can interact strongly, causing dephasing.
+Atom interferometry is an important quantum technology
+at the heart of many proposed future applications of ultra-cold atomic physics.
+Bose-Einstein condensates (BECs) or atom lasers are macroscopic quantum objects and have potential advantages as interferometric detectors and sensors,
+provided one can precisely extract atomic phase information.
+However, unlike photons, atoms can interact strongly, causing dephasing and loss of interference fringes.
 An intimate understanding of quantum many-body dynamics is the key to calculating
 interaction-induced dephasing in the measurement process.
 This is essential for a quantitative theory of atom interferometry.
 
-In this Letter we give a simple, yet quantitatively accurate theoretical approach
-to calculations of atom interferometry at large atom number,
+In this Letter we present a simple, yet quantitatively accurate theoretical approach
+to simulating the dynamics and evaluating limits of atom interferometry at large atom number,
 using a truncated Wigner representation~\cite{Drummond1993,Steel1998,Sinatra2002}.
 This method extends the conventional Gross-Pitaevskii equations
 describing a Bose condensate to include quantum noise effects,
@@ -137,13 +134,13 @@ $K_{jk}$ is the single-particle Hamiltonian:
 	K_{jk} = \left( -\frac{\hbar}{2m} \nabla^2 + \omega_j + V_j(\xvec) / \hbar \right) \delta_{jk} +
 		\tilde{\Omega}_{jk}(t),
 \end{equation}
-where $V_j$ is the external trapping potential for spin $j$,
+where $m$ is the atomic mass, $V_j$ is the external trapping potential for spin $j$,
 $\omega_j$ is the internal energy of spin $j$,
-and $\tilde{\Omega}_{jk}$ represents a time-dependent coupling
-that is used to rotate one spin projection into another.
-Thus, $n_j = \langle \widehat{\Psi}_j^{\dagger} \widehat{\Psi}_j \rangle$
-is the spin-$j$ atomic density, $m$ is the atomic mass,
+$\tilde{\Omega}_{jk}$ represents a time-dependent coupling
+that is used to rotate one spin projection into another,
 and $U_{jk}$ is the atom-atom interaction term.
+Thus, $n_j = \langle \widehat{\Psi}_j^{\dagger} \widehat{\Psi}_j \rangle$
+is the spin-$j$ atomic density.
 For a dilute gas at low enough temperatures,
 $U_{jk}=4\pi\hbar a_{jk} / m$, where $a_{jk}$ is the $s$-wave scattering length in three dimensions.
 Here we assume a momentum cutoff $k_{c} \ll 1 / a_{jk}$,
@@ -151,9 +148,8 @@ otherwise the couplings must be renormalized~\cite{Sinatra2002}.
 
 We proceed by using a stochastic phase-space method that allows a numerical
 simulation of the quantum dynamics~\cite{Drummond1993,Steel1998,Hoffmann2008}.
-% BO: maybe \Psivec or \Psi_j? The paper applies to any number of components
-Defining a Wigner function $W(\Psi_1, \Psi_2)$, where $\Psi$
-is a c-number field corresponding to the quantum field $\hat{\Psi}$, this has a time-evolution equation:
+Defining a Wigner function $W(\Psivec)$, where $\Psi$
+is a c-number field corresponding to the quantum field $\hat{\Psi}$, this has a time-evolution equation
 \begin{equation}
 	\frac{\partial W}{\partial t} = \int d^D\xvec \left\{
 		- \frac{\delta}{\delta\Psi_j} A_j
@@ -286,7 +282,7 @@ is the number of spin-$j$ atoms lost in the collision.
 The conversion can be carried out as $\gamma^{(n)}_{\lvec,j} = 2 m_j \kappa^{(n)}_{\lvec}$.
 
 In this work we use a basis of plane waves in the volume $V$,
-and the density of component $s$ is calculated as a probabilistic average:
+and the density of component $j$ is calculated as a probabilistic average:
 \begin{equation}
 \label{eqn:wigner-density}
 	n_j (\xvec)
@@ -305,15 +301,15 @@ equivalent to an averaged sum over different simulation paths.
 	\imagetop{\includegraphics{long_rephasing_visibility.eps}} & \imagetop{(d)}
 	\end{tabular}
 
-	\caption{(color online) Timeline of the experiment for Ramsey (a) and Ramsey with symmetric spin echo (c),
-	(b) and (d) are the corresponding plots of interferometric visibility.
+	\caption{(color online) Timeline of the experiment for Ramsey (a) and Ramsey with spin echo (c),
+	(b) and (d) are the simulated plots of interferometric visibility.
 	Classical GPE (red dashed lines) and Wigner calculations (blue solid lines)
 	are shown. $N = 5.5 \times 10^4$,
 	$\omega_x = \omega_y = 2 \pi \times 97.0\,\mathrm{Hz}$,
 	$\omega_z = 2 \pi \times 11.69\,\mathrm{Hz}$,
 	$a_{11} = 100.4\,a_0$, $a_{12} = 97.993\,a_0$, $a_{22} = 95.57\,a_0$~\cite{Egorov2011},
 	$a_0$ is the Bohr radius.
-	Particle losses:
+	Nonlinear atomic losses:
 	$\gamma^{(3)}_{111} = 5.4 \times 10^{-30}\,\mathrm{cm^6/s}$~\cite{Mertes2007},
 	$\gamma^{(2)}_{12} = 1.51 \times 10^{-14}\,\mathrm{cm^3/s}$,
 	$\gamma^{(2)}_{22} = 8.1 \times 10^{-14}\,\mathrm{cm^3/s}$~\cite{Egorov2011}.}
@@ -359,7 +355,8 @@ and we have no data for comparisons.
 \begin{figure}
 	\includegraphics{ramsey_squeezing.eps}
 
-	\caption[]{(color online) Simulation results for the degree of squeezing in a Ramsey sequence.
+	\caption[]{(color online)
+	Wigner simulations of squeezing in the vicinity of $9.1\,\mathrm{G}$ Feshbach resonance in \Rb.
 	Simulation parameters are the same as in~\figref{fig:visibility},
 	except for the inter-component scattering length and corresponding loss rate~\cite{Kaufman2009}:
 	$a_{12} = 80.0\,a_0$, $\gamma^{(2)}_{12} = 3.88 \times 10^{-12}\,\mathrm{cm^3/s}$ (blue solid line),
@@ -407,11 +404,11 @@ The formula for the squeezing parameter in the original coordinate system can be
 The squeezing parameter serves as a measure of atomic entanglement in the condensate,
 when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
 
-As an illustration consider~\figref{fig:squeezing}, which shows calculations of the squeezing parameter
-for optically trapped ${\ket{F=1,\, m_F=+1}}$ and ${\ket{F=2,\, m_F=-1}}$ BEC in a Ramsey sequence,
-for an \Rb~BEC near a Feshbach resonance at $9.1\,\mathrm{G}$~\cite{Kaufman2009}.
+As an illustration of the power of the Wigner method and of the effect of two-body losses we consider the temporal evolution of the squeezing parameter in a Ramsey interferometer for optically trapped two-component BEC in \Rb\ (states ${\ket{F=1,\, m_F=+1}}$ and ${\ket{F=2,\, m_F=-1}}$) near a Feshbach resonance at $9.1\,\mathrm{G}$ (\figref{fig:squeezing}).
 Different inter-component scattering lengths (corresponding to different magnetic fields)
 were used in order to find the optimal regime with significant squeezing.
+The value $a_{12} = 80 a_0$ provides stronger nonlinear interactions, but larger two-body losses quickly eliminate the squeezing effect.
+Feshbach tuning to $a_{12} = 90 a_0$ ensures the best squeezing ($-6\,\mathrm{dB}$ at $40\,\mathrm{ms}$), whereas long lasting squeezing is predicted for $a_{12} = 95 a_0$.
 
 These simulations predict the degree of quantum noise-reduction, which
 is a technique that can be used to improve precision quantum interferometry.
@@ -432,7 +429,7 @@ observed in ultra-cold atomic BEC for much larger atom
 numbers than calculated previously.
 
 In conclusion, the truncated Wigner-Moyal quantum phase-space theory is
-well-suited to these types of calculation of many-body dynamics.
+well-suited for a variety of calculations of many-body dynamics of quantum degenerate gases.
 Although the Wigner function is not a true probability, it becomes one
 to a good approximation in the limit of large particle number, so that
 a probabilistic (random) sampling of phase-space trajectories can be used
