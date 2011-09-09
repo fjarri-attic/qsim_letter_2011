@@ -39,8 +39,9 @@
 \affiliation{Centre for Atom Optics and Ultrafast Spectroscopy, Swinburne University of Technology, Hawthorn, VIC 3122, Australia}
 
 \begin{abstract}
-Using a truncated Wigner representation we present a theory of quantum noise and spin squeezing in interferometry of a multi-component three-dimensional Bose-Einstein condensate.
-Our approach includes the effects of stochastic processes of nonlinear atomic losses and the multi-mode spatial evolution of spinor components and adequately describes many-body dynamics of a mesoscopic quantum system.
+We develop a theory of quantum fluctuations and squeezing in a three-dimensional Bose-Einstein condensate atom interferometer with nonlinear losses.
+We use stochastic equations in a truncated Wigner representation to treat quantum noise.
+Our approach includes the multi-mode spatial evolution of spinor components and describes the many-body dynamics of a mesoscopic quantum system.
 \end{abstract}
 
 \pacs{03.75.Gg, 03.75.Dg, 67.85.Fg, 67.85.De}
@@ -150,15 +151,15 @@ otherwise the couplings must be renormalized~\cite{Sinatra2002}.
 We proceed by using a stochastic phase-space method that allows a numerical
 simulation of the quantum dynamics~\cite{Drummond1993,Steel1998,Hoffmann2008}.
 Defining a Wigner function $W(\Psivec)$, where $\Psi$
-is a c-number field corresponding to the quantum field $\hat{\Psi}$, this has a time-evolution equation
+is a c-number field corresponding to the quantum field $\hat{\Psi}$, this has a unitary time-evolution equation:
 \begin{equation}
 	\frac{\partial W}{\partial t} = \int d^D\xvec \left\{
 		- \frac{\delta}{\delta\Psi_j} A_j
 		- \frac{\delta}{\delta\Psi_j^*}A_j^*
 		+ \mbox{O} \left[ \frac{\delta^3}{\delta\Psi_j^3} \right]
-	\right\} W,
+	\right\} W.
 \end{equation}
-where higher derivative terms of type $\mbox{O} \left[ \delta^3 / \delta\Psi_j^3 \right]$ will be truncated.
+Next, higher derivative terms of type $\mbox{O} \left[ \delta^3 / \delta\Psi_j^3 \right]$ are truncated.
 This approximation neglects higher-order terms in an expansion in $1 / \sqrt{N}$,
 and is therefore valid in the limit of $N \gg M$
 where $N$ is the atom number and $M$ is the number of low-energy modes included~\cite{Drummond1993,Sinatra2002,Norrie2006}.
@@ -216,9 +217,9 @@ and we have introduced local Liouville loss terms,
 	\mathcal{L}_{\lvec}^{(n)} \left[ \hat{\rho} \right] =
 		2\hat{O}_{\lvec}^{(n)} \hat{\rho} \hat{O}_{\lvec}^{(n)\dagger}
 		- \hat{O}_{\lvec}^{(n)\dagger} \hat{O}_{\lvec}^{(n)} \hat{\rho}
-		- \hat{\rho} \hat{O}_{\lvec}^{(n)\dagger} \hat{O}_{\lvec}^{(n)},
+		- \hat{\rho} \hat{O}_{\lvec}^{(n)\dagger} \hat{O}_{\lvec}^{(n)}.
 \end{equation}
-where the reservoir coupling operators $\hat{O}_{\lvec}^{(n)}$ are the distinct $n$-fold products of local field annihilation operators,
+The reservoir coupling operators $\hat{O}_{\lvec}^{(n)}$ are the distinct $n$-fold products of local field annihilation operators,
 $\hat{O}_{\lvec}^{(n)} = \hat{O}_{\lvec}^{(n)} (\widehat{\Psivec}) =
 	\widehat{\Psi}_{l_{1}} (\xvec)
 	\widehat{\Psi}_{l_{2}} (\xvec) \ldots
@@ -238,7 +239,7 @@ given by:
 		\right\} W.
 \end{equation}
 
-This in turn leads to a stochastic equation:
+This leads to a stochastic equation:
 \begin{equation}
 \label{eqn:SDE}
 	\frac{d\Psi_j}{dt} =
@@ -289,7 +290,7 @@ and the density of component $j$ is calculated as a probabilistic average:
 	n_j (\xvec)
 		= \langle \Psi^*_j (\xvec) \Psi_j (\xvec) \rangle_{\mathrm{paths}} - \frac{M}{2V}.
 \end{equation}
-Here we used the fact that the approximate Wigner function is a probability distribution
+Here we use the fact that the approximate Wigner function is a probability distribution
 equivalent to an averaged sum over different simulation paths.
 
 \begin{figure}
@@ -322,8 +323,8 @@ To illustrate the applications of this method we consider recent interferometry
 experiments with a two-component BEC involving two hyperfine states
 ${\ket{F=1,\, m_F=-1}}$ and ${\ket{F=2,\, m_F=+1}}$ in \Rb~\cite{Egorov2011}.
 A conventional Ramsey sequence (\figref{fig:visibility},~(a)) has been used
-with the BEC confined in a cigar-shaped magnetic trap with the frequencies $(97.0, 97.0, 11.69)\,\mathrm{Hz}$
-in a bias magnetic field of $3.23\,\mathrm{G}$ where magnetic field dephasing is largely eliminated~\cite{Hall1998}.
+with a BEC confined in a cigar-shaped magnetic trap with the frequencies $(97.0, 97.0, 11.69)\,\mathrm{Hz}$
+in a bias magnetic field of $3.23\,\mathrm{G}$, so that magnetic field dephasing is largely eliminated~\cite{Hall1998}.
 The first $\pi/2$ pulse prepares a non-equilibrium superposition of states ${\ket{1,-1}}$ and ${\ket{2,+1}}$
 and the spatial modes of two components periodically separate and merge again~\cite{Mertes2007}.
 The spatially-separated spin components evolve differently, as they have
@@ -332,8 +333,8 @@ As a result, these collective oscillations lead to periodic dephasing and
 self-rephasing of the BEC components, clearly visible in both GPE and Wigner
 simulations of interference fringe visibility
 $\mathcal{V}$ (\figref{fig:visibility},~(b)).
-Asymmetric losses of two states are one cause of the contrast decay, and
-this has been partially compensated by the application of a spin echo pulse
+Asymmetric losses of two states are one cause of the contrast decay.
+This can be partially compensated by the application of a spin echo pulse
 mid-way through the evolution (\figref{fig:visibility},~(c)).
 The GPE simulations wrongly predict (dashed lines) that visibility is largely
 recovered at long evolution times using the spin echo method.
@@ -367,7 +368,7 @@ On longer time-scales, the experimental accuracy is limited by technical noises,
 	\label{fig:squeezing}
 \end{figure}
 
-The Wigner method is able to produce not only the average values of different observables,
+The Wigner method is able to predict not only the average values of different observables,
 but their variances too.
 As an example, we now calculate the degree of squeezing $\xi^2$, introduced in~\cite{Wineland1994,Sorensen2001}.
 This allows the analysis of experiments beyond the usual shot noise limit~\cite{Riedel2010,Gross2010}.
@@ -402,7 +403,7 @@ In this new coordinate system the squeezing parameter is expressed simply as
 where $N$ is the total number of atoms.
 The formula for the squeezing parameter in the original coordinate system can be found elsewhere~\cite{Li2009}.
 The squeezing parameter serves as a measure of atomic entanglement in the condensate,
-when the state is entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
+when the atoms are entangled if $\xi^2 < 1$~\cite{Sorensen2001}.
 
 As an illustration of the power of the Wigner method and of the effect of two-body losses we consider the temporal evolution of the squeezing parameter in a Ramsey interferometer for optically trapped two-component BEC in \Rb\ (states ${\ket{F=1,\, m_F=+1}}$ and ${\ket{F=2,\, m_F=-1}}$) near a Feshbach resonance at $9.1\,\mathrm{G}$ (\figref{fig:squeezing}).
 Different inter-component scattering lengths (corresponding to different magnetic fields)
@@ -435,7 +436,7 @@ to a good approximation in the limit of large particle number, so that
 a probabilistic (random) sampling of phase-space trajectories can be used
 to treat quantum fluctuations.
 Furthermore, it is straightforward to treat a spatially inhomogeneous,
-many-mode problem as found in an extended $D$-dimensional environment.
+many-mode problem as found in an extended 3-dimensional environment.
 Initial conditions such as a coherent beam-splitter as employed in typical
 atom interferometry experiments can be readily included,
 with proper accounting for both quantum effects and nonlinear losses in the condensate.
