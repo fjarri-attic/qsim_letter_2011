@@ -3,7 +3,7 @@
 %%
 
 
-% $Id: eplbib.bst,v 1.2 2007/07/05 08:54:41 marco Exp $
+% $Id: eplbib.bst,v 1.3 2009/09/22 07:25:55 marco Exp $
 
 
 %%
@@ -16,7 +16,7 @@
 %%               versions 0.99a or later and LaTeX version 2e.
 %%               Produces numeric-label bibliography items in
 %%               a form typical for EPL (Europhysics Letters)"
-%%
+%% 
 
 %%
 %% For bugs, comments, suggestions email to: marco@sif.it
@@ -729,7 +729,7 @@ FUNCTION {format.jour.vol.year.pages}
 { "\REVIEW{"
   journal empty$
     { "" * "there's no journal in " cite$ * warning$ }
-    { journal * " " * }
+    { journal * }
   if$
   volume empty$
     { "}{" * }
