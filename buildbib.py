@@ -38,7 +38,7 @@ for raw_entry in raw_entries:
 		entry_fields[mo.group(1)] = value
 
 	# remove unwanted fields
-	for field in ('file', 'keywords', 'mendeley-tags', 'abstract'):
+	for field in ('file', 'keywords', 'mendeley-tags', 'abstract', 'url'):
 		if field in entry_fields:
 			del entry_fields[field]
 
@@ -70,8 +70,8 @@ for entry_type, entry_key, entry_fields in entries:
 
 	# truncate author list
 	authors = entry_fields['author'].split(' and ')
-	if len(authors) >= 4:
-		entry_fields['author'] = authors[0] + ' and others'
+	#if len(authors) >= 4:
+	#	entry_fields['author'] = authors[0] + ' and others'
 
 	# replace journal names with abbreviations
 	abbreviations = {
