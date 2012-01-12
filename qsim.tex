@@ -63,13 +63,13 @@ Importantly, we can clearly demonstrate where fringe visibility is driven by qua
 and where it is driven by trap inhomogeneity and dynamical effects,
 in order to choose optimal conditions for quantum noise reduction and spin squeezing.
 These calculations are a first step towards understanding mesoscopic superpositions and entanglement in ultra-cold atomic gases.
-An advantage of our method compared to the variational approaches used elsewhere~\cite{Li2009,Sakmann2009}
-is that it allows us to treat a large number of independent field modes and particles,
+\revision{An advantage of our method compared to the variational and perturbative approaches used elsewhere~\cite{Li2009,Sakmann2009,Sinatra2011}
+is that it allows us to treat a large number of independent field modes,}
 thus including degrees of freedom that are excited due to
 collisional and nonlinear loss dynamics~\cite{Norrie2005,Deuar2007}.
 Our theory can be readily extended to include finite temperature initial conditions~\cite{Steel1998,Isella2006},
 which will be treated elsewhere.
-Nonlinear losses and finite temperature effects can be also described within the confines of the variational approach~\cite{Li2008,Sinatra2011}.
+\revision{Nonlinear losses and finite temperature effects can be also described within the confines of the variational approach~\cite{Li2008}}.
 
 Quantum phase-diffusion is defined as the phase noise induced by number fluctuations
 which are conjugate to phase.
@@ -142,7 +142,7 @@ is a c-number field corresponding to the quantum field $\hat{\Psi}$, this has a 
 \begin{equation}
 	\frac{\partial W}{\partial t} = \int \upd^D\xvec \left\{
 		- \frac{\delta}{\delta\Psi_j} A_j
-		+ \frac{\delta}{\delta\Psi_j^*}A_j^*
+		- \frac{\delta}{\delta\Psi_j^*}A_j^*
 		+ \mbox{O} \left[ \frac{\delta^3}{\delta\Psi_j^3} \right]
 	\right\} W.
 \end{equation}
@@ -414,6 +414,42 @@ will allow this macroscopic quantum effect to be experimentally
 observed in ultra-cold atomic BEC for much larger atom
 numbers than calculated previously.
 
+
+\begin{figure}
+	\begin{tabular}{l l}
+	\imagetop{\includegraphics[width=0.85\columnwidth]{riedel_cloud_yz.eps}} & \imagetop{(a)} \\
+	\imagetop{\includegraphics[width=0.85\columnwidth]{riedel_rotation.eps}} & \imagetop{(b)}
+	\end{tabular}
+
+	\caption[]{(color online)
+	\revision{
+	Reconstructed probability distribution for the value of spin vector projected on $y-z$ plane (a) and spin noise tomography (b).
+	The variance $\Delta^2 \hat{S}_\theta$ is connected to the width of the distribution $d_\theta$ in direction $\theta$
+	(blue line between two arrows in Fig. (a)) as
+	$2 \sqrt{\Delta^2 \hat{S}_\theta} = d_\theta$.
+	Plot (b) shows the dependance of the normalized variance on the rotation angle $\theta$ for
+	the Wigner method (solid red line) and the two-mode method (dashed blue line, data taken from~\cite{Riedel2010})
+	}}
+	\label{fig:riedel-rotation}
+\end{figure}
+
+\revision{
+Wigner representation shows qualitative agreement with other approximate methods like the two-mode model with losses~\cite{Li2009}.
+As an example consider the recent experiment~\cite{Riedel2010},
+where multi-particle entanglement was generated using a state-dependent potential.
+A BEC of 1250 atoms was prepared in a cigar-shaped trap with $\omega_x = \omega_y = 2 \pi \times 109\un{Hz}$,
+$\omega_z = 2 \pi \times 500\un{Hz}$.
+After the first $\pi / 2$-pulse, the potentials for both components were split, leading to the period of separation.
+At $T = 12.7\un{ms}$ they overlapped again, and the second pulse was applied, allowing a measurement of the spin along the angle $\theta$: $\hat{S}_\theta = \hat{S}_z \cos \theta - \hat{S}_y \sin \theta$.
+The result of the Wigner method is plotted against the one given by the two-mode model in \figref{fig:riedel-rotation}.
+Spin tomography shows that the Wigner method predicts about the same shape of spin distribution,
+but the maximum squeezing is $5\un{dB}$ less than that calculated with the two-mode model.
+We believe this is caused by the Wigner method being a more systematic type of approximation with a small parameter,
+and consequently, more suitable for such complex calculations.
+Since the technical noise in the experiment reduced the observed squeezing significantly (down to $-3.7\un{dB}$),
+more accurate measurements will be necessary to test these differences quantitatively.
+}
+
 In conclusion, the truncated Wigner-Moyal quantum phase-space theory is
 well-suited for a variety of calculations of many-body dynamics of quantum degenerate gases.
 Although the Wigner function is not a true probability, it becomes one
@@ -427,6 +463,6 @@ atom interferometry experiments can be readily included,
 with proper accounting for both quantum effects and nonlinear losses in the condensate.
 
 \bibliographystyle{eplbib}
-\bibliography{qsim.bib}
+\bibliography{qsim}
 
 \end{document}
