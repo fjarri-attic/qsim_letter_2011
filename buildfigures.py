@@ -87,24 +87,6 @@ if __name__ == '__main__':
 
 	updateParams()
 
-	"""
-	ramsey_visibility_gpe = json.load(open('data/echo_ramsey_visibility/ramsey_gpe_vis.json'))
-	ramsey_visibility_qn = json.load(open('data/echo_ramsey_visibility/ramsey_wigner_vis.json'))
-	plotXYGraph(
-		[ramsey_visibility_gpe, ramsey_visibility_qn],
-		['r-', 'b-'],
-		'figures_generated/ramsey_visibility.eps',
-		xmin=0, xmax=1.4, ymin=0, ymax=1.05)
-
-	echo_visibility_gpe = json.load(open('data/echo_ramsey_visibility/echo_gpe_vis.json'))
-	echo_visibility_qn = json.load(open('data/echo_ramsey_visibility/echo_wigner_vis.json'))
-	plotXYGraph(
-		[echo_visibility_gpe, echo_visibility_qn],
-		['r-', 'b-'],
-		'figures_generated/echo_visibility.eps',
-		xmin=0, xmax=1.4, ymin=0, ymax=1.05)
-	"""
-
 	ramsey_visibility_gpe = json.load(open('data/long_time_ramsey/ramsey_gpe_vis.json'))
 	ramsey_visibility_qn = json.load(open('data/long_time_ramsey/ramsey_wigner_vis.json'))
 	plotXYGraph(
@@ -121,7 +103,6 @@ if __name__ == '__main__':
 		'long_rephasing_visibility.eps',
 		xmin=0, xmax=5.0, ymin=0, ymax=1.05)
 
-
 	ramsey_squeezing_qn_80 = json.load(open('data/squeezing/squeezing_ramsey_80.0.json'))
 	ramsey_squeezing_qn_85 = json.load(open('data/squeezing/squeezing_ramsey_85.0.json'))
 	ramsey_squeezing_qn_90 = json.load(open('data/squeezing/squeezing_ramsey_90.0.json'))
@@ -131,43 +112,3 @@ if __name__ == '__main__':
 		['b-', 'r--', 'g-.', 'k:'],
 		'ramsey_squeezing.eps',
 		xmin=0, xmax=100.0, ymin=-7.0, ymax=1.0)
-
-	"""
-	ramsey_overlap = json.load(open('data/squeezing/squeezing_overlap.json'))
-	plotXYGraph(
-		[ramsey_overlap],
-		['b-'],
-		'figures_generated/ramsey_squeezing_overlap.pdf',
-		xmin=0, xmax=200.0, ymin=0.0, ymax=1.05)
-
-
-	ramsey_phnoise_qn = json.load(open('data/phase_noise/ramsey_phnoise_qn.json'))
-	ramsey_phnoise_exp = json.load(open('data/phase_noise/ramsey_phnoise_exp.json'))
-	ramsey_imgnoise = json.load(open('data/phase_noise/ramsey_imaging_noise_exp.json'))
-
-	ramsey_phnoise_total = combineNoises(ramsey_imgnoise,
-		ramsey_imgnoise['xarray'], 0.23 * numpy.array(ramsey_imgnoise['xarray']))
-	ramsey_phnoise_total = combineNoises(ramsey_phnoise_total,
-		ramsey_imgnoise['xarray'], 0.122 * numpy.array(ramsey_imgnoise['xarray']))
-
-	plotXYGraph(
-		[ramsey_phnoise_qn, ramsey_phnoise_exp, ramsey_phnoise_total],
-		['b-', 'k.', 'k-'],
-		'figures_generated/ramsey_phnoise.eps',
-		xmin=0, xmax=0.85, ymin=0, ymax=0.6)
-
-	echo_phnoise_qn = json.load(open('data/phase_noise/echo_phnoise_qn.json'))
-	echo_phnoise_exp = json.load(open('data/phase_noise/echo_phnoise_exp.json'))
-	echo_imgnoise = json.load(open('data/phase_noise/echo_imaging_noise_exp.json'))
-
-	echo_phnoise_total = combineNoises(echo_imgnoise,
-		echo_imgnoise['xarray'], 0.21 * numpy.array(echo_imgnoise['xarray']) / (2.0 ** 0.5))
-	echo_phnoise_total = combineNoises(echo_phnoise_total,
-		echo_phnoise_qn['xarray'], echo_phnoise_qn['yarray'])
-
-	plotXYGraph(
-		[echo_phnoise_qn, echo_phnoise_exp, echo_phnoise_total],
-		['b-', 'k.', 'k-'],
-		'figures_generated/echo_phnoise.eps',
-		xmin=0, xmax=1.65, ymin=0, ymax=0.5)
-	"""
