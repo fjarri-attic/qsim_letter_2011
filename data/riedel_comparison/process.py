@@ -16,7 +16,7 @@ import numpy
 xsize = 100.0
 ysize = 250.0
 zsize = 50.0
-zbins = 40
+zbins = 25
 
 
 def plotView(Sx, Sy, Sz):
@@ -117,7 +117,13 @@ def plotMainView(Sx, Sy, Sz):
 #	subplot.hexbin(Sy, Sz, cmap=cm.PuRd, gridsize=(ybins, zbins))
 	hist,xedges,yedges = numpy.histogram2d(Sy,Sz,bins=(ybins, zbins),range=[[-250,250],[-50,50]])
 	extent = [xedges[0], xedges[-1], yedges[0], yedges[-1] ]
-	subplot.imshow(hist.T, extent=extent, interpolation='nearest', origin='lower', cmap=cm.PuRd)
+#	subplot.imshow(hist.T, extent=extent, interpolation='nearest', origin='lower', cmap=cm.PuRd)
+
+	hmax = hist.max()
+	lnum = 20
+	levels = numpy.exp(numpy.arange(lnum + 1) / float(lnum) * numpy.log(hmax))
+
+	subplot.contourf(hist.T, extent=extent, cmap=cm.PuRd, levels=levels)
 
 	subplot.arrow(arrow1_x, arrow1_y, arrow1_dx, arrow1_dy, **arrow_kwds)
 	subplot.arrow(-arrow1_x, -arrow1_y, -arrow1_dx, -arrow1_dy, **arrow_kwds)
