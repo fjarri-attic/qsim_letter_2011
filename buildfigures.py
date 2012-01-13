@@ -283,7 +283,7 @@ def plotRotation(fname, Sx, Sy, Sz):
 	"""Plot spin tomography figure"""
 
 	n = 300
-	N = numpy.sqrt(Sx.mean() ** 2 + Sy.mean() ** 2 + Sz.mean() ** 2) # total atom number (for normalizing)
+	N = 1200.0
 
 	# angles for tomography
 	angles = numpy.arange(n + 1) / float(n) * 180 - 90
