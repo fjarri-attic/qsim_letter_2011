@@ -7,4 +7,5 @@ qsimNotes.bib
 *.bbl
 *.blg
 temp/*
+*.fdb_latexmk
 
