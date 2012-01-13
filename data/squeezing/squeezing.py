@@ -1,42 +1,35 @@
-import numpy
-import time
-import math
+"""
+Check squeezing for different a12 values near Feschbach resonance.
+Data is accumulated over several iterations which helps if many trajectories
+are necessary and there is not enough GPU memory to process them at once.
+"""
 
+import numpy
 from beclab import *
-from beclab.state import ParticleStatistics, Uncertainty
-from beclab.helpers import *
+from beclab.meters import UncertaintyMeter, getXiSquared
 
 
 class AveragesCollector:
 
-	def __init__(self, env, constants):
-		self._env = env
-		self._constants = constants
-		self._stats = ParticleStatistics(env, constants)
-		self._reduce = createReduce(env, constants.scalar.dtype)
-		self._creduce = createReduce(env, constants.complex.dtype)
-
+	def __init__(self, env, constants, grid):
+		self._unc = UncertaintyMeter(env, constants, grid)
 		self.times = []
 		self.n1 = []
 		self.n2 = []
 		self.i = []
 
-	def __call__(self, t, cloud):
+	def prepare(self, **kwds):
+		self._unc.prepare(components=kwds['components'],
+			ensembles=kwds['ensembles'], psi_type=kwds['psi_type'])
+
+	def __call__(self, t, dt, psi):
 		self.times.append(t)
 
-		ensembles = cloud.a.size / self._constants.cells
-		get = self._env.fromDevice
-		reduce = self._reduce
-		creduce = self._creduce
-		dV = self._constants.dV
+		i, n = self._unc.getEnsembleSums(psi)
 
-		i = self._stats._getInteraction(cloud.a, cloud.b)
-		n1 = self._stats.getDensity(cloud.a)
-		n2 = self._stats.getDensity(cloud.b)
-
-		self.i.append(get(creduce(i, ensembles)) * dV)
-		self.n1.append(get(reduce(n1, ensembles)) * dV)
-		self.n2.append(get(reduce(n2, ensembles)) * dV)
+		self.i.append(i)
+		self.n1.append(n[0])
+		self.n2.append(n[1])
 
 	def getData(self):
 		return numpy.array(self.times), self.i, self.n1, self.n2
@@ -44,89 +37,40 @@ class AveragesCollector:
 
 def testUncertainties(a12, gamma12, losses):
 
-	# normal parameters
-	if losses:
-		m = Model(N=55000, detuning=-37,
-			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024, e_cut=1e6,
-			fx=97.0, fy=97.0 * 1.03, fz=11.69,
-			gamma12=gamma12, gamma22=7.7e-20,
-			a12=a12, a22=95.57)
-	else:
-		m = Model(N=55000, detuning=-37,
-			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024, e_cut=1e6,
-			fx=97.0, fy=97.0 * 1.03, fz=11.69,
-			gamma111=0, gamma12=0, gamma22=0,
-			a12=a12, a22=95.57)
-
 	t = 0.2
 	callback_dt = 0.002
-	noise = losses
+	N = 55000
+	ensembles = 2
 
-	# Yun Li, shallow trap, no losses
-	#m = Model(N=20000, nvx=16, nvy=16, nvz=16, ensembles=4, e_cut=1e6,
-	#	a11=100.44, a12=88.28, a22=95.47, fx=42.6, fy=42.6, fz=42.6,
-	#	gamma111=0, gamma12=0, gamma22=0
-	#	)
-	#t = 0.5
-	#callback_dt = 0.001
-	#noise = False
+	parameters = dict(
+		fx=97.0, fy=97.0 * 1.03, fz=11.69,
+		a12=a12, a22=95.57,
+		gamma12=gamma12, gamma22=7.7e-20)
 
-	# Yun Li, steep trap, no losses
-	#m = Model(N=100000, nvx=16, nvy=16, nvz=16, ensembles=1024, e_cut=1e6,
-	#	a11=100.44, a12=88.28, a22=95.47, fx=2e3, fy=2e3, fz=2e3, dt_evo=1e-6, dt_steady=1e-7,
-	#	gamma111=0, gamma12=0, gamma22=0
-	#	)
-	#t = 0.005
-	#callback_dt = 0.00005
-	#noise = False
+	if not losses:
+		parameters.update(dict(gamma111=0, gamma12=0, gamma22=0))
 
-	#m = Model(N=100000, nvx=16, nvy=16, nvz=16, ensembles=512, e_cut=1e6,
-	#	a11=100.0, a12=50.0, a22=100.0, fx=2e3, fy=2e3, fz=2e3, dt_evo=1e-6, dt_steady=1e-7,
-	#	gamma111=0, gamma12=0, gamma22=0
-	#	)
-	#t = 0.005
-	#callback_dt = 0.00005
-	#noise = False
-
-	constants = Constants(m, double=True)
 	env = envs.cuda()
-	evolution = SplitStepEvolution(env, constants)
-	pulse = Pulse(env, constants)
-	a = VisibilityCollector(env, constants, verbose=True)
-	u = UncertaintyCollector(env, constants)
-	b = AnalyticNoiseCollector(env, constants)
-	c = AveragesCollector(env, constants)
+	constants = Constants(double=env.supportsDouble(), **parameters)
+	grid = UniformGrid.forN(env, constants, N, (64, 8, 8))
 
-	gs = GPEGroundState(env, constants)
+	gs = SplitStepGroundState(env, constants, grid, dt=1e-5)
+	evolution = SplitStepEvolution(env, constants, grid, dt=1e-5)
+	pulse = Pulse(env, constants, grid, f_rabi=350, f_detuning=-37)
 
-	cloud = gs.createCloud()
-	cloud.toWigner()
+	avc = AveragesCollector(env, constants, grid)
 
-	pulse.apply(cloud, 0.5 * math.pi, matrix=True)
+	psi = gs.create((N, 0))
+	psi.toWigner(ensembles)
 
-	t1 = time.time()
-	evolution.run(cloud, t, callbacks=[a, u, b, c], callback_dt=callback_dt, noise=noise)
-	env.synchronize()
-	t2 = time.time()
-	print "Time spent: " + str(t2 - t1) + " s"
+	pulse.apply(psi, math.pi / 2)
 
-
-	#times, na, nb, sp = u.getData()
-	#xi_sq = XYData("squeezing", times, numpy.log10(sp), xname="Time, s", yname="log$_{10}$($\\xi^2$)")
-	#xi_sq.save('squeezing_ramsey.json')
-	#XYPlot([xi_sq]).save("squeezing_ramsey.pdf")
-
-	#times, _, overlap = b.getData()
-	#ov = XYData("overlap", times, overlap, xname="T, s", yname="Overlap")
-	#ov.save('squeezing_overlap.json')
-	#XYPlot([ov]).save('squeezing_overlap.pdf')
-
-	times, i, n1, n2 = c.getData()
-
+	evolution.run(psi, t, callbacks=[avc], callback_dt=callback_dt)
 	env.release()
 
-	return times, i, n1, n2
+	times, i, n1, n2 = avc.getData()
 
+	return times, i, n1, n2
 
 def combinedTest(N, a12, gamma12, losses):
 	t = None
@@ -149,65 +93,51 @@ def combinedTest(N, a12, gamma12, losses):
 				nn2[j] = numpy.concatenate([nn2[j], n2[j]])
 
 	xi = []
-
-	if losses:
-		m = Model(N=55000, detuning=-37,
-			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024 * N, e_cut=1e6,
-			fx=97.0, fy=97.0 * 1.03, fz=11.69,
-			gamma12=gamma12, gamma22=7.7e-20,
-			a12=a12, a22=95.4)
-	else:
-		m = Model(N=55000, detuning=-37,
-			nvx=8, nvy=8, nvz=64, dt_evo=4e-5, ensembles=1024 * N, e_cut=1e6,
-			fx=97.0, fy=97.0 * 1.03, fz=11.69,
-			gamma111=0, gamma12=0, gamma22=0,
-			a12=a12, a22=95.4)
-
-	constants = Constants(m, double=True)
-	env = envs.cuda()
-	u = Uncertainty(env, constants)
-
 	for j in xrange(len(ii)):
-		xi.append(u._getXiSquared(ii[j], nn1[j], nn2[j]))
-
-	env.release()
+		xi.append(getXiSquared(ii[j], nn1[j], nn2[j]))
 
 	return XYData("a12 = " + str(a12) + ("" if losses else ", no losses"),
 		times * 1e3, 10 * numpy.log10(numpy.array(xi)),
 		xname="T (ms)", yname="$\\xi^2$ (dB)")
 
-xi1nl = combinedTest(1, 80.0, 38.8e-19, False)
-xi2nl = combinedTest(1, 85.0, 19.5e-19, False)
-xi3nl = combinedTest(1, 90.0, 7.13e-19, False)
-xi4nl = combinedTest(1, 95.0, 0.854e-19, False)
 
-xi1nl.color = 'red'
-xi2nl.color = 'blue'
-xi3nl.color = 'green'
-xi4nl.color = 'black'
+if __name__ == '__main__':
 
-xi1nl.save('squeezing_ramsey_80.0_nolosses.json')
-xi2nl.save('squeezing_ramsey_85.0_nolosses.json')
-xi3nl.save('squeezing_ramsey_90.0_nolosses.json')
-xi4nl.save('squeezing_ramsey_95.0_nolosses.json')
+	iterations = 2
+	prefix = 'squeezing_ramsey'
 
-for x in (xi1nl, xi2nl, xi3nl, xi4nl):
-	x.linestyle = '--'
+	xi1nl = combinedTest(iterations, 80.0, 38.8e-19, False)
+	xi2nl = combinedTest(iterations, 85.0, 19.5e-19, False)
+	xi3nl = combinedTest(iterations, 90.0, 7.13e-19, False)
+	xi4nl = combinedTest(iterations, 95.0, 0.854e-19, False)
 
-xi1 = combinedTest(1, 80.0, 38.8e-19, True)
-xi2 = combinedTest(1, 85.0, 19.5e-19, True)
-xi3 = combinedTest(1, 90.0, 7.13e-19, True)
-xi4 = combinedTest(1, 95.0, 0.854e-19, True)
+	xi1nl.color = 'red'
+	xi2nl.color = 'blue'
+	xi3nl.color = 'green'
+	xi4nl.color = 'black'
 
-xi1.color = 'red'
-xi2.color = 'blue'
-xi3.color = 'green'
-xi4.color = 'black'
+	xi1nl.save(prefix + '_80.0_nolosses.json')
+	xi2nl.save(prefix + '_85.0_nolosses.json')
+	xi3nl.save(prefix + '_90.0_nolosses.json')
+	xi4nl.save(prefix + '_95.0_nolosses.json')
 
-xi1.save('squeezing_ramsey_80.0.json')
-xi2.save('squeezing_ramsey_85.0.json')
-xi3.save('squeezing_ramsey_90.0.json')
-xi4.save('squeezing_ramsey_95.0.json')
+	for x in (xi1nl, xi2nl, xi3nl, xi4nl):
+		x.linestyle = '--'
 
-XYPlot([xi1nl, xi2nl, xi3nl, xi4nl, xi1, xi2, xi3, xi4],
-	location="upper left").save('squeezing.pdf')
+	xi1 = combinedTest(iterations, 80.0, 38.8e-19, True)
+	xi2 = combinedTest(iterations, 85.0, 19.5e-19, True)
+	xi3 = combinedTest(iterations, 90.0, 7.13e-19, True)
+	xi4 = combinedTest(iterations, 95.0, 0.854e-19, True)
+
+	xi1.color = 'red'
+	xi2.color = 'blue'
+	xi3.color = 'green'
+	xi4.color = 'black'
+
+	xi1.save(prefix + '_80.0.json')
+	xi2.save(prefix + '_85.0.json')
+	xi3.save(prefix + '_90.0.json')
+	xi4.save(prefix + '_95.0.json')
+
+	XYPlot([xi1nl, xi2nl, xi3nl, xi4nl, xi1, xi2, xi3, xi4],
+		location="upper left").save(prefix + '.pdf')
