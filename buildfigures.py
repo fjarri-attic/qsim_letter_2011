@@ -279,65 +279,104 @@ def buildRiedelTomographyPath():
 
 	return vertices, codes
 
-def plotRotation(fname, Sx, Sy, Sz):
-	"""Plot spin tomography figure"""
-
-	n = 300
+def calculateSqueezing(angles_radian, sy, sz):
+	# Calculate \Delta^2 \hat{S}_\theta.
+	# sy, sz and the result have shape (subsets, points)
 	N = 1200.0
+	ss = sy.shape[0]
+	tp = angles_radian.size
+	ca = numpy.tile(numpy.cos(angles_radian), (ss, 1))
+	sa = numpy.tile(numpy.sin(angles_radian), (ss, 1))
 
+	# calculate mean inside subset and tile it to match cosine and sine data
+	mean = lambda x: numpy.tile(x.mean(1).reshape(ss, 1), (1, tp))
+
+	d2S = mean(sz ** 2) * ca ** 2 + mean(sy ** 2) * sa ** 2 - \
+		2 * mean(sz * sy) * sa * ca - mean(sy) ** 2 * sa ** 2 - mean(sz) ** 2 * ca ** 2 + \
+		2 * mean(sz) * mean(sy) * sa * ca
+	return d2S / N * 4
+
+def getAngles(amin, amax, n=300):
 	# angles for tomography
-	angles = numpy.arange(n + 1) / float(n) * 180 - 90
+	angles = numpy.arange(n + 1) / float(n) * (amax - amin) + amin
 	angles_radian = angles * 2 * numpy.pi / 360
+	return angles, angles_radian
+
+def plotRotationErrors(fname, Sy, Sz):
+	amin = -90
+	amax = 90
+	angles, angles_radian = getAngles(amin, amax)
 
 	ens = Sy.size # total number of ensembles
 	subsets = 128 # number of subsets used to estimate error
 
-	def calculateSqueezing(sy, sz):
-		# Calculate \Delta^2 \hat{S}_\theta.
-		# sy, sz and the result have shape (subsets, points)
-		ss = sy.shape[0]
-		tp = angles_radian.size
-		ca = numpy.tile(numpy.cos(angles_radian), (ss, 1))
-		sa = numpy.tile(numpy.sin(angles_radian), (ss, 1))
+	ens_half = ens / 2
+	Sy_half = Sy[:ens_half]
+	Sz_half = Sz[:ens_half]
 
-		# calculate mean inside subset and tile it to match cosine and sine data
-		mean = lambda x: numpy.tile(x.mean(1).reshape(ss, 1), (1, tp))
+	res_full = calculateSqueezing(angles_radian, Sy.reshape(1, ens), Sz.reshape(1, ens)) # average result using all data
+	res_subsets = calculateSqueezing(angles_radian,
+		Sy.reshape(subsets, ens / subsets),
+		Sz.reshape(subsets, ens / subsets))
+	res_subsets_half = calculateSqueezing(angles_radian,
+		Sy_half.reshape(subsets, ens_half / subsets),
+		Sz_half.reshape(subsets, ens_half / subsets))
 
-		d2S = mean(sz ** 2) * ca ** 2 + mean(sy ** 2) * sa ** 2 - \
-			2 * mean(sz * sy) * sa * ca - mean(sy) ** 2 * sa ** 2 - mean(sz) ** 2 * ca ** 2 + \
-			2 * mean(sz) * mean(sy) * sa * ca
-		return d2S / N * 4
-
-	res_full = calculateSqueezing(Sy.reshape(1, ens), Sz.reshape(1, ens)) # average result using all data
-	res_subsets = calculateSqueezing(Sy.reshape(subsets, ens / subsets), Sx.reshape(subsets, ens / subsets))
 	res_errors = res_subsets.std(0) / numpy.sqrt(subsets)
+	res_errors_half = res_subsets_half.std(0) / numpy.sqrt(subsets)
 
 	min_i = res_full[0].argmin()
+	max_i = res_full[0].argmax()
+
+	print "{ens} ensembles:".format(ens=ens_half)
+	print "Maximum squeezing: avg={avg}, avg-err={lb}, avg+err={ub}".format(
+		avg=numpy.log10(res_full[0,min_i]) * 10,
+		lb=numpy.log10(res_full[0,min_i] - res_errors_half[min_i]) * 10,
+		ub=numpy.log10(res_full[0,min_i] + res_errors_half[min_i]) * 10)
+	print "Maximum unsqueezing: avg={avg}, avg-err={lb}, avg+err={ub}".format(
+		avg=numpy.log10(res_full[0,max_i]) * 10,
+		lb=numpy.log10(res_full[0,max_i] - res_errors_half[max_i]) * 10,
+		ub=numpy.log10(res_full[0,max_i] + res_errors_half[max_i]) * 10)
+
+	print "{ens} ensembles:".format(ens=ens)
 	print "Maximum squeezing: avg={avg}, avg-err={lb}, avg+err={ub}".format(
 		avg=numpy.log10(res_full[0,min_i]) * 10,
 		lb=numpy.log10(res_full[0,min_i] - res_errors[min_i]) * 10,
 		ub=numpy.log10(res_full[0,min_i] + res_errors[min_i]) * 10)
-	max_i = res_full[0].argmax()
 	print "Maximum unsqueezing: avg={avg}, avg-err={lb}, avg+err={ub}".format(
 		avg=numpy.log10(res_full[0,max_i]) * 10,
 		lb=numpy.log10(res_full[0,max_i] - res_errors[max_i]) * 10,
 		ub=numpy.log10(res_full[0,max_i] + res_errors[max_i]) * 10)
 
-	vertices, codes = buildRiedelTomographyPath()
-	riedel_path = path.Path(vertices, codes)
-	patch = patches.PathPatch(riedel_path, edgecolor='blue', facecolor='none', linestyle='dashed')
-
-	# Plot error graph (uncomment if necessary)
-	"""
 	fig = plt.figure()
 	subplot = fig.add_subplot(111)
 	subplot.plot(angles, numpy.log10(res_full[0]) * 10, 'r', label="$\\log_{10}(squeezing)$")
-	subplot.plot(angles, numpy.log10(res_full[0] - res_errors) * 10, 'r--', label="$\\log_{10}(squeezing - error)$")
-	subplot.plot(angles, numpy.log10(res_full[0] + res_errors) * 10, 'r--', label="$\\log_{10}(squeezing + error)$")
+	subplot.plot(angles, numpy.log10(res_full[0] - res_errors) * 10, 'r--',
+		label="$\\log_{{10}}(squeezing - error)$, {ens} ensembles".format(ens=ens))
+	subplot.plot(angles, numpy.log10(res_full[0] + res_errors) * 10, 'r--',
+		label="$\\log_{{10}}(squeezing + error)$, {ens} ensembles".format(ens=ens))
+	subplot.plot(angles, numpy.log10(res_full[0] - res_errors_half) * 10, 'b--',
+		label="$\\log_{{10}}(squeezing - error)$, {ens} ensembles".format(ens=ens_half))
+	subplot.plot(angles, numpy.log10(res_full[0] + res_errors_half) * 10, 'b--',
+		label="$\\log_{{10}}(squeezing + error)$, {ens} ensembles".format(ens=ens_half))
 	subplot.set_ylim(ymin=-15, ymax=20)
+	subplot.set_xlim(xmin=0, xmax=12)
 	subplot.legend()
-	fig.savefig('riedel_rotation_errors.pdf')
-	"""
+	fig.savefig(fname)
+
+
+def plotRotation(fname, Sx, Sy, Sz):
+	"""Plot spin tomography figure"""
+	amin = -90
+	amax = 90
+	angles, angles_radian = getAngles(amin, amax)
+
+	ens = Sy.size # total number of ensembles
+	res_full = calculateSqueezing(angles_radian, Sy.reshape(1, ens), Sz.reshape(1, ens)) # average result using all data
+
+	vertices, codes = buildRiedelTomographyPath()
+	riedel_path = path.Path(vertices, codes)
+	patch = patches.PathPatch(riedel_path, edgecolor='blue', facecolor='none', linestyle='dashed')
 
 	updateParams()
 
@@ -349,7 +388,7 @@ def plotRotation(fname, Sx, Sy, Sz):
 	subplot.plot(angles, numpy.log10(res_full[0]) * 10, 'r')
 
 	subplot.add_patch(patch)
-	subplot.set_xlim(xmin=-90, xmax=90)
+	subplot.set_xlim(xmin=amin, xmax=amax)
 	subplot.set_ylim(ymin=-13, ymax=20)
 	subplot.xaxis.set_ticks((-90, -45, 0, 45, 90))
 	subplot.xaxis.set_ticklabels(('-90', '-45', '0', '45', '90'))
@@ -393,6 +432,7 @@ if __name__ == '__main__':
 	Sx = spins['Sx']
 	Sy = -spins['Sy'] # for some reason Y direction in Riedel is swapped (is it the sign of detuning?)
 	Sz = spins['Sz']
+	plotRotationErrors('riedel_rotation_errors.pdf', Sy, Sz)
 
 	plotRotation('riedel_rotation.eps', Sx, Sy, Sz)
 
